@@ -1,10 +1,6 @@
-# Ignorer les données brutes Kaggle
 data/raw/
-
-# Fichiers de configuration et temporaires Power BI Desktop
-*.pbi
-**/[Dd]iagnostic[罢T]est/
-.userID
-**/User.json
-*.tmp
-*.lck
+*.pbix
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+*.csv.zip
+.DS_Store
