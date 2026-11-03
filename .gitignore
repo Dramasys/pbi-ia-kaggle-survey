@@ -1,0 +1,10 @@
+# Ignorer les données brutes Kaggle
+data/raw/
+
+# Fichiers de configuration et temporaires Power BI Desktop
+*.pbi
+**/[Dd]iagnostic[罢T]est/
+.userID
+**/User.json
+*.tmp
+*.lck
