@@ -1,7 +1,7 @@
 
 ---
 
-## Charte Graphic et Design Figma (Regle 0.6)
+## Charte Graphic et Design Figma
 
 Ce projet integre une approche Figma-to-PowerBI pour garantir une interface epuree et performante :
 
