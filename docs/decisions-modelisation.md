@@ -1,11 +1,11 @@
 # Phase 1.3 : Décisions de modélisation — Projet IA (Kaggle Survey)
 
-Ce document récapitule les arbitrages et choix d'architecture retenus pour le modèle de données, conformément aux directives de la règle 0.4 du livre de recettes.
+Ce document récapitule les arbitrages et choix d'architecture retenus pour le modèle de données.
 
 ---
 
-## 1. Choix du Schéma : Étoile Pur
-* **Décision :** Implémentation d'un schéma en étoile strict.
+## 1. Choix du Schéma : Étoile
+* **Décision :** Implémentation d'un schéma en étoile.
 * **Justification :** La table de fait (`Fact_Reponses`) est positionnée au centre, et les tables de dimensions (`Dim_Profil`, `Dim_Geographie`, `Dim_Outils`, `Dim_Date`) l'entourent directement.
 * **Règle de floconnage :** Aucun schéma en flocon n'est appliqué. Les hiérarchies (comme le regroupement des pays par continent ou les outils par catégorie) sont dénormalisées directement au sein de leurs dimensions respectives pour maximiser les performances du moteur VertiPaq.
 
