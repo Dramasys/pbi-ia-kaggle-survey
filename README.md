@@ -26,3 +26,23 @@ Ce projet integre une approche Figma-to-PowerBI pour garantir une interface epur
 3. Components : Boutons, cartes KPI vides, et en-tete reutilisables.
 4. Wireframes : Maquettes basse fidelite en nuances de gris pour valider la hierarchie visuelle.
 5. Final : Maquettes haute fidelite pretes pour l'export PNG vers Power BI.
+
+---
+
+## Protocole d'Intégration Design et Développement
+
+L'intégration de la maquette graphique vers l'environnement Power BI Desktop respecte les paramètres techniques suivants pour garantir une interface fluide et pixel-perfect :
+
+### Paramétrage de l'Espace de Travail
+* Format de la page paramétré sur une dimension personnalisée de 1280 x 720 px.
+* Arrière-plan chargé en haute résolution depuis les exports graphiques.
+* Ajustement de l'image configuré sur le mode adapté avec une transparence à 0%.
+
+### Positionnement Précis des Éléments Visuels
+* Saisie manuelle des coordonnées spatiales (X, Y, Largeur, Hauteur) pour chaque composant afin de respecter scrupuleusement la grille de composition.
+* Désactivation des bordures par défaut pour épurer l'interface visuelle.
+* Alignement systématique des titres avec leurs indicateurs respectifs pour assurer une lecture homogène.
+
+### Centralisation de la Charte Graphique
+* Configuration des palettes de couleurs directement dans les options du modèle.
+* Exportation et archivage de la charte dans le répertoire dédié sous le nom `theme/theme.json`.
