@@ -1,6 +1,6 @@
 # Phase 1.2 : Dictionnaire de données — Projet IA (Kaggle Survey)
 
-Ce document répertorie la structure logique des tables du modèle en étoile, conformément aux règles de modélisation (0.4). Les clés de substitution sont des entiers et sont masquées dans la vue Rapport.
+Ce document répertorie la structure logique des tables du modèle en étoile. Les clés de substitution sont des entiers et sont masquées dans la vue Rapport.
 
 ---
 

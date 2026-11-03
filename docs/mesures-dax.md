@@ -1,6 +1,6 @@
 # Phase 1.4 : Registre des mesures DAX — Projet IA (Kaggle Survey)
 
-Conformément à la règle 0.5 du livre de recettes, toutes les mesures listées ci-dessous doivent être stockées dans la table unique `_Mesures`. Elles utilisent exclusivement l'architecture `VAR ... RETURN` et la fonction `DIVIDE` pour sécuriser les calculs.
+Toutes les mesures listées ci-dessous doivent être stockées dans la table unique `_Mesures`. Elles utilisent exclusivement l'architecture `VAR ... RETURN` et la fonction `DIVIDE` pour sécuriser les calculs.
 
 ---
 
