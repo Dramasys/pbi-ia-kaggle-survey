@@ -1,4 +1,4 @@
-# Décisions de modélisation et de préparation — Projet IA (Kaggle Survey)
+# Décisions de modélisation et de préparation - Projet IA (Kaggle Survey)
 
 Ce document récapitule les arbitrages retenus pour la préparation des données et le modèle. Les éléments marqués « prévu » seront implémentés dans les étapes suivantes.
 
