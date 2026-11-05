@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "ia-kaggle-survey"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "13f93a4e-968c-4863-bd4a-39b0a84e8b28"
+  }
+}

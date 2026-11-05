@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "ia-kaggle-survey"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b272d4d8-a7c9-48fa-a29d-206fc9524ada"
+  }
+}
