@@ -148,7 +148,7 @@ expression fnTheme =
 		  cols = List.Select(Table.ColumnNames(src), each Text.StartsWith(_, prefixe) and not Text.Contains(_, "TEXT")),
 		  garder = Table.SelectColumns(src, {"RepondantID", "Annee"} & cols),
 		  unpivot = Table.UnpivotOtherColumns(garder, {"RepondantID", "Annee"}, "Colonne", "Option"),
-		  sans_vide = Table.SelectRows(unpivot, each [Option] <> null and Text.Trim([Option]) <> ""),
+		  sans_vide = Table.SelectRows(unpivot, each [Option] <> null and Text.Trim([Option]) <> "" and Text.Lower(Text.Trim([Option])) <> "nan"),
 		  nettoye = Table.TransformColumns(sans_vide, {{"Option", each Text.Replace(Text.Trim(Text.Clean(_)), "’", "'"), type text}}),
 		  avec_theme = Table.AddColumn(nettoye, "Theme", each theme, type text),
 		  final = Table.RemoveColumns(avec_theme, {"Colonne"})
@@ -178,11 +178,32 @@ expression fnUsage =
 
 expression Usage_Tous =
 		let
-		  Tout = Table.Combine({fnUsage(Src_2020, 2020), fnUsage(Src_2021, 2021), fnUsage(Src_2022, 2022)})
+		  Tout = Table.Combine({fnUsage(Src_2020, 2020), fnUsage(Src_2021, 2021), fnUsage(Src_2022, 2022)}),
+		  Jointure = Table.NestedJoin(Tout, {"Theme", "Option"}, Ref_Options, {"Theme", "OptionSource"}, "Ref", JoinKind.LeftOuter),
+		  Etendu = Table.ExpandTableColumn(Jointure, "Ref", {"Option", "EstOutil"}, {"OptionCommune", "EstOutilRef"}),
+		  Option2 = Table.AddColumn(Etendu, "OptionFinale", each if [OptionCommune] <> null then [OptionCommune] else [Option], type text),
+		  EstOutil = Table.AddColumn(Option2, "EstOutil", each if [EstOutilRef] <> null then [EstOutilRef] else "Oui", type text),
+		  Colonnes = Table.SelectColumns(EstOutil, {"RepondantID", "Annee", "Theme", "OptionFinale", "EstOutil"}),
+		  Renomme = Table.RenameColumns(Colonnes, {{"OptionFinale", "Option"}}),
+		  Dedoublonne = Table.Distinct(Renomme)
 		in
-		    Tout
+		  Dedoublonne
 	lineageTag: 215b5a3a-b64f-4b26-8334-91645fba1142
 	queryGroup: 02_Staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Ref_Options =
+		let
+		  Source = Csv.Document(File.Contents(pDossierRef & "harmonisation_options.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+		  Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		  Types = Table.TransformColumnTypes(Entetes, {{"Theme", type text}, {"OptionSource", type text}, {"Option", type text}, {"EstOutil", type text}})
+		in
+		  Types
+	lineageTag: 95ff0fd4-0f31-4c07-b4d5-01502ad8c80e
+	queryGroup: 01_Sources
 
 	annotation PBI_NavigationStepName = Navigation
 

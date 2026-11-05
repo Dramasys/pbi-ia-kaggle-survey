@@ -1,0 +1,19 @@
+Theme,OptionSource,Option,EstOutil
+Langages,None,None,Non
+Langages,Other,Other,Non
+Langages,Javascript,JavaScript,Oui
+Environnements (IDE),None,None,Non
+Environnements (IDE),Other,Other,Non
+Environnements (IDE),"Jupyter (JupyterLab, Jupyter Notebooks, etc)",Jupyter,Oui
+Environnements (IDE),Jupyter Notebook,Jupyter,Oui
+Environnements (IDE),JupyterLab,Jupyter,Oui
+Frameworks ML,None,None,Non
+Frameworks ML,Other,Other,Non
+Frameworks ML,Xgboost,XGBoost,Oui
+Frameworks ML,Huggingface,Hugging Face,Oui
+Cloud,None,None,Non
+Cloud,Other,Other,Non
+Outils BI,None,None,Non
+Outils BI,Other,Other,Non
+Outils BI,Qlik,Qlik,Oui
+Outils BI,Qlik Sense,Qlik,Oui
