@@ -10,39 +10,29 @@ Ce projet integre une approche Figma-to-PowerBI pour garantir une interface epur
 * Grille de mise en page : 12 colonnes | Marges : 24 px | Gouttieres : 16 px.
 * Composants cles (Auto layout) : 
   * Bandeau d'en-tete (Hauteur : 64 px).
-  * Barre de filtres laterale ou superieure (Hauteur : 56 px).
-  * Cartes KPI : Largeur fixe de 296 px (Calcul exact : 1280 - 48 - 3x16 = 1184 px, divise par 4 cartes cote a cote) | Hauteur : 96 px | Rayon de courbure : 8 | Ombre portee legere.
+  * Barre de filtres laterale ou superieure (Hauteur : 48 px).
+  * Cartes KPI : Largeur fixe de 278 px | Hauteur : 96 px | Rayon de courbure : 8.
 
 ### Hierarchie Typographique (Police : Segoe UI)
-* Titre de page : Taille 24 | Graisse : Semibold
+* Titre de page : Taille 20 | Graisse : Semibold
 * Titre de visuel : Taille 14 | Graisse : Semibold
 * Valeur KPI : Taille 32 | Graisse : Bold
 * Libelle / Axe : Taille 11 | Graisse : Regular
-* Note / Source : Taille 10 | Graisse : Regular
+* Note / Source : Taille 10 | Graisse : Regular (non présente dans mes maquettes)
 
-### Organisation des Pages du fichier Figma
-1. Cover : Page de garde du projet.
-2. Foundations : Couleurs thematiques (Sombre, Violet, Cyan), typographies et grilles.
-3. Components : Boutons, cartes KPI vides, et en-tete reutilisables.
-4. Wireframes : Maquettes basse fidelite en nuances de gris pour valider la hierarchie visuelle.
-5. Final : Maquettes haute fidelite pretes pour l'export PNG vers Power BI.
+### Organisation du fichier Figma
+Le fichier contient 6 cadres : 5 pages de rapport de 1280 × 720 px et une info-bulle de 300 × 200 px.
 
----
+1. Page 1 : Vue d'ensemble
+2. Page 2 : Outils et tendances
+3. Page 3 : Salaires & Profils
+4. Page 4 : Guide
+5. Page 5 : Fiche pays (drillthrough)
+6. Tooltip Rapport (info-bulle)
 
-## Protocole d'Intégration Design et Développement
+Les exports sont en PNG 2x et serviront d'arrière-plan et de référence pour le rapport Power BI.
 
-L'intégration de la maquette graphique vers l'environnement Power BI Desktop respecte les paramètres techniques suivants pour garantir une interface fluide et pixel-perfect :
+## Statut
+Maquette validée (v2). Les valeurs affichées sont fictives : elles servent à valider la mise en page, pas à représenter les données réelles.
 
-### Paramétrage de l'Espace de Travail
-* Format de la page paramétré sur une dimension personnalisée de 1280 x 720 px.
-* Arrière-plan chargé en haute résolution depuis les exports graphiques.
-* Ajustement de l'image configuré sur le mode adapté avec une transparence à 0%.
-
-### Positionnement Précis des Éléments Visuels
-* Saisie manuelle des coordonnées spatiales (X, Y, Largeur, Hauteur) pour chaque composant afin de respecter scrupuleusement la grille de composition.
-* Désactivation des bordures par défaut pour épurer l'interface visuelle.
-* Alignement systématique des titres avec leurs indicateurs respectifs pour assurer une lecture homogène.
-
-### Centralisation de la Charte Graphique
-* Configuration des palettes de couleurs directement dans les options du modèle.
-* Exportation et archivage de la charte dans le répertoire dédié sous le nom `theme/theme.json`.
+Fichier Figma (lecture seule) : [https://www.figma.com/design/XJDgt8PlIplhG0d4FcCzAv/Maquette-pbi-ia-kaggle-survey?node-id=0-1&t=q2WupwUnQra7NdCY-1]
