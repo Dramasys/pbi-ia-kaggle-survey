@@ -94,3 +94,51 @@ expression Src_2020 =
 
 	annotation PBI_ResultType = Table
 
+expression fnRenommer =
+		(src as table, annee as number) as table =>
+		let
+		  map = Table.SelectRows(Mapping_Colonnes, each [Annee] = annee),
+		  paires = List.Zip({map[ColonneSource], map[ColonneCommune]}),
+		  resultat = Table.RenameColumns(src, paires, MissingField.Ignore)
+		in
+		  resultat
+	lineageTag: 70f7485e-d127-4823-8077-003b617f75c5
+	queryGroup: 00_Parametres
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression fnProfil =
+		(src as table, annee as number) as table =>
+		let
+		  Renomme = fnRenommer(src, annee),
+		  AvecSecteur = if List.Contains(Table.ColumnNames(Renomme), "Secteur")
+		                then Renomme
+		                else Table.AddColumn(Renomme, "Secteur", each "Non posée", type text),
+		  Garder = Table.SelectColumns(AvecSecteur, {"RepondantID", "Annee", "Age", "Genre", "Pays", "Etudes", "Metier", "ExperienceCodage", "ExperienceML", "Secteur", "Salaire"})
+		in
+		  Garder
+	lineageTag: 37e83eda-2885-4383-94e6-57c5d1f9e0bc
+	queryGroup: 00_Parametres
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression Profil_Tous =
+		let
+		  Tout = Table.Combine({fnProfil(Src_2020, 2020), fnProfil(Src_2021, 2021), fnProfil(Src_2022, 2022)}),
+		  Nettoyer = (v as nullable text) as nullable text =>
+		    if v = null then null else Text.Replace(Text.Trim(Text.Clean(v)), "’", "'"),
+		  Colonnes = {"Age", "Genre", "Pays", "Etudes", "Metier", "ExperienceCodage", "ExperienceML", "Secteur", "Salaire"},
+		  Texte = Table.TransformColumns(Tout, List.Transform(Colonnes, each {_, Nettoyer, type text}))
+		in
+		    Texte
+	lineageTag: 2aba131a-9ee6-497d-b36e-89b06be4bb95
+	queryGroup: 02_Staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
