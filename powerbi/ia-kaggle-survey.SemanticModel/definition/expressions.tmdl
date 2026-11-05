@@ -142,3 +142,49 @@ expression Profil_Tous =
 
 	annotation PBI_ResultType = Table
 
+expression fnTheme =
+		(src as table, prefixe as text, theme as text) as table =>
+		let
+		  cols = List.Select(Table.ColumnNames(src), each Text.StartsWith(_, prefixe) and not Text.Contains(_, "TEXT")),
+		  garder = Table.SelectColumns(src, {"RepondantID", "Annee"} & cols),
+		  unpivot = Table.UnpivotOtherColumns(garder, {"RepondantID", "Annee"}, "Colonne", "Option"),
+		  sans_vide = Table.SelectRows(unpivot, each [Option] <> null and Text.Trim([Option]) <> ""),
+		  nettoye = Table.TransformColumns(sans_vide, {{"Option", each Text.Replace(Text.Trim(Text.Clean(_)), "’", "'"), type text}}),
+		  avec_theme = Table.AddColumn(nettoye, "Theme", each theme, type text),
+		  final = Table.RemoveColumns(avec_theme, {"Colonne"})
+		in
+		  final
+	lineageTag: bdc42500-b145-492f-9219-91bec9c00f39
+	queryGroup: 00_Parametres
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression fnUsage =
+		(src as table, annee as number) as table =>
+		let
+		  themes = Table.SelectRows(Mapping_Themes, each [Annee] = annee),
+		  listes = List.Transform(Table.ToRecords(themes), each fnTheme(src, [Prefixe], [Theme])),
+		  tout = Table.Combine(listes)
+		in
+		  tout
+	lineageTag: d511773b-4bdf-4b4a-a242-7c9478254f09
+	queryGroup: 00_Parametres
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression Usage_Tous =
+		let
+		  Tout = Table.Combine({fnUsage(Src_2020, 2020), fnUsage(Src_2021, 2021), fnUsage(Src_2022, 2022)})
+		in
+		    Tout
+	lineageTag: 215b5a3a-b64f-4b26-8334-91645fba1142
+	queryGroup: 02_Staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
