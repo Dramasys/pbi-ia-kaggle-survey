@@ -35,3 +35,62 @@ expression Mapping_Themes =
 
 	annotation PBI_ResultType = Table
 
+expression pDossierData = "D:\PROJET\pbi-ia-kaggle-survey\data\raw\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 5f30f0b5-682c-4993-b595-c7d0af699ae6
+	queryGroup: 00_Parametres
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression Src_2022 =
+		let
+		  Source = Csv.Document(File.Contents(pDossierData & "kaggle_survey_2022_responses.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+		  Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		  SansLibelles = Table.Skip(Entetes, 1),
+		  Idx = Table.AddIndexColumn(SansLibelles, "Idx", 1, 1, Int64.Type),
+		  Annee = Table.AddColumn(Idx, "Annee", each 2022, Int64.Type),
+		  RepID = Table.AddColumn(Annee, "RepondantID", each [Annee] * 1000000 + [Idx], Int64.Type)
+		in
+		  RepID
+	lineageTag: 28b0d59c-a435-42f8-9c34-b403cd762ad7
+	queryGroup: 01_Sources
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Src_2021 =
+		let
+		  Source = Csv.Document(File.Contents(pDossierData & "kaggle_survey_2021_responses.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+		  Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		  SansLibelles = Table.Skip(Entetes, 1),
+		  Idx = Table.AddIndexColumn(SansLibelles, "Idx", 1, 1, Int64.Type),
+		  Annee = Table.AddColumn(Idx, "Annee", each 2021, Int64.Type),
+		  RepID = Table.AddColumn(Annee, "RepondantID", each [Annee] * 1000000 + [Idx], Int64.Type)
+		in
+		  RepID
+	lineageTag: caa25e71-374a-423a-8be9-50def434a485
+	queryGroup: 01_Sources
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Src_2020 =
+		let
+		  Source = Csv.Document(File.Contents(pDossierData & "kaggle_survey_2020_responses.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+		  Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		  SansLibelles = Table.Skip(Entetes, 1),
+		  Idx = Table.AddIndexColumn(SansLibelles, "Idx", 1, 1, Int64.Type),
+		  Annee = Table.AddColumn(Idx, "Annee", each 2020, Int64.Type),
+		  RepID = Table.AddColumn(Annee, "RepondantID", each [Annee] * 1000000 + [Idx], Int64.Type)
+		in
+		  RepID
+	lineageTag: d4c042ba-4047-4703-a1e9-0dfc73bc72c4
+	queryGroup: 01_Sources
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

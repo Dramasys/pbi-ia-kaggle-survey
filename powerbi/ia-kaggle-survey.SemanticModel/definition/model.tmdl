@@ -19,7 +19,7 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["DevMode"]
 
-annotation PBI_QueryOrder = ["pDossierRef","Mapping_Colonnes","Mapping_Themes"]
+annotation PBI_QueryOrder = ["pDossierRef","Mapping_Colonnes","Mapping_Themes","pDossierData","Src_2022","Src_2021","Src_2020"]
 
 ref cultureInfo fr-FR
 
