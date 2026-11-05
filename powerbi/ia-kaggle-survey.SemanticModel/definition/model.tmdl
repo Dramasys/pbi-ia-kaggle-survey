@@ -7,9 +7,19 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
+queryGroup 00_Parametres
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 01_Sources
+
+	annotation PBI_QueryGroupOrder = 1
+
 annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["pDossierRef","Mapping_Colonnes","Mapping_Themes"]
 
 ref cultureInfo fr-FR
 

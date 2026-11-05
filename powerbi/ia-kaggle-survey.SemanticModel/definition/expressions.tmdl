@@ -1,0 +1,37 @@
+/// Paramètre du dossier référence
+expression pDossierRef = "D:\PROJET\pbi-ia-kaggle-survey\data\reference\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 487f9195-3887-437a-b9ce-475380c8f7cb
+	queryGroup: 00_Parametres
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression Mapping_Colonnes =
+		let
+		    Source = Csv.Document(File.Contents(pDossierRef & "mapping_colonnes.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+		    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    Types = Table.TransformColumnTypes(Entetes, {{"Annee", Int64.Type}, {"ColonneSource", type text}, {"ColonneCommune", type text}})
+		in
+		    Types
+	lineageTag: 1ef3f52e-b66b-4564-9efb-ebe71acd27ec
+	queryGroup: 01_Sources
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Mapping_Themes =
+		let
+		    Source = Csv.Document(File.Contents(pDossierRef & "mapping_themes.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+		    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    Types = Table.TransformColumnTypes(Entetes, {{"Annee", Int64.Type}, {"Theme", type text}, {"Prefixe", type text}, {"LibelleQuestion", type text}})
+		in
+		    Types
+	lineageTag: e3d9785c-dcac-4c1d-8591-5a372d18b358
+	queryGroup: 01_Sources
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
