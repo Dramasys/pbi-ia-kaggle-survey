@@ -113,9 +113,17 @@ expression fnProfil =
 		(src as table, annee as number) as table =>
 		let
 		  Renomme = fnRenommer(src, annee),
-		  AvecSecteur = if List.Contains(Table.ColumnNames(Renomme), "Secteur")
-		                then Renomme
-		                else Table.AddColumn(Renomme, "Secteur", each "Non posée", type text),
+		  Corriger = (t as table) as table =>
+		    let
+		      A = Table.AddColumn(t, "MetierCorrige", each if ([Metier] = null or Text.Trim([Metier]) = "") and [Q5] = "Yes" then "Student" else [Metier], type text),
+		      B = Table.RemoveColumns(A, {"Metier"}),
+		      C = Table.RenameColumns(B, {{"MetierCorrige", "Metier"}})
+		    in
+		      C,
+		  Metier2 = if annee = 2022 then Corriger(Renomme) else Renomme,
+		  AvecSecteur = if List.Contains(Table.ColumnNames(Metier2), "Secteur")
+		                then Metier2
+		                else Table.AddColumn(Metier2, "Secteur", each "Non posée", type text),
 		  Garder = Table.SelectColumns(AvecSecteur, {"RepondantID", "Annee", "Age", "Genre", "Pays", "Etudes", "Metier", "ExperienceCodage", "ExperienceML", "Secteur", "Salaire"})
 		in
 		  Garder
