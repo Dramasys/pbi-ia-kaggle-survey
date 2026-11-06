@@ -1,0 +1,82 @@
+table Dim_Demographie
+	lineageTag: b67fe222-19b9-4c06-a388-d7c6e7974a7c
+
+	column DemographieKey
+		dataType: int64
+		formatString: 0
+		lineageTag: f3e3e7dc-2828-46e6-b79e-9f9900d4decb
+		summarizeBy: count
+		sourceColumn: DemographieKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: string
+		lineageTag: f5d9e759-40f5-4a23-a43c-015ec4215689
+		summarizeBy: none
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column AgeOrdre
+		dataType: int64
+		formatString: 0
+		lineageTag: caeb09f2-942e-4a52-bc8c-19c8a1e8ac3e
+		summarizeBy: sum
+		sourceColumn: AgeOrdre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genre
+		dataType: string
+		lineageTag: 6d01235e-4a0a-4345-ae24-51dfe86f2523
+		summarizeBy: none
+		sourceColumn: Genre
+
+		annotation SummarizationSetBy = Automatic
+
+	column GenreOrdre
+		dataType: int64
+		formatString: 0
+		lineageTag: d87f19f4-abe3-4daa-b44b-ec6bb55a450a
+		summarizeBy: sum
+		sourceColumn: GenreOrdre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Etudes
+		dataType: string
+		lineageTag: 155011d8-8ebf-4305-a23d-286b0ba1c76e
+		summarizeBy: none
+		sourceColumn: Etudes
+
+		annotation SummarizationSetBy = Automatic
+
+	column EtudesOrdre
+		dataType: int64
+		formatString: 0
+		lineageTag: 5604403e-14e3-493e-9460-d78c50c0c332
+		summarizeBy: sum
+		sourceColumn: EtudesOrdre
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Demographie = m
+		mode: import
+		queryGroup: 03_Dimensions
+		source =
+				let
+				  Src = Table.SelectColumns(Profil_Final, {"Age_Valeur", "Age_Ordre", "Genre_Valeur", "Genre_Ordre", "Etudes_Valeur", "Etudes_Ordre"}),
+				  Distincts = Table.Distinct(Src),
+				  Renomme = Table.RenameColumns(Distincts, {{"Age_Valeur", "Age"}, {"Age_Ordre", "AgeOrdre"}, {"Genre_Valeur", "Genre"}, {"Genre_Ordre", "GenreOrdre"}, {"Etudes_Valeur", "Etudes"}, {"Etudes_Ordre", "EtudesOrdre"}}),
+				  Tri = Table.Sort(Renomme, {{"AgeOrdre", Order.Ascending}, {"GenreOrdre", Order.Ascending}, {"EtudesOrdre", Order.Ascending}}),
+				  Cle = Table.AddIndexColumn(Tri, "DemographieKey", 1, 1, Int64.Type),
+				  Ordre = Table.ReorderColumns(Cle, {"DemographieKey", "Age", "AgeOrdre", "Genre", "GenreOrdre", "Etudes", "EtudesOrdre"}),
+				  Types = Table.TransformColumnTypes(Ordre, {{"Age", type text}, {"AgeOrdre", Int64.Type}, {"Genre", type text}, {"GenreOrdre", Int64.Type}, {"Etudes", type text}, {"EtudesOrdre", Int64.Type}})
+				in
+				  Types
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
