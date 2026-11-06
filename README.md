@@ -35,4 +35,7 @@ Les exports sont en PNG 2x et serviront d'arrière-plan et de référence pour l
 ## Statut
 Maquette validée (v2). Les valeurs affichées sont fictives : elles servent à valider la mise en page, pas à représenter les données réelles.
 
-Fichier Figma (lecture seule) : [https://www.figma.com/design/XJDgt8PlIplhG0d4FcCzAv/Maquette-pbi-ia-kaggle-survey?node-id=0-1&t=q2WupwUnQra7NdCY-1]
+## Maquette Figma (lecture seule)
+- Fichier complet : [https://www.figma.com/design/XJDgt8PlIplhG0d4FcCzAv/Maquette-pbi-ia-kaggle-survey?node-id=0-1&t=ZDFPMw9Uc35yaFPp-1]
+- Dashboard principal (Vue d'ensemble, Outils et tendances, Salaires et profils) : [https://www.figma.com/design/XJDgt8PlIplhG0d4FcCzAv/Maquette-pbi-ia-kaggle-survey?node-id=0-1]
+- Guide et détails (Guide, Fiche pays, info-bulle) : [https://www.figma.com/design/XJDgt8PlIplhG0d4FcCzAv/Maquette-pbi-ia-kaggle-survey?node-id=20-450]
