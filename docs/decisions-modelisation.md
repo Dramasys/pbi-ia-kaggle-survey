@@ -8,7 +8,8 @@ Ce document récapitule les arbitrages retenus pour la préparation des données
 * **Décision :** deux tables de faits liées à des dimensions conformes.
   * `Fact_Repondants` : une ligne par répondant (sert de dénominateur : base des parts et des moyennes).
   * `Fact_Usage_Outils` : une ligne par répondant et par option cochée (sert de numérateur : utilisateurs d'un outil).
-* **Dimensions :** `Dim_Annee`, `Dim_Pays` (hiérarchie Continent > Région > Pays), `Dim_Profil` (dimension « junk » : âge, genre, études, métier, expérience, secteur), `Dim_Salaire` (tranche, ordre, milieu de tranche en USD) et `Dim_Reponse` (thème, option, indicateur « est un outil »), cette dernière reliée uniquement à `Fact_Usage_Outils`.
+* **Dimensions :** `Dim_Annee`, `Dim_Pays` (hiérarchie Continent > Région > Pays), `Dim_Demographie` (âge, genre, études), `Dim_Emploi` (métier, secteur), `Dim_Experience` (expérience de codage et de ML), `Dim_Salaire` (tranche, groupe, ordre, milieu de tranche en USD) et `Dim_Reponse` (thème, option, indicateur « est un outil »), cette dernière reliée uniquement à `Fact_Usage_Outils`.
+* **Pas de dimension « junk » unique pour le profil :** regroupées, les sept colonnes donnent 31 182 combinaisons pour 70 006 répondants (45 %), sans réduction utile. Trois dimensions de 350, 299 et 72 lignes (721 au total) sont retenues.
 * **Justification des deux faits :** une part d'utilisation = utilisateurs de l'outil ÷ répondants à la question. Les deux comptes ne se trouvent pas dans la même table.
 * **Pas de relation directe entre les deux faits :** on les compare via les dimensions partagées.
 * **Règle de floconnage :** aucun flocon. Les hiérarchies sont dénormalisées dans leur dimension.
@@ -19,7 +20,7 @@ Ce document récapitule les arbitrages retenus pour la préparation des données
 * **Interdits :** filtres bidirectionnels et relations plusieurs-à-plusieurs, sauf justification documentée ici.
 
 ## 3. Clés et performance
-* **Clés :** entiers (`PaysKey`, `ProfilKey`, `SalaireKey`, `ReponseKey`, `Annee`). Aucune clé textuelle.
+* **Clés :** entiers (`PaysKey`, `DemographieKey`, `EmploiKey`, `ExperienceKey`, `SalaireKey`, `ReponseKey`, `Annee`). Aucune clé textuelle.
 * **Identifiant de répondant :** absent de la source. `RepondantID` = année × 1 000 000 + numéro de ligne (unique sur les trois éditions). Il reste dans les faits comme dimension dégénérée, pour compter les répondants distincts.
 * **Visibilité :** toutes les clés et `RepondantID` sont masquées dans la vue Rapport.
 
@@ -48,13 +49,16 @@ Ce document récapitule les arbitrages retenus pour la préparation des données
 * Le segment « Secteur » n'a pas de données en 2020.
 * Les libellés d'études, de métiers et les tranches de salaire de la maquette seront remplacés par ceux de l'enquête.
 * Les salaires sont des estimations en dollars (milieu de tranche), pas en euros.
+* La page 1 affichera « Répondants par édition » en trois colonnes, et non une courbe d'inscriptions cumulées.
+* La matrice de la page 2 aura des cellules vides pour les outils non proposés certaines années (C#, Go et PHP en 2020 et 2021).
+* Le métier « Data Architect » n'existe qu'en 2022, et « Consultant Data » n'est pas un choix de l'enquête.
 
 ## 7. Tables de référence et regroupements (`data/reference/`)
 Six fichiers, créés à la main et versionnés, pilotent l'harmonisation des trois éditions :
 * `mapping_colonnes.csv` : colonnes du profil (le numéro de question change d'une année à l'autre).
 * `mapping_themes.csv` : préfixes des colonnes de chaque thème d'outils.
 * `harmonisation_options.csv` : libellés des outils (Jupyter, Qlik, orthographe) et indicateur `EstOutil`.
-* `pays_region.csv` : 69 libellés de pays regroupés en 67 pays réels + « Autre pays » + « Non communiqué », avec région (13) et continent (6). Noms français pour l'affichage (`Pays`) et anglais pour la carte (`PaysEN`).
+* `pays_region.csv` : 69 libellés source (67 pays réels et 2 libellés « Autre pays » et « Non communiqué »). Après regroupement de la Corée du Sud, la dimension compte 66 pays réels + 2 = 68 lignes. Chaque pays a une région (12 régions réelles + « Non précisé ») et un continent (5 continents + « Non précisé »). Noms français pour l'affichage (`Pays`) et anglais pour la carte (`PaysEN`).
 * `tranches_salaire.csv` : 25 tranches harmonisées, 7 groupes pour les graphiques.
 * `harmonisation_profil.csv` : valeurs françaises, ordre de tri et groupes (âge, genre, études, expérience, métier, secteur).
 
