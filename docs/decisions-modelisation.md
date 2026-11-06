@@ -48,3 +48,21 @@ Ce document récapitule les arbitrages retenus pour la préparation des données
 * Le segment « Secteur » n'a pas de données en 2020.
 * Les libellés d'études, de métiers et les tranches de salaire de la maquette seront remplacés par ceux de l'enquête.
 * Les salaires sont des estimations en dollars (milieu de tranche), pas en euros.
+
+## 7. Tables de référence et regroupements (`data/reference/`)
+Six fichiers, créés à la main et versionnés, pilotent l'harmonisation des trois éditions :
+* `mapping_colonnes.csv` : colonnes du profil (le numéro de question change d'une année à l'autre).
+* `mapping_themes.csv` : préfixes des colonnes de chaque thème d'outils.
+* `harmonisation_options.csv` : libellés des outils (Jupyter, Qlik, orthographe) et indicateur `EstOutil`.
+* `pays_region.csv` : 69 libellés de pays regroupés en 67 pays réels + « Autre pays » + « Non communiqué », avec région (13) et continent (6). Noms français pour l'affichage (`Pays`) et anglais pour la carte (`PaysEN`).
+* `tranches_salaire.csv` : 25 tranches harmonisées, 7 groupes pour les graphiques.
+* `harmonisation_profil.csv` : valeurs françaises, ordre de tri et groupes (âge, genre, études, expérience, métier, secteur).
+
+Décisions :
+* **Absence de réponse** : marqueur `(vide)` dans les fichiers de référence. Les cellules vides sont remplacées par ce marqueur dans Power Query avant la jointure.
+* **Corée du Sud** : « Republic of Korea » (76 réponses en 2020) et « South Korea » regroupés (doublon d'option en 2020).
+* **Diplôme professionnel** : « Professional degree » (2020 seul) et « Professional doctorate » (2021 et 2022 seuls) regroupés, car ils ne coexistent jamais. Hypothèse : même option renommée.
+* **Métiers** : Data Analyst, ML Engineer et Developer Advocate regroupés (renommages). Product Manager, Product/Project Manager, Program/Project Manager et Manager regroupés en « Manager (produit, projet, programme) » : regroupement approximatif, le libellé 2022 inclut aussi les directions.
+* **Expérience de codage** : « 1-2 ans » (2020) et « 1-3 ans » (2021 et 2022) restent séparés (tranches non équivalentes). Les tranches de plus de 5 ans sont stables et forment le groupe « Plus de 5 ans ».
+* **Salaires** : milieu de tranche = (borne basse + borne haute + 1) ÷ 2. La tranche ouverte « 500 000 et plus » (trois libellés selon l'année) est fixée à 600 000 $ : hypothèse arbitraire, peu influente sur la médiane.
+* **Étudiants 2022** (prévu) : le métier est vide pour 13 367 répondants en 2022, car la question « étudiant » est posée séparément. Correction prévue via la colonne `Q5`.
