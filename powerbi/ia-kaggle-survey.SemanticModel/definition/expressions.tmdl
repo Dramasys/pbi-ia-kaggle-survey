@@ -260,3 +260,40 @@ expression Ref_Profil =
 
 	annotation PBI_ResultType = Table
 
+expression fnHarmoniser =
+		(t as table, colonne as text) as table =>
+		let
+		  Ref = Table.SelectColumns(Table.SelectRows(Ref_Profil, each [Colonne] = colonne), {"ValeurSource", "Valeur", "Ordre", "Groupe"}),
+		  J = Table.NestedJoin(t, {colonne}, Ref, {"ValeurSource"}, "R", JoinKind.LeftOuter),
+		  Champs = if colonne = "ExperienceCodage" then {"Valeur", "Ordre", "Groupe"} else {"Valeur", "Ordre"},
+		  Noms = List.Transform(Champs, each colonne & "_" & _),
+		  E = Table.ExpandTableColumn(J, "R", Champs, Noms)
+		in
+		  E
+	lineageTag: b2d83cfc-91b1-4a98-a8be-6ea8265f3b4a
+	queryGroup: 00_Parametres
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression Profil_Harmonise =
+		let
+		  Cols = {"Age", "Genre", "Pays", "Etudes", "Metier", "ExperienceCodage", "ExperienceML", "Secteur", "Salaire"},
+		  Vide = Table.TransformColumns(Profil_Tous, List.Transform(Cols, (c) => {c, (v) => if v = null or Text.Trim(v) = "" then "(vide)" else v, type text})),
+		  H1 = fnHarmoniser(Vide, "Age"),
+		  H2 = fnHarmoniser(H1, "Genre"),
+		  H3 = fnHarmoniser(H2, "Etudes"),
+		  H4 = fnHarmoniser(H3, "Metier"),
+		  H5 = fnHarmoniser(H4, "ExperienceCodage"),
+		  H6 = fnHarmoniser(H5, "ExperienceML"),
+		  H7 = fnHarmoniser(H6, "Secteur")
+		in
+		    H7
+	lineageTag: 38f78157-510a-4370-bbf1-bdfedd3b63c3
+	queryGroup: 02_Staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
