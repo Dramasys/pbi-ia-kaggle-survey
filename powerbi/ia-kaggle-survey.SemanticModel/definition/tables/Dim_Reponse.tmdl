@@ -1,0 +1,55 @@
+table Dim_Reponse
+	lineageTag: 515cf773-094d-4e64-a3cc-7670d03e1e2d
+
+	column ReponseKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 268039b6-bde6-417a-b29b-a14fd5e149ff
+		summarizeBy: count
+		sourceColumn: ReponseKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Theme
+		dataType: string
+		lineageTag: 560d4101-74ff-46d1-b16e-22deeb1ffe09
+		summarizeBy: none
+		sourceColumn: Theme
+
+		annotation SummarizationSetBy = Automatic
+
+	column Option
+		dataType: string
+		lineageTag: 55bd416c-f7a6-417a-9f97-c0691f51f1d7
+		summarizeBy: none
+		sourceColumn: Option
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstOutil
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2e6bcbcd-32f0-452a-bf3c-4a34da3c70f9
+		summarizeBy: none
+		sourceColumn: EstOutil
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Reponse = m
+		mode: import
+		queryGroup: 03_Dimensions
+		source =
+				let
+				  Src = Table.SelectColumns(Usage_Tous, {"Theme", "Option", "EstOutil"}),
+				  Distincts = Table.Distinct(Src),
+				  Tri = Table.Sort(Distincts, {{"Theme", Order.Ascending}, {"Option", Order.Ascending}}),
+				  Cle = Table.AddIndexColumn(Tri, "ReponseKey", 1, 1, Int64.Type),
+				  Logique = Table.TransformColumns(Cle, {{"EstOutil", each _ = "Oui", type logical}}),
+				  Ordre = Table.ReorderColumns(Logique, {"ReponseKey", "Theme", "Option", "EstOutil"})
+				in
+				  Ordre
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
