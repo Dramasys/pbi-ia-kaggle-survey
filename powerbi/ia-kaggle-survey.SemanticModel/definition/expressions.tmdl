@@ -209,3 +209,46 @@ expression Ref_Options =
 
 	annotation PBI_ResultType = Table
 
+expression Ref_Pays =
+		let
+		  Source = Csv.Document(File.Contents(pDossierRef & "pays_region.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+		  Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		  Types = Table.TransformColumnTypes(Entetes, {{"PaysSource", type text}, {"Pays", type text}, {"PaysEN", type text}, {"Region", type text}, {"Continent", type text}, {"EstPaysReel", type text}})
+		in
+		  Types
+	lineageTag: 5377f1fe-4fca-4b83-a9b3-360d7a845c28
+	queryGroup: 01_Sources
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Ref_Salaire =
+		let
+		  Source = Csv.Document(File.Contents(pDossierRef & "tranches_salaire.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+		  Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		  Vides = Table.ReplaceValue(Entetes, "", null, Replacer.ReplaceValue, {"BorneBasseUSD", "BorneHauteUSD", "MilieuUSD"}),
+		  Types = Table.TransformColumnTypes(Vides, {{"LibelleSource", type text}, {"Tranche", type text}, {"Ordre", Int64.Type}, {"Groupe", type text}, {"GroupeOrdre", Int64.Type}, {"BorneBasseUSD", Int64.Type}, {"BorneHauteUSD", Int64.Type}, {"MilieuUSD", Int64.Type}, {"Communique", type text}})
+		in
+		  Types
+	lineageTag: 9bf7b4a2-adf6-4ea5-9a52-077ef78f7a4f
+	queryGroup: 01_Sources
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Ref_Profil =
+		let
+		  Source = Csv.Document(File.Contents(pDossierRef & "harmonisation_profil.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+		  Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		  Types = Table.TransformColumnTypes(Entetes, {{"Colonne", type text}, {"ValeurSource", type text}, {"Valeur", type text}, {"Ordre", Int64.Type}, {"Groupe", type text}})
+		in
+		  Types
+	lineageTag: ee90a43f-8bd7-45c7-a962-7471e9cb3bcf
+	queryGroup: 01_Sources
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
