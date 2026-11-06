@@ -65,4 +65,4 @@ Décisions :
 * **Métiers** : Data Analyst, ML Engineer et Developer Advocate regroupés (renommages). Product Manager, Product/Project Manager, Program/Project Manager et Manager regroupés en « Manager (produit, projet, programme) » : regroupement approximatif, le libellé 2022 inclut aussi les directions.
 * **Expérience de codage** : « 1-2 ans » (2020) et « 1-3 ans » (2021 et 2022) restent séparés (tranches non équivalentes). Les tranches de plus de 5 ans sont stables et forment le groupe « Plus de 5 ans ».
 * **Salaires** : milieu de tranche = (borne basse + borne haute + 1) ÷ 2. La tranche ouverte « 500 000 et plus » (trois libellés selon l'année) est fixée à 600 000 $ : hypothèse arbitraire, peu influente sur la médiane.
-* **Étudiants 2022** (prévu) : le métier est vide pour 13 367 répondants en 2022, car la question « étudiant » est posée séparément. Correction prévue via la colonne `Q5`.
+* **Étudiants 2022** : le métier est vide pour 13 367 répondants en 2022, car la question « étudiant » est posée séparément (`Q5`). Les 11 961 répondants déclarés étudiants et sans métier sont reclassés en « Student ». Restent 1 406 métiers vides (non-réponses réelles).
