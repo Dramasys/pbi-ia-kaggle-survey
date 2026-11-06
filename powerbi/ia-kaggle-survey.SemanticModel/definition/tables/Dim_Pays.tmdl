@@ -1,0 +1,70 @@
+table Dim_Pays
+	lineageTag: f2287846-840a-4caa-b6f8-4401263ed910
+
+	column PaysKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 35cee6b1-94be-4f96-ad85-cb73519ee122
+		summarizeBy: count
+		sourceColumn: PaysKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pays
+		dataType: string
+		lineageTag: 1a1a76f1-e5c7-4571-afbb-e32e80dcc99c
+		summarizeBy: none
+		sourceColumn: Pays
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaysEN
+		dataType: string
+		lineageTag: 3f0fc180-20a9-4fc9-98c0-e2a6c0e68a00
+		summarizeBy: none
+		sourceColumn: PaysEN
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 575ca621-5caf-42ec-80fc-75206ce53fa6
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Continent
+		dataType: string
+		lineageTag: 5e5aee78-8083-482b-9a62-5379a21824bc
+		summarizeBy: none
+		sourceColumn: Continent
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstPaysReel
+		dataType: string
+		lineageTag: 60dcf800-73a7-47e2-aa0e-1410f821d729
+		summarizeBy: none
+		sourceColumn: EstPaysReel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Pays = m
+		mode: import
+		queryGroup: 03_Dimensions
+		source =
+				let
+				  Choix = Table.SelectColumns(Ref_Pays, {"Pays", "PaysEN", "Region", "Continent", "EstPaysReel"}),
+				  Distincts = Table.Distinct(Choix),
+				  SansVide = Table.ReplaceValue(Distincts, "", null, Replacer.ReplaceValue, {"PaysEN"}),
+				  Tri = Table.Sort(SansVide, {{"Continent", Order.Ascending}, {"Region", Order.Ascending}, {"Pays", Order.Ascending}}),
+				  Cle = Table.AddIndexColumn(Tri, "PaysKey", 1, 1, Int64.Type),
+				  Ordre = Table.ReorderColumns(Cle, {"PaysKey", "Pays", "PaysEN", "Region", "Continent", "EstPaysReel"})
+				in
+				  Ordre
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,35 @@
+table Dim_Annee
+	lineageTag: f0d8b7de-58e1-46cb-9e37-e783ee3248c7
+
+	column Annee
+		dataType: int64
+		formatString: 0
+		lineageTag: d1d700d6-f6a6-4e6d-9298-63b6316ff106
+		summarizeBy: sum
+		sourceColumn: Annee
+
+		annotation SummarizationSetBy = Automatic
+
+	column Edition
+		dataType: string
+		lineageTag: 91083a9f-2d2b-4ee6-bc3d-1272db8adcc2
+		summarizeBy: none
+		sourceColumn: Edition
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Annee = m
+		mode: import
+		queryGroup: 03_Dimensions
+		source =
+				let
+				  Annees = Table.FromList({2020, 2021, 2022}, Splitter.SplitByNothing(), {"Annee"}),
+				  Types = Table.TransformColumnTypes(Annees, {{"Annee", Int64.Type}}),
+				  Edition = Table.AddColumn(Types, "Edition", each Text.From([Annee]), type text)
+				in
+				  Edition
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

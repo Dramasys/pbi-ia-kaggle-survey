@@ -7,7 +7,34 @@
         "x": 0,
         "y": 0
       },
-      "nodes": [],
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 48
+          },
+          "nodeIndex": "Dim_Annee",
+          "nodeLineageTag": "f0d8b7de-58e1-46cb-9e37-e783ee3248c7",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 0
+          },
+          "nodeIndex": "Dim_Pays",
+          "nodeLineageTag": "f2287846-840a-4caa-b6f8-4401263ed910",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
       "name": "Toutes les tables",
       "zoomValue": 100,
       "pinKeyFieldsToTop": false,
