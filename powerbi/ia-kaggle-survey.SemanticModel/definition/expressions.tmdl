@@ -297,3 +297,18 @@ expression Profil_Harmonise =
 
 	annotation PBI_ResultType = Table
 
+expression Profil_Final =
+		let
+		  P = Table.NestedJoin(Profil_Harmonise, {"Pays"}, Ref_Pays, {"PaysSource"}, "RP", JoinKind.LeftOuter),
+		  P2 = Table.ExpandTableColumn(P, "RP", {"Pays", "PaysEN", "Region", "Continent", "EstPaysReel"}, {"Pays_Valeur", "Pays_EN", "Pays_Region", "Pays_Continent", "Pays_EstReel"}),
+		  S = Table.NestedJoin(P2, {"Salaire"}, Ref_Salaire, {"LibelleSource"}, "RS", JoinKind.LeftOuter),
+		  S2 = Table.ExpandTableColumn(S, "RS", {"Tranche", "Ordre", "Groupe", "GroupeOrdre", "BorneBasseUSD", "BorneHauteUSD", "MilieuUSD", "Communique"}, {"Salaire_Tranche", "Salaire_Ordre", "Salaire_Groupe", "Salaire_GroupeOrdre", "Salaire_BorneBasse", "Salaire_BorneHaute", "Salaire_Milieu", "Salaire_Communique"})
+		in
+		  S2
+	lineageTag: 2519b461-c19d-4abc-a6e3-520d21d1bf86
+	queryGroup: 02_Staging
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
