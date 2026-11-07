@@ -1,0 +1,24 @@
+relationship AutoDetected_f49e67f8-9017-4ae3-9fc3-7e5fffad1dcd
+	fromColumn: Fact_Repondants.PaysKey
+	toColumn: Dim_Pays.PaysKey
+
+relationship AutoDetected_ffd1898b-1cd1-4bfe-9950-d73968005a70
+	fromColumn: Fact_Repondants.DemographieKey
+	toColumn: Dim_Demographie.DemographieKey
+
+relationship AutoDetected_92706f27-4efb-4d97-b297-f54b64dc595d
+	fromColumn: Fact_Repondants.EmploiKey
+	toColumn: Dim_Emploi.EmploiKey
+
+relationship AutoDetected_3038703a-cad6-413c-8825-e932d8a1362b
+	fromColumn: Fact_Repondants.ExperienceKey
+	toColumn: Dim_Experience.ExperienceKey
+
+relationship AutoDetected_67be1f50-a682-4099-9f70-2587fdd47b40
+	fromColumn: Fact_Repondants.SalaireKey
+	toColumn: Dim_Salaire.SalaireKey
+
+relationship AutoDetected_0dad3e31-b169-4d70-bce3-e504ee21023a
+	fromColumn: Fact_Repondants.AnneeKey
+	toColumn: Dim_Annee.Annee
+

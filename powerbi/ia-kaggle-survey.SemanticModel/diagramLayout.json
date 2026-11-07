@@ -98,6 +98,16 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "Fact_Repondants",
+          "nodeLineageTag": "0e009c6c-a51f-49ca-b7cb-4c34d9aee0d5",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "Toutes les tables",

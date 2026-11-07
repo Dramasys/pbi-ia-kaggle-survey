@@ -5,7 +5,7 @@ table Dim_Emploi
 		dataType: int64
 		formatString: 0
 		lineageTag: e39e625d-82ff-4979-b870-a2be1a48e951
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: EmploiKey
 
 		annotation SummarizationSetBy = Automatic
@@ -22,7 +22,7 @@ table Dim_Emploi
 		dataType: int64
 		formatString: 0
 		lineageTag: 5297e818-fb5a-4b40-9af0-1b7c04f03bd6
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: MetierOrdre
 
 		annotation SummarizationSetBy = Automatic
@@ -39,7 +39,7 @@ table Dim_Emploi
 		dataType: int64
 		formatString: 0
 		lineageTag: 6d5bd9e3-7874-4cb5-980b-ec8d058be473
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: SecteurOrdre
 
 		annotation SummarizationSetBy = Automatic
@@ -53,7 +53,7 @@ table Dim_Emploi
 				  Distincts = Table.Distinct(Src),
 				  Renomme = Table.RenameColumns(Distincts, {{"Metier_Valeur", "Metier"}, {"Metier_Ordre", "MetierOrdre"}, {"Secteur_Valeur", "Secteur"}, {"Secteur_Ordre", "SecteurOrdre"}}),
 				  Tri = Table.Sort(Renomme, {{"MetierOrdre", Order.Ascending}, {"SecteurOrdre", Order.Ascending}}),
-				  Cle = Table.AddIndexColumn(Tri, "EmploiKey", 1, 1, Int64.Type),
+				  Cle = Table.AddColumn(Tri, "EmploiKey", each [MetierOrdre] * 100 + [SecteurOrdre], Int64.Type),
 				  Ordre = Table.ReorderColumns(Cle, {"EmploiKey", "Metier", "MetierOrdre", "Secteur", "SecteurOrdre"}),
 				  Types = Table.TransformColumnTypes(Ordre, {{"Metier", type text}, {"MetierOrdre", Int64.Type}, {"Secteur", type text}, {"SecteurOrdre", Int64.Type}})
 				in

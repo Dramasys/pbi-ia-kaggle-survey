@@ -5,7 +5,7 @@ table Dim_Experience
 		dataType: int64
 		formatString: 0
 		lineageTag: 54679d79-3d13-40ea-9030-c919d8a761b6
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: ExperienceKey
 
 		annotation SummarizationSetBy = Automatic
@@ -22,7 +22,7 @@ table Dim_Experience
 		dataType: int64
 		formatString: 0
 		lineageTag: 917ad39e-d47a-46d1-a479-83f7b586e182
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ExperienceCodageOrdre
 
 		annotation SummarizationSetBy = Automatic
@@ -47,7 +47,7 @@ table Dim_Experience
 		dataType: int64
 		formatString: 0
 		lineageTag: b1fad95e-524c-4e82-b8b6-e429ec48ab3d
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ExperienceMLOrdre
 
 		annotation SummarizationSetBy = Automatic
@@ -61,7 +61,7 @@ table Dim_Experience
 				  Distincts = Table.Distinct(Src),
 				  Renomme = Table.RenameColumns(Distincts, {{"ExperienceCodage_Valeur", "ExperienceCodage"}, {"ExperienceCodage_Ordre", "ExperienceCodageOrdre"}, {"ExperienceCodage_Groupe", "ExperienceGroupe"}, {"ExperienceML_Valeur", "ExperienceML"}, {"ExperienceML_Ordre", "ExperienceMLOrdre"}}),
 				  Tri = Table.Sort(Renomme, {{"ExperienceCodageOrdre", Order.Ascending}, {"ExperienceMLOrdre", Order.Ascending}}),
-				  Cle = Table.AddIndexColumn(Tri, "ExperienceKey", 1, 1, Int64.Type),
+				  Cle = Table.AddColumn(Tri, "ExperienceKey", each [ExperienceCodageOrdre] * 100 + [ExperienceMLOrdre], Int64.Type),
 				  Ordre = Table.ReorderColumns(Cle, {"ExperienceKey", "ExperienceCodage", "ExperienceCodageOrdre", "ExperienceGroupe", "ExperienceML", "ExperienceMLOrdre"}),
 				  Types = Table.TransformColumnTypes(Ordre, {{"ExperienceCodage", type text}, {"ExperienceCodageOrdre", Int64.Type}, {"ExperienceGroupe", type text}, {"ExperienceML", type text}, {"ExperienceMLOrdre", Int64.Type}})
 				in

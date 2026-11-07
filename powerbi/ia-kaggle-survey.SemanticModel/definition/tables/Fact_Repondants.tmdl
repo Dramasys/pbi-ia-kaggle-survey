@@ -1,0 +1,89 @@
+table Fact_Repondants
+	lineageTag: 0e009c6c-a51f-49ca-b7cb-4c34d9aee0d5
+
+	column RepondantID
+		dataType: int64
+		formatString: 0
+		lineageTag: 96fd01ed-8efa-4e40-99af-a7c693d3aeaf
+		summarizeBy: count
+		sourceColumn: RepondantID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnneeKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f7880c0-3d18-493c-ab4e-8b2780e9ad75
+		summarizeBy: none
+		sourceColumn: AnneeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaysKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 7f68c305-2bb2-46e4-8606-ecadf3937e8b
+		summarizeBy: none
+		sourceColumn: PaysKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DemographieKey
+		dataType: int64
+		formatString: 0
+		lineageTag: f4423a57-fd47-4a23-8191-278c6c02e8d0
+		summarizeBy: none
+		sourceColumn: DemographieKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmploiKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 1849d7ec-2ea5-4ff7-b4ab-9330c49943c3
+		summarizeBy: none
+		sourceColumn: EmploiKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExperienceKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 60c96724-2143-4879-a858-684768b97b2e
+		summarizeBy: none
+		sourceColumn: ExperienceKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalaireKey
+		dataType: int64
+		formatString: 0
+		lineageTag: cd76d699-43e6-4482-a120-ecb1b4892e85
+		summarizeBy: none
+		sourceColumn: SalaireKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Repondants = m
+		mode: import
+		queryGroup: 04_Faits
+		source =
+				let
+				  P = Profil_Final,
+				  Pays = Table.NestedJoin(P, {"Pays_Valeur"}, Dim_Pays, {"Pays"}, "DP", JoinKind.LeftOuter),
+				  Pays2 = Table.ExpandTableColumn(Pays, "DP", {"PaysKey"}, {"PaysKey"}),
+				  Sal = Table.NestedJoin(Pays2, {"Salaire_Tranche"}, Dim_Salaire, {"Tranche"}, "DS", JoinKind.LeftOuter),
+				  Sal2 = Table.ExpandTableColumn(Sal, "DS", {"SalaireKey"}, {"SalaireKey"}),
+				  Cles1 = Table.AddColumn(Sal2, "DemographieKey", each [Age_Ordre] * 10000 + [Genre_Ordre] * 100 + [Etudes_Ordre], Int64.Type),
+				  Cles2 = Table.AddColumn(Cles1, "EmploiKey", each [Metier_Ordre] * 100 + [Secteur_Ordre], Int64.Type),
+				  Cles3 = Table.AddColumn(Cles2, "ExperienceKey", each [ExperienceCodage_Ordre] * 100 + [ExperienceML_Ordre], Int64.Type),
+				  Annee2 = Table.AddColumn(Cles3, "AnneeKey", each [Annee], Int64.Type),
+				  Garder = Table.SelectColumns(Annee2, {"RepondantID", "AnneeKey", "PaysKey", "DemographieKey", "EmploiKey", "ExperienceKey", "SalaireKey"}),
+				  Types = Table.TransformColumnTypes(Garder, {{"RepondantID", Int64.Type}, {"AnneeKey", Int64.Type}, {"PaysKey", Int64.Type}, {"DemographieKey", Int64.Type}, {"EmploiKey", Int64.Type}, {"ExperienceKey", Int64.Type}, {"SalaireKey", Int64.Type}})
+				in
+				  Types
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

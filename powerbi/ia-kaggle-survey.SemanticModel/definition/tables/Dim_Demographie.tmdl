@@ -5,7 +5,7 @@ table Dim_Demographie
 		dataType: int64
 		formatString: 0
 		lineageTag: f3e3e7dc-2828-46e6-b79e-9f9900d4decb
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: DemographieKey
 
 		annotation SummarizationSetBy = Automatic
@@ -22,7 +22,7 @@ table Dim_Demographie
 		dataType: int64
 		formatString: 0
 		lineageTag: caeb09f2-942e-4a52-bc8c-19c8a1e8ac3e
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: AgeOrdre
 
 		annotation SummarizationSetBy = Automatic
@@ -39,7 +39,7 @@ table Dim_Demographie
 		dataType: int64
 		formatString: 0
 		lineageTag: d87f19f4-abe3-4daa-b44b-ec6bb55a450a
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: GenreOrdre
 
 		annotation SummarizationSetBy = Automatic
@@ -56,7 +56,7 @@ table Dim_Demographie
 		dataType: int64
 		formatString: 0
 		lineageTag: 5604403e-14e3-493e-9460-d78c50c0c332
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: EtudesOrdre
 
 		annotation SummarizationSetBy = Automatic
@@ -70,7 +70,7 @@ table Dim_Demographie
 				  Distincts = Table.Distinct(Src),
 				  Renomme = Table.RenameColumns(Distincts, {{"Age_Valeur", "Age"}, {"Age_Ordre", "AgeOrdre"}, {"Genre_Valeur", "Genre"}, {"Genre_Ordre", "GenreOrdre"}, {"Etudes_Valeur", "Etudes"}, {"Etudes_Ordre", "EtudesOrdre"}}),
 				  Tri = Table.Sort(Renomme, {{"AgeOrdre", Order.Ascending}, {"GenreOrdre", Order.Ascending}, {"EtudesOrdre", Order.Ascending}}),
-				  Cle = Table.AddIndexColumn(Tri, "DemographieKey", 1, 1, Int64.Type),
+				  Cle = Table.AddColumn(Tri, "DemographieKey", each [AgeOrdre] * 10000 + [GenreOrdre] * 100 + [EtudesOrdre], Int64.Type),
 				  Ordre = Table.ReorderColumns(Cle, {"DemographieKey", "Age", "AgeOrdre", "Genre", "GenreOrdre", "Etudes", "EtudesOrdre"}),
 				  Types = Table.TransformColumnTypes(Ordre, {{"Age", type text}, {"AgeOrdre", Int64.Type}, {"Genre", type text}, {"GenreOrdre", Int64.Type}, {"Etudes", type text}, {"EtudesOrdre", Int64.Type}})
 				in

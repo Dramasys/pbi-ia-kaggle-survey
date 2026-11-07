@@ -5,7 +5,7 @@ table Dim_Salaire
 		dataType: int64
 		formatString: 0
 		lineageTag: 7d384c73-0c9a-42b5-ad35-4d52c14bf5d4
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: SalaireKey
 
 		annotation SummarizationSetBy = Automatic
@@ -22,7 +22,7 @@ table Dim_Salaire
 		dataType: int64
 		formatString: 0
 		lineageTag: 718e3614-03f7-4cd1-9502-8d768ce043fa
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Ordre
 
 		annotation SummarizationSetBy = Automatic
@@ -39,7 +39,7 @@ table Dim_Salaire
 		dataType: int64
 		formatString: 0
 		lineageTag: 1ba04304-6ec7-434e-ab03-e61bd0631d9f
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: GroupeOrdre
 
 		annotation SummarizationSetBy = Automatic
@@ -48,7 +48,7 @@ table Dim_Salaire
 		dataType: int64
 		formatString: 0
 		lineageTag: d124990e-369f-4680-9776-8bae9393d2e7
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: BorneBasseUSD
 
 		annotation SummarizationSetBy = Automatic
@@ -57,7 +57,7 @@ table Dim_Salaire
 		dataType: int64
 		formatString: 0
 		lineageTag: 9ecc8331-7382-4a6d-b323-fd81f7583396
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: BorneHauteUSD
 
 		annotation SummarizationSetBy = Automatic
@@ -66,7 +66,7 @@ table Dim_Salaire
 		dataType: int64
 		formatString: 0
 		lineageTag: af4cd99e-9369-4d2a-91ff-86679f99a481
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: MilieuUSD
 
 		annotation SummarizationSetBy = Automatic
