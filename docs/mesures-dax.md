@@ -1,92 +1,56 @@
-# Phase 1.4 : Registre des mesures DAX — Projet IA (Kaggle Survey)
+# Phase 1.6 : Registre des mesures DAX - Projet IA (Kaggle Survey)
 
-Toutes les mesures listées ci-dessous doivent être stockées dans la table unique `_Mesures`. Elles utilisent exclusivement l'architecture `VAR ... RETURN` et la fonction `DIVIDE` pour sécuriser les calculs.
+Toutes les mesures sont dans la table `_Mesures`. Conventions : `DIVIDE` pour toute division, `VAR ... RETURN` quand une expression est longue ou répétée, commentaire `//` placé **après** la première ligne (le nom de la mesure doit être en tête dans la barre de formule). Les colonnes ne sont jamais totalisées : tous les calculs passent par des mesures.
 
----
+## Avancement
+| Mesure | Dossier | Statut |
+|---|---|---|
+| Nb Repondants | Volumes | Implémentée |
+| Nb Utilisateurs | Volumes | Implémentée |
+| Nb Repondants Question | Volumes | Implémentée |
+| % Utilisation | Parts | Implémentée |
+| Nb Pays | Volumes | Prévue |
+| Outil N1 | Parts | Prévue |
+| Nb Avec Salaire, Taux Reponse Salaire | Salaires | Prévue |
+| Salaire Moyen Estime, Salaire Median Estime, Salaire Moyen Fiable | Salaires | Prévue |
+| % Utilisation A-1, Evolution pts, Rang Outil | Tendances | Prévue |
+| % Utilisation Monde, Ecart vs Monde pts, % Experimentes, % Repondants | Parts, Salaires | Prévue |
 
-## Dossier d'affichage : Volumes
+## Dossier Volumes
 
-### [Nombre de répondants]
-* **Objectif métier :** Compter le nombre total de professionnels ayant validé le questionnaire.
-* **Formule DAX :**
+### Nb Repondants
+* **Objectif :** nombre de répondants de la sélection (base de tous les pourcentages).
+* **Format :** nombre entier, séparateur de milliers.
 ```dax
-Nombre de répondants = 
-VAR TotalReponses = COUNTROWS('Fact_Reponses')
-RETURN
-    TotalReponses
+Nb Repondants = COUNTROWS ( Fact_Repondants )
 ```
+* **Contrôle :** 20 036 (2020), 25 973 (2021), 23 997 (2022), 70 006 au total.
 
-### [Nombre de pays]
-* **Objectif métier :** Identifier l'étendue géographique de l'échantillon annuel.
-* **Formule DAX :**
+### Nb Utilisateurs
+* **Objectif :** nombre de répondants distincts ayant coché l'option sélectionnée (un répondant n'est compté qu'une fois, même s'il a coché plusieurs variantes regroupées, comme les trois libellés Jupyter).
 ```dax
-Nombre de pays = 
-VAR TotalPays = DISTINCTCOUNT('Dim_Geographie'[Pays])
-RETURN
-    TotalPays
+Nb Utilisateurs = DISTINCTCOUNT ( Fact_Usage_Outils[RepondantID] )
 ```
+* **Contrôle (thème Langages) :** Python 15 530, 21 860 et 18 653 ; SQL 7 535, 10 756 et 9 620 ; R 4 277, 5 334 et 4 571 (2020, 2021, 2022).
 
----
-
-## Dossier d'affichage : Taux et Parts
-
-### [Part d'utilisation d'un outil]
-* **Objectif métier :** Calculer la pénétration d'une technologie par rapport à l'ensemble des réponses de la sélection courante.
-* **Formule DAX :**
+### Nb Repondants Question
+* **Objectif :** base du pourcentage, c'est-à-dire les répondants ayant répondu à la question du thème (l'outil est retiré du filtre, le thème est conservé).
 ```dax
-Part d'utilisation d'un outil = 
-// Calcule le volume de l'outil sélectionné vs l'ensemble des outils
-VAR ReponsesOutil = [Nombre de répondants]
-VAR ReponsesToutesTechnologies = CALCULATE([Nombre de répondants], ALL('Dim_Outils'))
-VAR Resultat = DIVIDE(ReponsesOutil, ReponsesToutesTechnologies, 0)
-RETURN
-    Resultat
+Nb Repondants Question =
+// REMOVEFILTERS sur Option : on garde le thème, on retire l'outil choisi
+CALCULATE ( [Nb Utilisateurs], REMOVEFILTERS ( Dim_Reponse[Option] ) )
 ```
+* **Piège :** n'a de sens que si un seul thème est sélectionné.
 
-### [Évolution en points de pourcentage]
-* **Objectif métier :** Mesurer la progression ou le recul d'adoption d'un outil d'une année sur l'autre (Ex: +2,5 pts).
-* **Formule DAX :**
+## Dossier Parts
+
+### % Utilisation
+* **Objectif :** part des répondants à la question qui utilisent l'outil.
+* **Format :** pourcentage, 1 décimale.
 ```dax
-Évolution en points de pourcentage = 
-// Calcule l'écart strict entre la part de l'année en cours et celle de l'année précédente
-VAR AnneeCourante = SELECTEDVALUE('Dim_Date'[Annee_Enquete])
-VAR PartAnneeEnCours = [Part d'utilisation d'un outil]
-VAR PartAnneePrecedente = 
-    CALCULATE(
-        [Part d'utilisation d'un outil],
-        'Dim_Date'[Annee_Enquete] = AnneeCourante - 1
-    )
-VAR EcartPoints = PartAnneeEnCours - PartAnneePrecedente
-RETURN
-    IF(ISBLANK(PartAnneePrecedente), BLANK(), EcartPoints)
+% Utilisation = DIVIDE ( [Nb Utilisateurs], [Nb Repondants Question] )
 ```
+* **Contrôle :** Python 86,7 % (2020), 87,6 % (2021), 88,3 % (2022).
 
-### [Taux de réponse à la question salaire]
-* **Objectif métier :** Suivre la représentativité et la fiabilité de nos analyses salariales.
-* **Formule DAX :**
-```dax
-Taux de réponse à la question salaire = 
-// Évalue la part des répondants ayant accepté de divulguer leurs revenus
-VAR ReponsesAvecSalaire = CALCULATE([Nombre de répondants], 'Fact_Reponses'[Flag_Reponse_Salaire] = TRUE)
-VAR DonneesTotales = [Nombre de répondants]
-VAR Ratio = DIVIDE(ReponsesAvecSalaire, DonneesTotales, 0)
-RETURN
-    Ratio
-```
-
----
-
-## Dossier d'affichage : Rémunérations
-
-### [Salaire moyen estimé]
-* **Objectif métier :** Établir le baromètre de rémunération globale convertible selon les axes profils et pays.
-* **Formule DAX :**
-```dax
-Salaire moyen estimé = 
-// Exclut les blancs pour ne pas fausser la moyenne du baromètre RH
-VAR SommeSalaires = SUM('Fact_Reponses'[Salaire_Estime])
-VAR ReponsesValides = CALCULATE([Nombre de répondants], 'Fact_Reponses'[Flag_Reponse_Salaire] = TRUE)
-VAR Moyenne = DIVIDE(SommeSalaires, ReponsesValides, 0)
-RETURN
-    Moyenne
-```
+## Mesures prévues
+Elles seront ajoutées ici, avec leur formule et leur contrôle, au fur et à mesure de leur création.
