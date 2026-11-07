@@ -44,6 +44,7 @@ ref table Dim_Salaire
 ref table Dim_Reponse
 ref table Fact_Repondants
 ref table Fact_Usage_Outils
+ref table _Mesures
 
 ref cultureInfo fr-FR
 

@@ -1,0 +1,42 @@
+table _Mesures
+	lineageTag: 08574323-7db6-4e0c-bef4-bfe73d6b02b5
+
+	measure 'Nb Repondants' = COUNTROWS ( Fact_Repondants )
+		formatString: #,0
+		displayFolder: Volumes
+		lineageTag: 904d2e0e-5bf4-42d7-8dfd-131d82f665ef
+
+	measure 'Nb Utilisateurs' = DISTINCTCOUNT ( Fact_Usage_Outils[RepondantID] )
+		formatString: #,0
+		displayFolder: Volumes
+		lineageTag: 97e2eb27-244c-4311-a784-19ffb8bcd482
+
+	measure 'Nb Repondants Question' =
+			
+			// Base : répondants qui ont répondu à la question (le thème est conservé, l'outil est retiré)
+			CALCULATE ( [Nb Utilisateurs], REMOVEFILTERS ( Dim_Reponse[Option] ) )
+		formatString: #,0
+		displayFolder: Volumes
+		lineageTag: 099116fb-1843-44a9-add2-2ed5968f5912
+
+	measure '% Utilisation' = DIVIDE ( [Nb Utilisateurs], [Nb Repondants Question] )
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Parts
+		lineageTag: 3ef7bec7-8718-4f51-accb-19cf5a448682
+
+	column Cle
+		isHidden
+		formatString: 0
+		lineageTag: 65b1eae0-811a-4a3d-a8a3-60624a1ac56c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Cle]
+
+		annotation SummarizationSetBy = User
+
+	partition _Mesures = calculated
+		mode: import
+		source = ROW ( "Cle", 1 )
+
+	annotation PBI_Id = 6ed48c50fe2541a2b377c555a61768ff
+
