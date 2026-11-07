@@ -109,11 +109,14 @@ table _Mesures
 
 	measure 'Rang Outil' =
 			
-			// Classement des outils de la sélection ; vide pour « None » et « Other »
+			// Vide pour « None », « Other » et pour une option sans utilisateur dans la sélection
 			VAR Candidats =
 			    FILTER ( ALLSELECTED ( Dim_Reponse[Option], Dim_Reponse[EstOutil] ), Dim_Reponse[EstOutil] = TRUE () )
 			RETURN
-			    IF ( SELECTEDVALUE ( Dim_Reponse[EstOutil] ) = TRUE (), RANKX ( Candidats, [Nb Utilisateurs], , DESC, Dense ) )
+			    IF (
+			        SELECTEDVALUE ( Dim_Reponse[EstOutil] ) = TRUE () && NOT ISBLANK ( [Nb Utilisateurs] ),
+			        RANKX ( Candidats, [Nb Utilisateurs], , DESC, Dense )
+			    )
 		formatString: 0
 		displayFolder: Tendances
 		lineageTag: 624316a8-0e5a-483c-a7a9-dbc448102705
