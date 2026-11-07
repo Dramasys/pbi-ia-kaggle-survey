@@ -3,10 +3,13 @@ table Dim_Pays
 
 	column PaysKey
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 35cee6b1-94be-4f96-ad85-cb73519ee122
 		summarizeBy: none
 		sourceColumn: PaysKey
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -21,6 +24,7 @@ table Dim_Pays
 	column PaysEN
 		dataType: string
 		lineageTag: 3f0fc180-20a9-4fc9-98c0-e2a6c0e68a00
+		dataCategory: Country
 		summarizeBy: none
 		sourceColumn: PaysEN
 
@@ -49,6 +53,21 @@ table Dim_Pays
 		sourceColumn: EstPaysReel
 
 		annotation SummarizationSetBy = Automatic
+
+	hierarchy Géographie
+		lineageTag: 2e7f3746-4f98-44e6-8d21-bf075cff6de3
+
+		level Continent
+			lineageTag: 80d620cf-47cd-487c-b71f-f9edabd5f372
+			column: Continent
+
+		level Region
+			lineageTag: 553097eb-fe15-435a-b9d6-9be3e839f28a
+			column: Region
+
+		level Pays
+			lineageTag: e8c2765e-0436-403c-9d75-73f42fcdc4f2
+			column: Pays
 
 	partition Dim_Pays = m
 		mode: import

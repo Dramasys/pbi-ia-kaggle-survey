@@ -3,10 +3,13 @@ table Dim_Demographie
 
 	column DemographieKey
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: f3e3e7dc-2828-46e6-b79e-9f9900d4decb
 		summarizeBy: none
 		sourceColumn: DemographieKey
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -15,51 +18,69 @@ table Dim_Demographie
 		lineageTag: f5d9e759-40f5-4a23-a43c-015ec4215689
 		summarizeBy: none
 		sourceColumn: Age
+		sortByColumn: AgeOrdre
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
 	column AgeOrdre
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: caeb09f2-942e-4a52-bc8c-19c8a1e8ac3e
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: AgeOrdre
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column Genre
 		dataType: string
 		lineageTag: 6d01235e-4a0a-4345-ae24-51dfe86f2523
 		summarizeBy: none
 		sourceColumn: Genre
+		sortByColumn: GenreOrdre
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
 	column GenreOrdre
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: d87f19f4-abe3-4daa-b44b-ec6bb55a450a
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: GenreOrdre
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column Etudes
 		dataType: string
 		lineageTag: 155011d8-8ebf-4305-a23d-286b0ba1c76e
 		summarizeBy: none
 		sourceColumn: Etudes
+		sortByColumn: EtudesOrdre
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
 	column EtudesOrdre
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 5604403e-14e3-493e-9460-d78c50c0c332
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: EtudesOrdre
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	partition Dim_Demographie = m
 		mode: import

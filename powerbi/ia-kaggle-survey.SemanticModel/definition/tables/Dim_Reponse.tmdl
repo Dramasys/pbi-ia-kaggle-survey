@@ -3,10 +3,13 @@ table Dim_Reponse
 
 	column ReponseKey
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 268039b6-bde6-417a-b29b-a14fd5e149ff
 		summarizeBy: none
 		sourceColumn: ReponseKey
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

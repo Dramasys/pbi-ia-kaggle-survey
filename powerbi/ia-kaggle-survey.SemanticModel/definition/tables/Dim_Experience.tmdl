@@ -3,10 +3,13 @@ table Dim_Experience
 
 	column ExperienceKey
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 54679d79-3d13-40ea-9030-c919d8a761b6
 		summarizeBy: none
 		sourceColumn: ExperienceKey
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -15,17 +18,23 @@ table Dim_Experience
 		lineageTag: 54eb1e60-8b5e-4034-bfc3-0e5214c35d43
 		summarizeBy: none
 		sourceColumn: ExperienceCodage
+		sortByColumn: ExperienceCodageOrdre
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
 	column ExperienceCodageOrdre
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 917ad39e-d47a-46d1-a479-83f7b586e182
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ExperienceCodageOrdre
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column ExperienceGroupe
 		dataType: string
@@ -40,17 +49,23 @@ table Dim_Experience
 		lineageTag: 339b5fd6-a7cb-49b8-9d92-436834109de1
 		summarizeBy: none
 		sourceColumn: ExperienceML
+		sortByColumn: ExperienceMLOrdre
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
 	column ExperienceMLOrdre
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: b1fad95e-524c-4e82-b8b6-e429ec48ab3d
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ExperienceMLOrdre
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	partition Dim_Experience = m
 		mode: import

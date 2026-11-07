@@ -1,68 +1,90 @@
 table Fact_Repondants
+	isHidden
 	lineageTag: 0e009c6c-a51f-49ca-b7cb-4c34d9aee0d5
 
 	column RepondantID
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 96fd01ed-8efa-4e40-99af-a7c693d3aeaf
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: RepondantID
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column AnneeKey
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 5f7880c0-3d18-493c-ab4e-8b2780e9ad75
 		summarizeBy: none
 		sourceColumn: AnneeKey
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column PaysKey
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 7f68c305-2bb2-46e4-8606-ecadf3937e8b
 		summarizeBy: none
 		sourceColumn: PaysKey
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column DemographieKey
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: f4423a57-fd47-4a23-8191-278c6c02e8d0
 		summarizeBy: none
 		sourceColumn: DemographieKey
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column EmploiKey
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 1849d7ec-2ea5-4ff7-b4ab-9330c49943c3
 		summarizeBy: none
 		sourceColumn: EmploiKey
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column ExperienceKey
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 60c96724-2143-4879-a858-684768b97b2e
 		summarizeBy: none
 		sourceColumn: ExperienceKey
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column SalaireKey
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: cd76d699-43e6-4482-a120-ecb1b4892e85
 		summarizeBy: none
 		sourceColumn: SalaireKey
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	partition Fact_Repondants = m
 		mode: import
@@ -82,6 +104,8 @@ table Fact_Repondants
 				  Types = Table.TransformColumnTypes(Garder, {{"RepondantID", Int64.Type}, {"AnneeKey", Int64.Type}, {"PaysKey", Int64.Type}, {"DemographieKey", Int64.Type}, {"EmploiKey", Int64.Type}, {"ExperienceKey", Int64.Type}, {"SalaireKey", Int64.Type}})
 				in
 				  Types
+
+	changedProperty = IsHidden
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -3,10 +3,13 @@ table Dim_Emploi
 
 	column EmploiKey
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: e39e625d-82ff-4979-b870-a2be1a48e951
 		summarizeBy: none
 		sourceColumn: EmploiKey
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -15,34 +18,46 @@ table Dim_Emploi
 		lineageTag: 8e901d02-6aa4-4891-a536-ea22d891f09a
 		summarizeBy: none
 		sourceColumn: Metier
+		sortByColumn: MetierOrdre
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
 	column MetierOrdre
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 5297e818-fb5a-4b40-9af0-1b7c04f03bd6
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: MetierOrdre
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column Secteur
 		dataType: string
 		lineageTag: 7f4fe48b-ad3b-4870-98a5-1c6a3e617b78
 		summarizeBy: none
 		sourceColumn: Secteur
+		sortByColumn: SecteurOrdre
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
 	column SecteurOrdre
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 6d5bd9e3-7874-4cb5-980b-ec8d058be473
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: SecteurOrdre
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	partition Dim_Emploi = m
 		mode: import

@@ -3,10 +3,13 @@ table Dim_Salaire
 
 	column SalaireKey
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 7d384c73-0c9a-42b5-ad35-4d52c14bf5d4
 		summarizeBy: none
 		sourceColumn: SalaireKey
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -15,68 +18,92 @@ table Dim_Salaire
 		lineageTag: 54f06529-2af6-49bf-8900-9d37aab68726
 		summarizeBy: none
 		sourceColumn: Tranche
+		sortByColumn: Ordre
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
 	column Ordre
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 718e3614-03f7-4cd1-9502-8d768ce043fa
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Ordre
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column Groupe
 		dataType: string
 		lineageTag: a4a188a1-be69-440f-9338-9532999826f6
 		summarizeBy: none
 		sourceColumn: Groupe
+		sortByColumn: GroupeOrdre
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
 	column GroupeOrdre
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 1ba04304-6ec7-434e-ab03-e61bd0631d9f
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: GroupeOrdre
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column BorneBasseUSD
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: d124990e-369f-4680-9776-8bae9393d2e7
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: BorneBasseUSD
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column BorneHauteUSD
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 9ecc8331-7382-4a6d-b323-fd81f7583396
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: BorneHauteUSD
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column MilieuUSD
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: af4cd99e-9369-4d2a-91ff-86679f99a481
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: MilieuUSD
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
 
 	column Communique
 		dataType: boolean
+		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: 4f559883-c8bf-41f4-84cc-848409f8be48
 		summarizeBy: none
 		sourceColumn: Communique
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
