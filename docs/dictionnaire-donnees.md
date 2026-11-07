@@ -1,59 +1,85 @@
-# Phase 1.2 : Dictionnaire de données — Projet IA (Kaggle Survey)
+# Dictionnaire de données - Projet IA (Kaggle Survey)
 
-Ce document répertorie la structure logique des tables du modèle en étoile. Les clés de substitution sont des entiers et sont masquées dans la vue Rapport.
+Modèle : 2 tables de faits et 7 dimensions, issues du Kaggle Machine Learning & Data Science Survey 2020 à 2022 (usage non commercial). Les colonnes de type « clé » sont masquées dans la vue Rapport. Les mesures sont décrites dans `mesures-dax.md`.
 
----
+## Tables de faits
 
-## 1. Table de Fait : Fact_Reponses
-Contient l'ensemble des réponses individuelles à l'enquête Kaggle (éditions 2020, 2021, 2022).
-
-| Nom de la colonne | Type de données | Description / Rôle | Règle métier |
-|---|---|---|---|
-| ID_Reponse | Entier | Clé primaire de la ligne (Clé de substitution) | Masquée |
-| ID_Date | Entier | Clé étrangère vers Dim_Date (Année de l'enquête) | Masquée |
-| ID_Profil | Entier | Clé étrangère vers Dim_Profil | Masquée |
-| ID_Geographie | Entier | Clé étrangère vers Dim_Geographie | Masquée |
-| ID_Outil | Entier | Clé étrangère vers Dim_Outils | Masquée |
-| Salaire_Estime | Décimal | Salaire annuel converti en USD | KPI : Salaire moyen estimé |
-| Flag_Reponse_Salaire | Booléen | Indique si le répondant a renseigné son salaire | KPI : Taux de réponse salaire |
-
----
-
-## 2. Tables de Dimensions
-
-### Dim_Profil
-Regroupe les caractéristiques socioprofessionnelles et l'expérience des répondants.
-
-| Nom de la colonne | Type de données | Description |
+### Fact_Repondants (70 006 lignes) : une ligne par répondant
+| Colonne | Type | Description |
 |---|---|---|
-| ID_Profil | Entier | Clé primaire (Masquée) |
-| Metier | Texte | Intitulé du poste (ex: Data Scientist, ML Engineer) |
-| Experience_Codage | Texte | Tranche d'années d'expérience en programmation |
-| Niveau_Etudes | Texte | Plus haut diplôme obtenu |
+| RepondantID | Entier | Identifiant construit : année × 1 000 000 + numéro de ligne (clé dégénérée) |
+| AnneeKey | Entier | Année de l'enquête (vers Dim_Annee) |
+| PaysKey | Entier | Clé vers Dim_Pays |
+| DemographieKey | Entier | Clé vers Dim_Demographie |
+| EmploiKey | Entier | Clé vers Dim_Emploi |
+| ExperienceKey | Entier | Clé vers Dim_Experience |
+| SalaireKey | Entier | Clé vers Dim_Salaire |
 
-### Dim_Geographie
-Permet l'analyse par zone et la comparaison avec la moyenne mondiale (Page Fiche Pays).
-
-| Nom de la colonne | Type de données | Description |
+### Fact_Usage_Outils (533 319 lignes) : une ligne par répondant et par option cochée
+Mêmes colonnes que Fact_Repondants, plus :
+| Colonne | Type | Description |
 |---|---|---|
-| ID_Geographie | Entier | Clé primaire (Masquée) |
-| Pays | Texte | Nom du pays du répondant |
-| Continent | Texte | Regroupement géographique majeur |
+| ReponseKey | Entier | Clé vers Dim_Reponse (thème et option cochée) |
 
-### Dim_Outils
-Contient les langages, frameworks et technologies suivis d'une année sur l'autre.
+## Dimensions
 
-| Nom de la colonne | Type de données | Description |
+### Dim_Annee (3 lignes)
+| Colonne | Type | Description |
 |---|---|---|
-| ID_Outil | Entier | Clé primaire (Masquée) |
-| Categorie_Outil | Texte | Type de technologie (Language, Cloud, Framework) |
-| Nom_Outil | Texte | Nom de l'outil (ex: Python, R, AWS, TensorFlow) |
+| Annee | Entier | 2020, 2021 ou 2022 (clé) |
+| Edition | Texte | Libellé d'affichage (« 2020 ») |
 
-### Dim_Date
-Table de dates dédiée, couvrant les années pleines des enquêtes (2020 à 2022), marquée comme table de dates dans Power BI.
-
-| Nom de la colonne | Type de données | Description |
+### Dim_Pays (68 lignes)
+| Colonne | Type | Description |
 |---|---|---|
-| ID_Date | Entier | Clé primaire (Format AAAAMMJJ) (Masquée) |
-| Date | Date | Date complète |
-| Annee_Enquete | Entier | Année de l'édition (2020, 2021, 2022) |
+| PaysKey | Entier | Clé |
+| Pays | Texte | Nom français d'affichage |
+| PaysEN | Texte | Nom anglais, utilisé pour la carte (vide pour « Autre pays » et « Non communiqué ») |
+| Region | Texte | 12 régions + « Non précisé » |
+| Continent | Texte | 5 continents + « Non précisé » |
+| EstPaysReel | Texte | « Oui » ou « Non » (exclut « Autre pays » et « Non communiqué ») |
+
+### Dim_Demographie (350 lignes)
+| Colonne | Type | Description |
+|---|---|---|
+| DemographieKey | Entier | Clé calculée : ordre âge × 10 000 + ordre genre × 100 + ordre études |
+| Age, AgeOrdre | Texte, Entier | Tranche d'âge (11) et son ordre de tri |
+| Genre, GenreOrdre | Texte, Entier | Genre (5) et son ordre de tri |
+| Etudes, EtudesOrdre | Texte, Entier | Niveau d'études (8) et son ordre de tri |
+
+### Dim_Emploi (299 lignes)
+| Colonne | Type | Description |
+|---|---|---|
+| EmploiKey | Entier | Clé calculée : ordre métier × 100 + ordre secteur |
+| Metier, MetierOrdre | Texte, Entier | Métier harmonisé (19) et son ordre de tri |
+| Secteur, SecteurOrdre | Texte, Entier | Secteur d'activité (20, dont « Non posée » en 2020) et son ordre de tri |
+
+### Dim_Experience (72 lignes)
+| Colonne | Type | Description |
+|---|---|---|
+| ExperienceKey | Entier | Clé calculée : ordre expérience de codage × 100 + ordre expérience ML |
+| ExperienceCodage, ExperienceCodageOrdre | Texte, Entier | Années de pratique du code (9) et ordre de tri |
+| ExperienceGroupe | Texte | « 5 ans et moins », « Plus de 5 ans » ou « Non répondu » |
+| ExperienceML, ExperienceMLOrdre | Texte, Entier | Années de pratique du machine learning (10) et ordre de tri |
+
+### Dim_Salaire (26 lignes)
+| Colonne | Type | Description |
+|---|---|---|
+| SalaireKey | Entier | Clé |
+| Tranche, Ordre | Texte, Entier | Tranche harmonisée de l'enquête (25 + « Non communiqué ») et son ordre de tri |
+| Groupe, GroupeOrdre | Texte, Entier | 7 groupes pour les graphiques (« < 10 k$ » à « > 250 k$ ») + « Non communiqué » |
+| BorneBasseUSD, BorneHauteUSD | Entier | Bornes de la tranche en dollars (haute vide pour la tranche ouverte) |
+| MilieuUSD | Entier | Milieu de tranche utilisé pour l'estimation (600 000 pour « 500 000 et plus » ; vide si non communiqué) |
+| Communique | Booléen | Vrai si un salaire a été déclaré |
+
+### Dim_Reponse (78 lignes)
+| Colonne | Type | Description |
+|---|---|---|
+| ReponseKey | Entier | Clé |
+| Theme | Texte | Langages, Environnements (IDE), Frameworks ML, Cloud ou Outils BI |
+| Option | Texte | Outil ou réponse cochée (harmonisée entre les années) |
+| EstOutil | Booléen | Faux pour « None » et « Other » |
+
+## Valeurs particulières
+* « Non répondu » ou « Non renseigné » : absence de réponse. « Non posée » : question absente en 2020 (secteur).
+* Les options non proposées une année n'ont aucune ligne cette année-là : une cellule vide n'est pas un 0 %.
