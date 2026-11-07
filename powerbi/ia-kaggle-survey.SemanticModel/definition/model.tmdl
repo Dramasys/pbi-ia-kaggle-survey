@@ -33,7 +33,7 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["DevMode"]
 
-annotation PBI_QueryOrder = ["pDossierRef","Mapping_Colonnes","Mapping_Themes","pDossierData","Src_2022","Src_2021","Src_2020","fnRenommer","fnProfil","Profil_Tous","fnTheme","fnUsage","Usage_Tous","Ref_Options","Ref_Pays","Ref_Salaire","Ref_Profil","fnHarmoniser","Profil_Harmonise","Profil_Final","Dim_Annee","Dim_Pays","Dim_Demographie","Dim_Emploi","Dim_Experience","Dim_Salaire","Dim_Reponse","Fact_Repondants"]
+annotation PBI_QueryOrder = ["pDossierRef","Mapping_Colonnes","Mapping_Themes","pDossierData","Src_2022","Src_2021","Src_2020","fnRenommer","fnProfil","Profil_Tous","fnTheme","fnUsage","Usage_Tous","Ref_Options","Ref_Pays","Ref_Salaire","Ref_Profil","fnHarmoniser","Profil_Harmonise","Profil_Final","Dim_Annee","Dim_Pays","Dim_Demographie","Dim_Emploi","Dim_Experience","Dim_Salaire","Dim_Reponse","Fact_Repondants","Fact_Usage_Outils"]
 
 ref table Dim_Annee
 ref table Dim_Pays
@@ -43,6 +43,7 @@ ref table Dim_Experience
 ref table Dim_Salaire
 ref table Dim_Reponse
 ref table Fact_Repondants
+ref table Fact_Usage_Outils
 
 ref cultureInfo fr-FR
 

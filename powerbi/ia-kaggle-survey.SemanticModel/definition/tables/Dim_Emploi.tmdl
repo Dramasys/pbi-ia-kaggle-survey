@@ -22,7 +22,7 @@ table Dim_Emploi
 		dataType: int64
 		formatString: 0
 		lineageTag: 5297e818-fb5a-4b40-9af0-1b7c04f03bd6
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: MetierOrdre
 
 		annotation SummarizationSetBy = Automatic
@@ -39,7 +39,7 @@ table Dim_Emploi
 		dataType: int64
 		formatString: 0
 		lineageTag: 6d5bd9e3-7874-4cb5-980b-ec8d058be473
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: SecteurOrdre
 
 		annotation SummarizationSetBy = Automatic

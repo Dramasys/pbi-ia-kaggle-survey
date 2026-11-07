@@ -1,0 +1,97 @@
+table Fact_Usage_Outils
+	lineageTag: a60332a7-b185-4697-b35f-47f254f2b168
+
+	column RepondantID
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b882ee8-91a2-4590-96de-e8aad8b45013
+		summarizeBy: count
+		sourceColumn: RepondantID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnneeKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d1c3dd1-62e1-47f8-b30c-d2cf40027d04
+		summarizeBy: count
+		sourceColumn: AnneeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaysKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 6f450528-57dd-4070-a685-832fa972a6dd
+		summarizeBy: none
+		sourceColumn: PaysKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DemographieKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 354944e8-7814-4050-9426-6d74d585e62c
+		summarizeBy: none
+		sourceColumn: DemographieKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmploiKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e1c63da-a002-4314-ab99-0ecdfae6f82b
+		summarizeBy: none
+		sourceColumn: EmploiKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExperienceKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 9bdde494-a275-4dc5-9568-8b6061a5c188
+		summarizeBy: none
+		sourceColumn: ExperienceKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalaireKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 43588170-da55-40b4-b6b0-d1c568837977
+		summarizeBy: none
+		sourceColumn: SalaireKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReponseKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 762fc93d-cbd7-4098-b040-4a39cca3d90c
+		summarizeBy: none
+		sourceColumn: ReponseKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Usage_Outils = m
+		mode: import
+		queryGroup: 04_Faits
+		source =
+				let
+				  U = Usage_Tous,
+				  FR = Table.Buffer(Fact_Repondants),
+				  DR = Table.Buffer(Dim_Reponse),
+				  J1 = Table.NestedJoin(U, {"RepondantID"}, FR, {"RepondantID"}, "F", JoinKind.LeftOuter),
+				  E1 = Table.ExpandTableColumn(J1, "F", {"PaysKey", "DemographieKey", "EmploiKey", "ExperienceKey", "SalaireKey"}, {"PaysKey", "DemographieKey", "EmploiKey", "ExperienceKey", "SalaireKey"}),
+				  J2 = Table.NestedJoin(E1, {"Theme", "Option"}, DR, {"Theme", "Option"}, "R", JoinKind.LeftOuter),
+				  E2 = Table.ExpandTableColumn(J2, "R", {"ReponseKey"}, {"ReponseKey"}),
+				  A = Table.AddColumn(E2, "AnneeKey", each [Annee], Int64.Type),
+				  Garder = Table.SelectColumns(A, {"RepondantID", "AnneeKey", "PaysKey", "DemographieKey", "EmploiKey", "ExperienceKey", "SalaireKey", "ReponseKey"}),
+				  Types = Table.TransformColumnTypes(Garder, {{"RepondantID", Int64.Type}, {"AnneeKey", Int64.Type}, {"PaysKey", Int64.Type}, {"DemographieKey", Int64.Type}, {"EmploiKey", Int64.Type}, {"ExperienceKey", Int64.Type}, {"SalaireKey", Int64.Type}, {"ReponseKey", Int64.Type}})
+				in
+				  Types
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -22,7 +22,7 @@ table Dim_Experience
 		dataType: int64
 		formatString: 0
 		lineageTag: 917ad39e-d47a-46d1-a479-83f7b586e182
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: ExperienceCodageOrdre
 
 		annotation SummarizationSetBy = Automatic
@@ -47,7 +47,7 @@ table Dim_Experience
 		dataType: int64
 		formatString: 0
 		lineageTag: b1fad95e-524c-4e82-b8b6-e429ec48ab3d
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: ExperienceMLOrdre
 
 		annotation SummarizationSetBy = Automatic

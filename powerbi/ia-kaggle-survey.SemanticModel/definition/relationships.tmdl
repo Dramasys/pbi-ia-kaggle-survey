@@ -22,3 +22,32 @@ relationship AutoDetected_0dad3e31-b169-4d70-bce3-e504ee21023a
 	fromColumn: Fact_Repondants.AnneeKey
 	toColumn: Dim_Annee.Annee
 
+relationship AutoDetected_dc5fe248-2944-4b4a-81cb-97ce9d24ce45
+	fromColumn: Fact_Usage_Outils.PaysKey
+	toColumn: Dim_Pays.PaysKey
+
+relationship AutoDetected_365fe8e0-3926-4ff9-9bd9-72dea9d65c59
+	fromColumn: Fact_Usage_Outils.DemographieKey
+	toColumn: Dim_Demographie.DemographieKey
+
+relationship AutoDetected_79df39f3-8326-49f6-95e6-1184d9692a2d
+	fromColumn: Fact_Usage_Outils.EmploiKey
+	toColumn: Dim_Emploi.EmploiKey
+
+relationship AutoDetected_6f7e1624-38e1-4fe7-a11d-9e42c1c32c12
+	fromColumn: Fact_Usage_Outils.ExperienceKey
+	toColumn: Dim_Experience.ExperienceKey
+
+relationship AutoDetected_d4eb3f2b-ba4a-47e3-9109-684c85cf2f63
+	fromColumn: Fact_Usage_Outils.SalaireKey
+	toColumn: Dim_Salaire.SalaireKey
+
+relationship AutoDetected_b7656acb-d77e-4229-9938-087c9c88432b
+	fromColumn: Fact_Usage_Outils.ReponseKey
+	toColumn: Dim_Reponse.ReponseKey
+
+relationship AutoDetected_33081217-90d5-41af-ad40-3de544a70dbc
+	isActive: false
+	fromColumn: Fact_Usage_Outils.RepondantID
+	toColumn: Fact_Repondants.RepondantID
+
