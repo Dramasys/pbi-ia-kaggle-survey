@@ -85,6 +85,39 @@ table _Mesures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	measure '% Utilisation A-1' =
+			
+			// Part de l'édition précédente : année courante moins un, filtre d'année retiré
+			VAR AnneeCourante = MAX ( Dim_Annee[Annee] )
+			RETURN
+			    CALCULATE ( [% Utilisation], REMOVEFILTERS ( Dim_Annee ), Dim_Annee[Annee] = AnneeCourante - 1 )
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Tendances
+		lineageTag: 38ef6999-9e00-4eb8-bfc4-81224a3d27a4
+
+	measure 'Evolution pts' =
+			
+			// Écart en points de pourcentage ; vide si l'option n'existait pas l'an dernier ou n'existe plus cette année
+			VAR Precedent = [% Utilisation A-1]
+			RETURN
+			    IF ( ISBLANK ( [% Utilisation] ) || ISBLANK ( Precedent ), BLANK (), ( [% Utilisation] - Precedent ) * 100 )
+		formatString: " +0.0"" pts"";-0.0"" pts"";0.0"" pts"""
+		displayFolder: Tendances
+		lineageTag: b92c1606-1b66-4fee-b917-5205c656fb11
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure 'Rang Outil' =
+			
+			// Classement des outils de la sélection ; vide pour « None » et « Other »
+			VAR Candidats =
+			    FILTER ( ALLSELECTED ( Dim_Reponse[Option], Dim_Reponse[EstOutil] ), Dim_Reponse[EstOutil] = TRUE () )
+			RETURN
+			    IF ( SELECTEDVALUE ( Dim_Reponse[EstOutil] ) = TRUE (), RANKX ( Candidats, [Nb Utilisateurs], , DESC, Dense ) )
+		formatString: 0
+		displayFolder: Tendances
+		lineageTag: 624316a8-0e5a-483c-a7a9-dbc448102705
+
 	column Cle
 		isHidden
 		formatString: 0
