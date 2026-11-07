@@ -24,6 +24,67 @@ table _Mesures
 		displayFolder: Parts
 		lineageTag: 3ef7bec7-8718-4f51-accb-19cf5a448682
 
+	measure 'Nb Pays' =
+			
+			// Pays réels uniquement : on exclut « Autre pays » et « Non communiqué »
+			CALCULATE ( DISTINCTCOUNT ( Fact_Repondants[PaysKey] ), Dim_Pays[EstPaysReel] = "Oui" )
+		formatString: 0
+		displayFolder: Volumes
+		lineageTag: 9fc6bccd-a948-4a81-a992-c0d28cc7a7d8
+
+	measure 'Outil N1' =
+			
+			// Outil le plus utilisé de la sélection, hors « None » et « Other »
+			VAR Candidats =
+			    FILTER ( ALLSELECTED ( Dim_Reponse[Option], Dim_Reponse[EstOutil] ), Dim_Reponse[EstOutil] = TRUE () )
+			VAR Premier = TOPN ( 1, Candidats, [Nb Utilisateurs], DESC )
+			RETURN
+			    CONCATENATEX ( Premier, Dim_Reponse[Option], ", " )
+		displayFolder: Parts
+		lineageTag: 8302a884-49cc-4f9c-9e8f-c6a681b1572f
+
+	measure 'Nb Avec Salaire' =
+			
+			CALCULATE ( [Nb Repondants], Dim_Salaire[Communique] = TRUE () )
+		formatString: #,0
+		displayFolder: Salaires
+		lineageTag: be5d12d5-10c6-4dd5-9534-e237fc3568cc
+
+	measure 'Taux Reponse Salaire' = DIVIDE ( [Nb Avec Salaire], [Nb Repondants] )
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Salaires
+		lineageTag: 30ab9b22-62e8-407d-a922-c7ef59647bf5
+
+	measure 'Salaire Moyen Estime' =
+			
+			// Les blancs (« Non communiqué ») sont ignorés par AVERAGEX
+			AVERAGEX ( Fact_Repondants, RELATED ( Dim_Salaire[MilieuUSD] ) )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Salaires
+		lineageTag: 733673db-07bc-41af-bc94-127cb0412df0
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Salaire Median Estime' =
+			
+			// MEDIANX compte les blancs comme 0 : on se limite aux répondants ayant déclaré un salaire
+			CALCULATE ( MEDIANX ( Fact_Repondants, RELATED ( Dim_Salaire[MilieuUSD] ) ), Dim_Salaire[Communique] = TRUE () )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Salaires
+		lineageTag: a06ca0e9-8e8b-4efb-b7cb-cff4e8c6596d
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Salaire Moyen Fiable' =
+			
+			// Pas de moyenne en dessous de 30 réponses
+			IF ( [Nb Avec Salaire] >= 30, [Salaire Moyen Estime] )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: Salaires
+		lineageTag: 595d8170-972b-4d13-bf88-30a82748cde2
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
 	column Cle
 		isHidden
 		formatString: 0
