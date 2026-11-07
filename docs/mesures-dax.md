@@ -1,4 +1,4 @@
-# Phase 1.6 : Registre des mesures DAX — Projet IA (Kaggle Survey)
+Registre des mesures DAX - Projet IA (Kaggle Survey)
 
 Toutes les mesures sont dans la table `_Mesures`. Conventions : `DIVIDE` pour toute division, `VAR ... RETURN` quand une expression est longue ou répétée, commentaire `//` placé **après** la première ligne (le nom de la mesure doit être en tête dans la barre de formule). Les colonnes ne sont jamais totalisées (« Totaliser par = Aucun ») : tous les calculs passent par des mesures.
 
