@@ -46,8 +46,7 @@ relationship AutoDetected_b7656acb-d77e-4229-9938-087c9c88432b
 	fromColumn: Fact_Usage_Outils.ReponseKey
 	toColumn: Dim_Reponse.ReponseKey
 
-relationship AutoDetected_33081217-90d5-41af-ad40-3de544a70dbc
-	isActive: false
-	fromColumn: Fact_Usage_Outils.RepondantID
-	toColumn: Fact_Repondants.RepondantID
+relationship 8eb975c8-48ea-ccc0-ed52-0fada4551b2e
+	fromColumn: Fact_Usage_Outils.AnneeKey
+	toColumn: Dim_Annee.Annee
 

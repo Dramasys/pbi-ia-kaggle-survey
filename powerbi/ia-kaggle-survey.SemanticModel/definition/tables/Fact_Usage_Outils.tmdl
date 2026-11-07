@@ -14,7 +14,7 @@ table Fact_Usage_Outils
 		dataType: int64
 		formatString: 0
 		lineageTag: 5d1c3dd1-62e1-47f8-b30c-d2cf40027d04
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: AnneeKey
 
 		annotation SummarizationSetBy = Automatic
