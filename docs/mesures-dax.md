@@ -1,4 +1,4 @@
-## Registre des mesures DAX - Projet IA (Kaggle Survey)
+# Phase 1.6 : Registre des mesures DAX - Projet IA (Kaggle Survey)
 
 Toutes les mesures sont dans la table `_Mesures`. Conventions : `DIVIDE` pour toute division, `VAR ... RETURN` quand une expression est longue ou répétée, commentaire `//` placé **après** la première ligne (le nom de la mesure doit être en tête dans la barre de formule). Les colonnes ne sont jamais totalisées (« Totaliser par = Aucun ») : tous les calculs passent par des mesures.
 
@@ -10,7 +10,7 @@ Toutes les mesures sont dans la table `_Mesures`. Conventions : `DIVIDE` pour to
 | % Utilisation, Outil N1 | Parts | Implémentée |
 | Nb Avec Salaire, Taux Reponse Salaire | Salaires | Implémentée |
 | Salaire Moyen Estime, Salaire Median Estime, Salaire Moyen Fiable | Salaires | Implémentée |
-| % Utilisation A-1, Evolution pts, Rang Outil | Tendances | Prévue |
+| % Utilisation A-1, Evolution pts, Rang Outil | Tendances | Implémentée |
 | % Utilisation Monde, Ecart vs Monde pts, % Experimentes, % Repondants | Parts, Salaires | Prévue |
 
 ---
@@ -149,10 +149,62 @@ IF ( [Nb Avec Salaire] >= 30, [Salaire Moyen Estime] )
 
 ---
 
+## Dossier Tendances
+
+Ces mesures s'utilisent avec `Dim_Annee[Edition]` en colonnes ou en axe. Dans une matrice, désactiver les totaux : ils mélangent les trois éditions.
+
+### % Utilisation A-1
+* **Objectif :** part de l'édition précédente.
+* **Format :** pourcentage, 1 décimale.
+
+```dax
+% Utilisation A-1 =
+// Part de l'édition précédente : année courante moins un, filtre d'année retiré
+VAR AnneeCourante = MAX ( Dim_Annee[Annee] )
+RETURN
+    CALCULATE ( [% Utilisation], REMOVEFILTERS ( Dim_Annee ), Dim_Annee[Annee] = AnneeCourante - 1 )
+```
+
+* **Piège :** si plusieurs éditions sont sélectionnées, c'est la plus récente qui sert de référence.
+
+### Evolution pts
+* **Objectif :** écart en points de pourcentage avec l'édition précédente.
+* **Format :** personnalisé `+0.0" pts";-0.0" pts";0.0" pts"`.
+
+```dax
+Evolution pts =
+// Écart en points de pourcentage ; vide si l'option n'existait pas l'an dernier ou n'existe plus cette année
+VAR Precedent = [% Utilisation A-1]
+RETURN
+    IF ( ISBLANK ( [% Utilisation] ) || ISBLANK ( Precedent ), BLANK (), ( [% Utilisation] - Precedent ) * 100 )
+```
+
+* **Contrôle (Langages) :** Python vide (2020), +0,9 pts (2021), +0,6 pts (2022) ; Swift -0,1 pts en 2021, vide en 2020 et 2022 ; C#, Go et PHP vides en 2020, 2021 et 2022 (pas d'année précédente en 2022). « None » et « Other » ont une évolution (vide en 2020) mais pas de rang.
+
+### Rang Outil
+* **Objectif :** classement des outils de la sélection (1 = le plus utilisé).
+* **Format :** nombre entier.
+
+```dax
+Rang Outil =
+// Vide pour « None », « Other » et pour une option sans utilisateur dans la sélection
+VAR Candidats =
+    FILTER ( ALLSELECTED ( Dim_Reponse[Option], Dim_Reponse[EstOutil] ), Dim_Reponse[EstOutil] = TRUE () )
+RETURN
+    IF (
+        SELECTEDVALUE ( Dim_Reponse[EstOutil] ) = TRUE () && NOT ISBLANK ( [Nb Utilisateurs] ),
+        RANKX ( Candidats, [Nb Utilisateurs], , DESC, Dense )
+    )
+```
+
+* **Piège constaté :** dans la première version, une option non proposée une année recevait le dernier rang (Swift avait le rang 14 en 2022, alors qu'elle n'y existe pas). Le test `NOT ISBLANK ( [Nb Utilisateurs] )` corrige ce comportement.
+* **Contrôle (Langages) :** 2020 et 2021 : rangs de 1 à 11 ; 2022 : rangs de 1 à 13 (Python, SQL, R, C++, Java, C, JavaScript, MATLAB, Bash, C#, PHP, Go, Julia). R : 3, 4, 3 ; C++ : 4, 3, 4 ; Swift : 11, 11, vide ; C#, Go et PHP vides en 2020 et 2021 ; « None » et « Other » vides.
+
+---
+
 ## Mesures prévues
 
 Elles seront ajoutées ici, avec leur formule et leur contrôle, au fur et à mesure de leur création.
 
-* **Tendances :** `% Utilisation A-1` (part de l'édition précédente), `Evolution pts` (écart en points de pourcentage), `Rang Outil` (classement des outils).
 * **Comparaison au monde :** `% Utilisation Monde`, `Ecart vs Monde pts` (fiche pays).
 * **Profils :** `% Experimentes` (part des plus de 5 ans d'expérience), `% Repondants` (répartition par tranche de salaire).
