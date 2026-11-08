@@ -47,6 +47,7 @@ Ce document récapitule les arbitrages retenus pour la préparation des données
 
 ## 6. Écarts connus entre la maquette Figma et le rendu final
 * Les valeurs de la maquette sont fictives (effectifs, pourcentages, salaires, pays).
+* La distribution réelle des salaires est fortement décalée vers les petites tranches (38 à 46 % des répondants sous 10 000 $), contrairement à la forme en cloche de la maquette.
 * Le segment « Secteur » n'a pas de données en 2020.
 * Les libellés d'études, de métiers et les tranches de salaire de la maquette seront remplacés par ceux de l'enquête.
 * Les salaires sont des estimations en dollars (milieu de tranche), pas en euros.
