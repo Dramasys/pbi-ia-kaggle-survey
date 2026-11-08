@@ -56,6 +56,7 @@ Ce document récapitule les arbitrages retenus pour la préparation des données
 * Le métier « Data Architect » n'existe qu'en 2022, et « Consultant Data » n'est pas un choix de l'enquête.
 * La barre cyan fine qui marque la page active dans la maquette n'est pas reproductible dans Power BI (taille minimale d'un élément : 12 px). La page active est signalée par un bouton en gras, de couleur cyan, sur fond plus clair.
 * Dans les cartes KPI, le libellé est placé au-dessus de la valeur (et non à sa gauche comme dans la maquette).
+* Le graphique « Répondants par édition » affiche trois colonnes de même couleur : l'année sélectionnée n'est pas mise en évidence comme dans la maquette.
 
 ## 7. Tables de référence et regroupements (`data/reference/`)
 Six fichiers, créés à la main et versionnés, pilotent l'harmonisation des trois éditions :
