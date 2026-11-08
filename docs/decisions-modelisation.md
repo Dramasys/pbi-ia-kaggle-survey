@@ -1,10 +1,10 @@
 # Décisions de modélisation et de préparation - Projet IA (Kaggle Survey)
 
-Ce document récapitule les arbitrages retenus pour la préparation des données et le modèle. Les éléments marqués « prévu » seront implémentés dans les étapes suivantes.
+Ce document récapitule les arbitrages retenus pour la préparation des données et le modèle. État : préparation des données et modèle en étoile implémentés, mesures en cours.
 
 ---
 
-## 1. Schéma en étoile à deux tables de faits (prévu)
+## 1. Schéma en étoile à deux tables de faits
 * **Décision :** deux tables de faits liées à des dimensions conformes.
   * `Fact_Repondants` : une ligne par répondant (sert de dénominateur : base des parts et des moyennes).
   * `Fact_Usage_Outils` : une ligne par répondant et par option cochée (sert de numérateur : utilisateurs d'un outil).
@@ -14,10 +14,11 @@ Ce document récapitule les arbitrages retenus pour la préparation des données
 * **Pas de relation directe entre les deux faits :** on les compare via les dimensions partagées.
 * **Règle de floconnage :** aucun flocon. Les hiérarchies sont dénormalisées dans leur dimension.
 
-## 2. Configuration des relations (prévu)
+## 2. Configuration des relations
 * **Cardinalité :** toutes les relations sont en **un-à-plusieurs**, de la dimension (côté 1) vers le fait (côté plusieurs).
 * **Filtrage :** strictement **unidirectionnel**.
 * **Interdits :** filtres bidirectionnels et relations plusieurs-à-plusieurs, sauf justification documentée ici.
+* **Implémentation :** 13 relations (6 depuis `Fact_Repondants`, 7 depuis `Fact_Usage_Outils`), toutes plusieurs-à-un vers la dimension, filtre unidirectionnel, aucune relation entre les deux faits. Les relations créées automatiquement au chargement ont été revues : une relation inactive entre les deux faits a été supprimée et la relation `AnneeKey` du fait d'usage a été ajoutée.
 
 ## 3. Clés et performance
 * **Clés :** entiers (`PaysKey`, `DemographieKey`, `EmploiKey`, `ExperienceKey`, `SalaireKey`, `ReponseKey`, `Annee`). Aucune clé textuelle.
