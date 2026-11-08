@@ -11,7 +11,8 @@ Toutes les mesures sont dans la table `_Mesures`. Conventions : `DIVIDE` pour to
 | Nb Avec Salaire, Taux Reponse Salaire | Salaires | Implémentée |
 | Salaire Moyen Estime, Salaire Median Estime, Salaire Moyen Fiable | Salaires | Implémentée |
 | % Utilisation A-1, Evolution pts, Rang Outil | Tendances | Implémentée |
-| % Utilisation Monde, Ecart vs Monde pts, % Experimentes, % Repondants | Parts, Salaires | Prévue |
+| Part du Pays, % Utilisation Monde, Ecart vs Monde pts, % Experimentes | Parts | Implémentée |
+| % Repondants Salaire | Salaires | Implémentée |
 
 ---
 
@@ -91,6 +92,59 @@ RETURN
 
 * **Contrôle (tableau thème × mesure) :** Cloud : Amazon Web Services (AWS) ; Environnements (IDE) : Jupyter ; Frameworks ML : Scikit-learn ; Langages : Python ; Outils BI : Tableau. Résultats identiques pour chaque édition prise séparément.
 
+### Part du Pays
+* **Objectif :** poids du pays sélectionné dans l'ensemble des répondants (fiche pays).
+* **Format :** pourcentage, 1 décimale.
+
+```dax
+Part du Pays =
+// Poids du pays dans l'ensemble des répondants : le filtre pays est retiré du dénominateur
+DIVIDE ( [Nb Repondants], CALCULATE ( [Nb Repondants], REMOVEFILTERS ( Dim_Pays ) ) )
+```
+
+* **Contrôle (France) :** 1,6 % (2020), 1,5 % (2021), 1,1 % (2022).
+
+### % Utilisation Monde
+* **Objectif :** part d'utilisation mondiale, identique pour tous les pays (référence de comparaison).
+* **Format :** pourcentage, 1 décimale.
+
+```dax
+% Utilisation Monde =
+// Le filtre pays est retiré ; thème, outil et année sont conservés
+CALCULATE ( [% Utilisation], REMOVEFILTERS ( Dim_Pays ) )
+```
+
+* **Contrôle (Langages, Python, sans filtre pays) :** égale à `% Utilisation`, soit 86,7 %, 87,6 % et 88,3 %. Avec un pays sélectionné, la valeur ne change pas.
+
+### Ecart vs Monde pts
+* **Objectif :** écart, en points de pourcentage, entre la part d'utilisation du pays et la part mondiale.
+* **Format :** personnalisé `+0.0" pts";-0.0" pts";0.0" pts"`.
+
+```dax
+Ecart vs Monde pts =
+// Vide si la part du pays ou la part mondiale n'existe pas
+VAR Monde = [% Utilisation Monde]
+RETURN
+    IF ( ISBLANK ( [% Utilisation] ) || ISBLANK ( Monde ), BLANK (), ( [% Utilisation] - Monde ) * 100 )
+```
+
+* **Contrôle :** 0,0 pts sans filtre pays ; avec un pays, l'écart vaut (part du pays - part mondiale) × 100.
+
+### % Experimentes
+* **Objectif :** part des répondants ayant plus de 5 ans de pratique du code, parmi ceux qui ont répondu à la question.
+* **Format :** pourcentage, 1 décimale.
+
+```dax
+% Experimentes =
+// Le dénominateur exclut « Non répondu »
+DIVIDE (
+    CALCULATE ( [Nb Repondants], Dim_Experience[ExperienceGroupe] = "Plus de 5 ans" ),
+    CALCULATE ( [Nb Repondants], Dim_Experience[ExperienceGroupe] <> "Non répondu" )
+)
+```
+
+* **Contrôle :** 29,5 % (2020), 27,4 % (2021), 25,4 % (2022).
+
 ---
 
 ## Dossier Salaires
@@ -146,6 +200,23 @@ IF ( [Nb Avec Salaire] >= 30, [Salaire Moyen Estime] )
 ```
 
 * **Contrôle :** identique à la moyenne estimée au niveau de l'année ; vide pour un pays dont `Nb Avec Salaire` est inférieur à 30.
+
+### % Repondants Salaire
+* **Objectif :** répartition des répondants ayant déclaré un salaire, par tranche ou par groupe (histogramme de la page « Salaires et profils »).
+* **Format :** pourcentage, 1 décimale.
+
+```dax
+% Repondants Salaire =
+// Base : répondants ayant déclaré un salaire (la tranche est retirée du dénominateur)
+DIVIDE (
+    [Nb Repondants],
+    CALCULATE ( [Nb Repondants], REMOVEFILTERS ( Dim_Salaire ), Dim_Salaire[Communique] = TRUE () )
+)
+```
+
+* **Usage :** exclure le groupe « Non communiqué » dans le visuel (sa valeur n'a pas de sens).
+* **Contrôle (par groupe, 2020 / 2021 / 2022) :** « < 10 k$ » 41,4 / 45,5 / 37,6 % ; « 10-30 k$ » 17,0 / 16,8 / 17,3 % ; « 30-60 k$ » 14,9 / 13,8 / 15,4 % ; « 60-100 k$ » 12,6 / 11,4 / 12,6 % ; « 100-150 k$ » 8,3 / 7,2 / 8,3 % ; « 150-250 k$ » 4,3 / 3,7 / 6,1 % ; « > 250 k$ » 1,4 / 1,7 / 2,8 %.
+* **Lecture :** la distribution est très asymétrique, avec 38 à 46 % des répondants sous 10 000 $ par an.
 
 ---
 
@@ -204,7 +275,4 @@ RETURN
 
 ## Mesures prévues
 
-Elles seront ajoutées ici, avec leur formule et leur contrôle, au fur et à mesure de leur création.
-
-* **Comparaison au monde :** `% Utilisation Monde`, `Ecart vs Monde pts` (fiche pays).
-* **Profils :** `% Experimentes` (part des plus de 5 ans d'expérience), `% Repondants` (répartition par tranche de salaire).
+Aucune mesure n'est prévue à ce stade. Des mesures pourront être ajoutées pendant la construction des pages (phase 1.7) : elles seront documentées ici avec leur formule et leur contrôle.
