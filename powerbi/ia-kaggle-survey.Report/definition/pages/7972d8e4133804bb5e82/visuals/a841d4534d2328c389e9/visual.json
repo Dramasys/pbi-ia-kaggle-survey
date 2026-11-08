@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "a841d4534d2328c389e9",
   "position": {
-    "x": 390,
-    "y": 176,
-    "z": 8,
-    "height": 544,
-    "width": 278,
-    "tabOrder": 4008
+    "x": 684,
+    "y": 192,
+    "z": 8000,
+    "height": 240,
+    "width": 572,
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "map",
@@ -100,7 +100,53 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Répartition des répondants par pays'"
+                  "Value": "'Répondants par pays'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Carte du monde : la taille des bulles représente le nombre de répondants par pays, pour l’édition sélectionnée'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "showFilterRestatementButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -113,7 +159,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "a5cd6cf8216ea9218ce1",
+        "name": "cac41459522573ab0e06",
         "field": {
           "Column": {
             "Expression": {
@@ -127,7 +173,7 @@
         "type": "Categorical"
       },
       {
-        "name": "303f6330ea01e729c9b0",
+        "name": "98319746889dec59daea",
         "field": {
           "Measure": {
             "Expression": {

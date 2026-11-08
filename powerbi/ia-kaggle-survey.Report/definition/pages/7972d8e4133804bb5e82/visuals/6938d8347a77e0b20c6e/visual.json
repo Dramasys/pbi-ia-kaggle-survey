@@ -4,10 +4,10 @@
   "position": {
     "x": 684,
     "y": 16,
-    "z": 2,
+    "z": 2000,
     "height": 48,
     "width": 572,
-    "tabOrder": 4002
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "advancedSlicerVisual",
@@ -398,23 +398,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "492a1d7333db578b20b1",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Annee"
-              }
-            },
-            "Property": "Edition"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

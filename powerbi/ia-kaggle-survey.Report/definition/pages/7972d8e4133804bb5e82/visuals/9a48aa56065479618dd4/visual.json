@@ -3,11 +3,11 @@
   "name": "9a48aa56065479618dd4",
   "position": {
     "x": 96,
-    "y": 176,
-    "z": 7,
-    "height": 544,
-    "width": 278,
-    "tabOrder": 4007
+    "y": 192,
+    "z": 7000,
+    "height": 240,
+    "width": 572,
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -62,6 +62,13 @@
                   "Value": "true"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           }
         }
@@ -110,6 +117,52 @@
                   "Value": "'Répondants par édition'"
                 }
               }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Histogramme du nombre de répondants pour chacune des trois éditions de l’enquête'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "showFilterRestatementButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -120,7 +173,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "d067b87d00eb43a9bb62",
+        "name": "0bd2d3396e084dd65602",
         "field": {
           "Column": {
             "Expression": {
@@ -134,7 +187,7 @@
         "type": "Categorical"
       },
       {
-        "name": "362632496307461a2073",
+        "name": "5dc477456e340c9c3380",
         "field": {
           "Measure": {
             "Expression": {

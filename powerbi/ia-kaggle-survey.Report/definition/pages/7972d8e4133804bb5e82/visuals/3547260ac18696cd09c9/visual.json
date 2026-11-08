@@ -4,10 +4,10 @@
   "position": {
     "x": 684,
     "y": 80.0704845814978,
-    "z": 5,
+    "z": 5000,
     "height": 96,
     "width": 278,
-    "tabOrder": 4005
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -204,7 +204,7 @@
             "altText": {
               "expr": {
                 "Literal": {
-                  "Value": "'Langage le plus utilisé'"
+                  "Value": "'Langage de programmation le plus utilisé dans l’édition sélectionnée'"
                 }
               }
             }
@@ -229,20 +229,6 @@
   },
   "filterConfig": {
     "filters": [
-      {
-        "name": "841a95b8121c8ea4b4b1",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "Outil N1"
-          }
-        },
-        "type": "Advanced"
-      },
       {
         "name": "f5ca1c85b30108c7831d",
         "field": {
@@ -296,6 +282,20 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "3ce7103748ab5bbcc50a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "Outil N1"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

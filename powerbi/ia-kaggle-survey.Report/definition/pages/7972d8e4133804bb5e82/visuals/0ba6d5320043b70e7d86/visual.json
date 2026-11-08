@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "0ba6d5320043b70e7d86",
   "position": {
-    "x": 684,
-    "y": 176,
-    "z": 9,
-    "height": 544,
-    "width": 278,
-    "tabOrder": 4009
+    "x": 96,
+    "y": 448,
+    "z": 9000,
+    "height": 240,
+    "width": 572,
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -117,6 +117,13 @@
                   "Value": "1L"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           }
         }
@@ -129,7 +136,33 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Top 8 des langages les plus utilisés'"
+                  "Value": "'Top 8 des langages'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Barres des huit langages de programmation les plus utilisés, en pourcentage des répondants, pour l’édition sélectionnée'"
                 }
               }
             }
@@ -243,20 +276,6 @@
         }
       },
       {
-        "name": "b44340d00d5ee898c73d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "% Utilisation"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "084ff4e4688430520cb2",
         "field": {
           "Column": {
@@ -363,6 +382,20 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "c891d30ce23043c59952",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "% Utilisation"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

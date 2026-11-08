@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "6302a360c1a407a99a69",
   "position": {
-    "x": 978,
-    "y": 176,
-    "z": 10,
-    "height": 544,
-    "width": 278,
-    "tabOrder": 4010
+    "x": 684,
+    "y": 448,
+    "z": 10000,
+    "height": 240,
+    "width": 572,
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -79,6 +79,13 @@
                   "Value": "true"
                 }
               }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
             }
           }
         }
@@ -104,7 +111,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Répartition par niveau d’études'"
+                  "Value": "'Niveau d’études'"
                 }
               }
             }
@@ -118,6 +125,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "showFilterRestatementButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -136,6 +150,32 @@
             }
           }
         }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Barres du nombre de répondants par niveau d’études, pour l’édition sélectionnée'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -143,7 +183,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "7275fb97490d11990373",
+        "name": "487ddd9ea0bd8ba6a7c1",
         "field": {
           "Column": {
             "Expression": {
@@ -157,7 +197,7 @@
         "type": "Categorical"
       },
       {
-        "name": "a2060772ea75d05990d5",
+        "name": "dfe226241ae2e1a91659",
         "field": {
           "Measure": {
             "Expression": {

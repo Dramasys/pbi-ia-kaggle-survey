@@ -4,10 +4,10 @@
   "position": {
     "x": 978,
     "y": 80.0704845814978,
-    "z": 6,
+    "z": 6000,
     "height": 96,
     "width": 278,
-    "tabOrder": 4006
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -240,7 +240,7 @@
             "altText": {
               "expr": {
                 "Literal": {
-                  "Value": "'Salaire moyen de l’édition sélectionnée'"
+                  "Value": "'Salaire annuel moyen estimé en dollars, calculé sur les répondants ayant déclaré un salaire'"
                 }
               }
             }
@@ -266,7 +266,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "7640c8c2a5c145967800",
+        "name": "6fe795516009c06098da",
         "field": {
           "Measure": {
             "Expression": {
