@@ -121,6 +121,56 @@ table _Mesures
 		displayFolder: Tendances
 		lineageTag: 624316a8-0e5a-483c-a7a9-dbc448102705
 
+	measure 'Part du Pays' =
+			
+			// Poids du pays dans l'ensemble des répondants : le filtre pays est retiré du dénominateur
+			DIVIDE ( [Nb Repondants], CALCULATE ( [Nb Repondants], REMOVEFILTERS ( Dim_Pays ) ) )
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Parts
+		lineageTag: c64c25d8-eb73-47fc-a609-9ff779ac3b02
+
+	measure '% Utilisation Monde' =
+			
+			// Le filtre pays est retiré ; thème, outil et année sont conservés
+			CALCULATE ( [% Utilisation], REMOVEFILTERS ( Dim_Pays ) )
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Parts
+		lineageTag: e0cbe969-deb4-4475-bbd4-6152ad0d39dc
+
+	measure 'Ecart vs Monde pts' =
+			
+			// Vide si la part du pays ou la part mondiale n'existe pas
+			VAR Monde = [% Utilisation Monde]
+			RETURN
+			    IF ( ISBLANK ( [% Utilisation] ) || ISBLANK ( Monde ), BLANK (), ( [% Utilisation] - Monde ) * 100 )
+		formatString: +0.0" pts";-0.0" pts";0.0" pts"
+		displayFolder: Parts
+		lineageTag: 32f787b9-5eee-426d-98f3-2a337e2842d6
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure '% Experimentes' =
+			
+			// Le dénominateur exclut « Non répondu »
+			DIVIDE (
+			    CALCULATE ( [Nb Repondants], Dim_Experience[ExperienceGroupe] = "Plus de 5 ans" ),
+			    CALCULATE ( [Nb Repondants], Dim_Experience[ExperienceGroupe] <> "Non répondu" )
+			)
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Parts
+		lineageTag: 4bab432c-eba1-42db-b8a8-10a20b8bad64
+
+	measure '% Repondants Salaire' =
+			
+			// Base : répondants ayant déclaré un salaire (la tranche est retirée du dénominateur)
+			DIVIDE (
+			    [Nb Repondants],
+			    CALCULATE ( [Nb Repondants], REMOVEFILTERS ( Dim_Salaire ), Dim_Salaire[Communique] = TRUE () )
+			)
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: Salaires
+		lineageTag: a49b021d-0d19-4039-8dd7-cb376eec9905
+
 	column Cle
 		isHidden
 		formatString: 0
