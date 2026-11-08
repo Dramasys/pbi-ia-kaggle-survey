@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
-  "name": "5f986d67aaa60eedba77",
+  "name": "d6c77bc061e2500d06ea",
   "position": {
     "x": 0,
-    "y": 64,
-    "z": 3002,
-    "height": 64,
-    "width": 12,
-    "tabOrder": 4001
+    "y": 0,
+    "z": 0,
+    "height": 720,
+    "width": 72,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "shape",
@@ -46,7 +46,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#22D3EE'"
+                      "Value": "'#172036'"
                     }
                   }
                 }
@@ -55,6 +55,19 @@
           },
           "selector": {
             "id": "default"
+          }
+        }
+      ],
+      "text": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
           }
         }
       ],
@@ -73,20 +86,33 @@
       ]
     },
     "visualContainerObjects": {
-      "title": [
+      "background": [
         {
           "properties": {
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
-            },
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Indicateur actif'"
+                  "Value": "'Barre latérale'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -96,5 +122,6 @@
     },
     "drillFilterOtherVisuals": true
   },
+  "parentGroupName": "cb8ae57c05269714b811",
   "howCreated": "InsertVisualButton"
 }
