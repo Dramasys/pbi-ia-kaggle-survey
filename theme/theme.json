@@ -1,0 +1,92 @@
+{
+  "name": "IA Kaggle Survey",
+  "dataColors": [
+    "#7C5CFF",
+    "#22D3EE",
+    "#34D399",
+    "#F87171",
+    "#8FA0BF",
+    "#F4C95D",
+    "#4F6BED",
+    "#B8A4FF"
+  ],
+  "background": "#172036",
+  "secondaryBackground": "#0E1525",
+  "foreground": "#E6EAF2",
+  "firstLevelElements": "#E6EAF2",
+  "secondLevelElements": "#8FA0BF",
+  "tableAccent": "#7C5CFF",
+  "good": "#34D399",
+  "bad": "#F87171",
+  "neutral": "#8FA0BF",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 14,
+      "color": "#E6EAF2"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 11,
+      "color": "#8FA0BF"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 32,
+      "color": "#22D3EE"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#E6EAF2"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#172036"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "title": [
+          {
+            "show": true,
+            "fontColor": {
+              "solid": {
+                "color": "#E6EAF2"
+              }
+            },
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 14
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#0E1525"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "437596e623c0b21c1009",
+  "displayName": "Info-bulle",
+  "displayOption": "ActualSize",
+  "height": 200,
+  "width": 300,
+  "visibility": "HiddenInViewMode",
+  "type": "Tooltip"
+}
