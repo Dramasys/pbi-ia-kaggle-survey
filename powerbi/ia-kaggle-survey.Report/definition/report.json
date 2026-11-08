@@ -11,7 +11,7 @@
       "type": "SharedResources"
     },
     "customTheme": {
-      "name": "IA_Kaggle_Survey5532197965980844.json",
+      "name": "IA_Kaggle_Survey224952476657153.json",
       "reportVersionAtImport": {
         "visual": "2.14.0",
         "report": "3.4.0",
@@ -52,8 +52,8 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "IA_Kaggle_Survey5532197965980844.json",
-          "path": "IA_Kaggle_Survey5532197965980844.json",
+          "name": "IA_Kaggle_Survey224952476657153.json",
+          "path": "IA_Kaggle_Survey224952476657153.json",
           "type": "CustomTheme"
         }
       ]
@@ -65,6 +65,9 @@
     "defaultDrillFilterOtherVisuals": true,
     "allowChangeFilterTypes": true,
     "useEnhancedTooltips": true,
-    "useDefaultAggregateDisplayName": true
+    "useDefaultAggregateDisplayName": true,
+    "queryLimitOption": "None",
+    "customMemoryLimit": "1048576",
+    "customTimeoutLimit": "225"
   }
 }

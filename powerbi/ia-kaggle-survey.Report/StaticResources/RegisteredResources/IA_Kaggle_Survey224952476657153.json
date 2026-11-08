@@ -529,7 +529,13 @@
         ],
         "border": [
           {
-            "show": false
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#172036"
+              }
+            },
+            "radius": 8
           }
         ],
         "title": [

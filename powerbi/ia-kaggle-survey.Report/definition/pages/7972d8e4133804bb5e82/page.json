@@ -4,5 +4,12 @@
   "displayName": "Vue d'ensemble",
   "displayOption": "FitToPage",
   "height": 720,
-  "width": 1280
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "6938d8347a77e0b20c6e",
+      "target": "9a48aa56065479618dd4",
+      "type": "NoFilter"
+    }
+  ]
 }
