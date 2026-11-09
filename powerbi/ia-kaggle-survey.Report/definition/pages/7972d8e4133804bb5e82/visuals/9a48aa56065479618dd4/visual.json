@@ -169,37 +169,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "794238fa2b77d5d723bd",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Annee"
-              }
-            },
-            "Property": "Edition"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "69e972f1e728320ea7ba",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "Nb Repondants"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

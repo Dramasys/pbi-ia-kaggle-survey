@@ -4,5 +4,17 @@
   "displayName": "Outils et tendances",
   "displayOption": "FitToPage",
   "height": 720,
-  "width": 1280
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "886d0853098187781e49",
+      "target": "9be70d66e4190bc2b770",
+      "type": "NoFilter"
+    },
+    {
+      "source": "886d0853098187781e49",
+      "target": "cbf03e56e50839bd6e67",
+      "type": "NoFilter"
+    }
+  ]
 }

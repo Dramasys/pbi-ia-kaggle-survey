@@ -4,10 +4,10 @@
   "position": {
     "x": 1068,
     "y": 16,
-    "z": 4,
+    "z": 4000,
     "height": 48,
     "width": 188,
-    "tabOrder": 4004
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "slicer",
@@ -78,6 +78,13 @@
       "general": [
         {
           "properties": {
+            "selfFilterEnabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
             "filter": {
               "filter": {
                 "Version": 2,
@@ -108,7 +115,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'Afrique du Sud'"
+                                "Value": "'France'"
                               }
                             }
                           ]
@@ -117,13 +124,6 @@
                     }
                   }
                 ]
-              }
-            },
-            "selfFilterEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
               }
             }
           }
@@ -222,7 +222,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Segment Année'"
+                  "Value": "'Segment Pays'"
                 }
               }
             },
@@ -268,7 +268,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "616da2dfc1c53024569e",
+        "name": "1068a86f5018880d3818",
         "field": {
           "Column": {
             "Expression": {
