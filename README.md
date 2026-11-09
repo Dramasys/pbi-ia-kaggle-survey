@@ -1,4 +1,4 @@
-# Baromètre Communauté Data et IA - Projet Power BI (niveau PL-300)
+# Baromètre Communauté Data et IA - Projet Power BI
 
 Projet personnel à but pédagogique : un rapport Power BI construit à partir du Kaggle Machine Learning & Data Science Survey (éditions 2020, 2021 et 2022, soit 70 006 répondants). Il suit un parcours complet : cadrage, maquette Figma, préparation des données, modèle en étoile, mesures DAX, rapport, sécurité (RLS) et documentation.
 
