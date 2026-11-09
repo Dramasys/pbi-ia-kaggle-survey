@@ -106,7 +106,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'2022'"
+                                "Value": "'2021'"
                               }
                             }
                           ]
@@ -398,5 +398,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8ad0051eacc89911e998",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Annee"
+              }
+            },
+            "Property": "Edition"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }
