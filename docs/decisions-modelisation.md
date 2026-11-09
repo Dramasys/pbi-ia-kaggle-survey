@@ -58,6 +58,7 @@ Ce document récapitule les arbitrages retenus pour la préparation des données
 * Dans les cartes KPI, le libellé est placé au-dessus de la valeur (et non à sa gauche comme dans la maquette).
 * Le graphique « Répondants par édition » affiche trois colonnes de même couleur : l'année sélectionnée n'est pas mise en évidence comme dans la maquette.
 * Dans la carte des pays, les bulles n'ont pas de transparence (réglage indisponible), et certains titres de graphiques sont plus courts que dans la maquette.
+* Dans la page « Vue d'ensemble », les effectifs de répondants (graphique par édition, carte, niveaux d'études) sont en violet, alors que la maquette les montre en cyan. Règle retenue : violet pour les effectifs, cyan pour les parts et les valeurs calculées.
 
 ## 7. Tables de référence et regroupements (`data/reference/`)
 Six fichiers, créés à la main et versionnés, pilotent l'harmonisation des trois éditions :
