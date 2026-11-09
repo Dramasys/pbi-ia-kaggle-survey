@@ -51,7 +51,7 @@ IF (
 )
 ```
 
-* **Piège :** n'a de sens que si un seul thème est sélectionné.
+* **Protection :** la mesure est vide si aucun thème, ou plusieurs thèmes, sont sélectionnés (un segment en sélection unique permet de désélectionner la valeur). `% Utilisation`, `Evolution pts` et les mesures qui en dépendent sont alors vides au lieu d'afficher des valeurs sans signification.
 
 ### Nb Pays
 * **Objectif :** nombre de pays réels de la sélection (hors « Autre pays » et « Non communiqué »).
