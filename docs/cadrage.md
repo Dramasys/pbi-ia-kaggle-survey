@@ -1,4 +1,4 @@
-# Phase 1.1 : Cadrage - Projet IA (Kaggle Survey)
+# Cadrage - Projet IA (Kaggle Survey)
 
 Version mise à jour après validation de la maquette Figma et construction du modèle.
 
