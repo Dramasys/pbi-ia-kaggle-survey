@@ -262,23 +262,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "435ddbd1db900ada3895",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "Nb Repondants"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

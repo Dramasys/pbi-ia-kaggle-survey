@@ -155,37 +155,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "cac41459522573ab0e06",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Pays"
-              }
-            },
-            "Property": "PaysEN"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "98319746889dec59daea",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "Nb Repondants"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -382,20 +382,6 @@
           ]
         },
         "howCreated": "User"
-      },
-      {
-        "name": "c891d30ce23043c59952",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "% Utilisation"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

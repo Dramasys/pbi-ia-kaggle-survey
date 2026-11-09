@@ -13,8 +13,11 @@ table _Mesures
 
 	measure 'Nb Repondants Question' =
 			
-			// Base : répondants qui ont répondu à la question (le thème est conservé, l'outil est retiré)
-			CALCULATE ( [Nb Utilisateurs], REMOVEFILTERS ( Dim_Reponse[Option] ) )
+			// Base valable seulement si un seul thème est sélectionné ; l'outil est retiré du filtre
+			IF (
+			    HASONEVALUE ( Dim_Reponse[Theme] ),
+			    CALCULATE ( [Nb Utilisateurs], REMOVEFILTERS ( Dim_Reponse[Option] ) )
+			)
 		formatString: #,0
 		displayFolder: Volumes
 		lineageTag: 099116fb-1843-44a9-add2-2ed5968f5912

@@ -106,7 +106,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'2021'"
+                                "Value": "'2022'"
                               }
                             }
                           ]
@@ -402,7 +402,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "8ad0051eacc89911e998",
+        "name": "7757be29a09932547ecb",
         "field": {
           "Column": {
             "Expression": {
