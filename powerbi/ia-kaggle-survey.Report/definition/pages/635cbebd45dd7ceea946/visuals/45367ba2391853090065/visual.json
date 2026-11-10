@@ -223,23 +223,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "1068a86f5018880d3818",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Pays"
-              }
-            },
-            "Property": "Pays"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

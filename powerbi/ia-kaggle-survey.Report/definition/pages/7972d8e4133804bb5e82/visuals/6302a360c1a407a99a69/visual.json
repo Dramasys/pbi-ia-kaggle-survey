@@ -134,6 +134,20 @@
                   "Value": "10D"
                 }
               }
+            },
+            "initialScrollPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'start'"
+                }
+              }
+            },
+            "innerPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "20L"
+                }
+              }
             }
           }
         }
@@ -144,7 +158,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -168,6 +182,13 @@
                   "Value": "true"
                 }
               }
+            },
+            "roundRange": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -178,7 +199,7 @@
             "responsive": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -194,6 +215,20 @@
               "expr": {
                 "Literal": {
                   "Value": "'Niveau d’études'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -278,6 +313,19 @@
             }
           }
         }
+      ],
+      "spacing": [
+        {
+          "properties": {
+            "spaceAbovePlotArea": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -285,7 +333,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "25d911160311c07383e2",
+        "name": "80d1a36550931d000733",
         "field": {
           "Column": {
             "Expression": {
@@ -299,7 +347,7 @@
         "type": "Categorical"
       },
       {
-        "name": "78f87f347e7be6a6d02e",
+        "name": "f13ca3b16d7cba270325",
         "field": {
           "Measure": {
             "Expression": {

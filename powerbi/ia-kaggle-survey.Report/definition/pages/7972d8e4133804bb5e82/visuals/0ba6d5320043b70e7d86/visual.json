@@ -91,6 +91,13 @@
       "valueAxis": [
         {
           "properties": {
+            "roundRange": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
             "show": {
               "expr": {
                 "Literal": {
@@ -104,13 +111,6 @@
       "labels": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
             "labelPrecision": {
               "expr": {
                 "Literal": {
@@ -124,13 +124,7 @@
                   "Value": "1D"
                 }
               }
-            }
-          }
-        }
-      ],
-      "categoryAxis": [
-        {
-          "properties": {
+            },
             "fontSize": {
               "expr": {
                 "Literal": {
@@ -138,31 +132,23 @@
                 }
               }
             },
-            "maxMarginFactor": {
-              "expr": {
-                "Literal": {
-                  "Value": "35L"
-                }
-              }
-            },
-            "preferredCategoryWidth": {
-              "expr": {
-                "Literal": {
-                  "Value": "20D"
-                }
-              }
-            },
-            "autoExpand": {
+            "show": {
               "expr": {
                 "Literal": {
                   "Value": "true"
                 }
               }
-            },
-            "innerPadding": {
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "preferredCategoryWidth": {
               "expr": {
                 "Literal": {
-                  "Value": "20L"
+                  "Value": "20D"
                 }
               }
             },
@@ -173,7 +159,41 @@
                 }
               }
             },
-            "showAxisTitle": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "autoExpand": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "maxMarginFactor": {
+              "expr": {
+                "Literal": {
+                  "Value": "35L"
+                }
+              }
+            },
+            "innerPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "20L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "responsive": {
               "expr": {
                 "Literal": {
                   "Value": "false"
@@ -192,6 +212,20 @@
               "expr": {
                 "Literal": {
                   "Value": "'Top 8 des langages'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -242,6 +276,24 @@
               }
             }
           }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "''"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "spacing": [
+        {
+          "properties": {}
         }
       ]
     },
@@ -459,7 +511,7 @@
         "howCreated": "User"
       },
       {
-        "name": "a1f0bf12ddbaed5db2d5",
+        "name": "02f19c01da08c0c03492",
         "field": {
           "Measure": {
             "Expression": {

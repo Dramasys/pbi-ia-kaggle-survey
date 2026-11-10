@@ -145,6 +145,13 @@
                   }
                 }
               }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
             }
           }
         }
@@ -155,7 +162,7 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
                 }
               }
             },
@@ -176,6 +183,13 @@
                   "Value": "false"
                 }
               }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
             }
           }
         }
@@ -193,7 +207,7 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
                 }
               }
             },
@@ -212,6 +226,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
                 }
               }
             }
@@ -311,6 +332,19 @@
           },
           "selector": {
             "metadata": "_Mesures.% Utilisation"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            }
           }
         }
       ]
@@ -537,7 +571,7 @@
         "howCreated": "User"
       },
       {
-        "name": "d783abf45942022cc08c",
+        "name": "13baab4666b2c020b570",
         "field": {
           "Column": {
             "Expression": {
@@ -551,7 +585,21 @@
         "type": "Categorical"
       },
       {
-        "name": "17dc088f5ad45638b06e",
+        "name": "a7ec3b0f127032380c05",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Reponse"
+              }
+            },
+            "Property": "Option"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a07b54330b3d2b6a50c5",
         "field": {
           "Measure": {
             "Expression": {
@@ -565,7 +613,7 @@
         "type": "Advanced"
       },
       {
-        "name": "48c93a270909ac9c8394",
+        "name": "7337d237a99806207671",
         "field": {
           "Measure": {
             "Expression": {
@@ -577,20 +625,6 @@
           }
         },
         "type": "Advanced"
-      },
-      {
-        "name": "8678a634bebbbe48ece7",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Reponse"
-              }
-            },
-            "Property": "Option"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }
