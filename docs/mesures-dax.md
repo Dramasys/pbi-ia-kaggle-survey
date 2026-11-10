@@ -1,4 +1,4 @@
-# Registre des mesures DAX - Projet IA (Kaggle Survey)
+# Phase 1.6 : Registre des mesures DAX - Projet IA (Kaggle Survey)
 
 Toutes les mesures sont dans la table `_Mesures`. Conventions : `DIVIDE` pour toute division, `VAR ... RETURN` quand une expression est longue ou répétée, commentaire `//` placé **après** la première ligne (le nom de la mesure doit être en tête dans la barre de formule). Les colonnes ne sont jamais totalisées (« Totaliser par = Aucun ») : tous les calculs passent par des mesures.
 
@@ -44,13 +44,14 @@ Nb Utilisateurs = DISTINCTCOUNT ( Fact_Usage_Outils[RepondantID] )
 
 ```dax
 Nb Repondants Question =
-// Base valable seulement si un seul thème est sélectionné ; l'outil est retiré du filtre
+// Base valable seulement si un seul thème est sélectionné ; l'outil et l'indicateur EstOutil sont retirés du filtre
 IF (
     HASONEVALUE ( Dim_Reponse[Theme] ),
-    CALCULATE ( [Nb Utilisateurs], REMOVEFILTERS ( Dim_Reponse[Option] ) )
+    CALCULATE ( [Nb Utilisateurs], REMOVEFILTERS ( Dim_Reponse[Option], Dim_Reponse[EstOutil] ) )
 )
 ```
 
+* **Piège constaté :** les visuels masquent « None » et « Other » par un filtre sur `EstOutil`. Si `EstOutil` n'est pas retiré du dénominateur, la base exclut les répondants qui n'ont coché que « None » ou « Other » et gonfle les pourcentages (Python en 2022 : 89,9 % au lieu de 88,3 %). Retirer `EstOutil` garde la même base dans tous les visuels.
 * **Protection :** la mesure est vide si aucun thème, ou plusieurs thèmes, sont sélectionnés (un segment en sélection unique permet de désélectionner la valeur). `% Utilisation`, `Evolution pts` et les mesures qui en dépendent sont alors vides au lieu d'afficher des valeurs sans signification.
 
 ### Nb Pays
