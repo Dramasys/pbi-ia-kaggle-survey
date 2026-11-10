@@ -589,34 +589,6 @@
           ]
         },
         "howCreated": "User"
-      },
-      {
-        "name": "903cb679cebc6c855635",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Annee"
-              }
-            },
-            "Property": "Edition"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "939631e34a8329442088",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "% Utilisation"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

@@ -4,10 +4,10 @@
   "position": {
     "x": 880,
     "y": 144,
-    "z": 3003,
+    "z": 6000,
     "height": 544,
     "width": 372,
-    "tabOrder": 4003
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "scatterChart",
@@ -432,48 +432,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "417889e532ddc4e5ba53",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "Salaire Moyen Fiable"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "5bbdd7660015aca0c7ad",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "% Experimentes"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "c6c8918f7a82eb19db17",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "Nb Repondants"
-          }
-        },
-        "type": "Advanced"
       },
       {
         "name": "bfc0fe9594406185cc2a",

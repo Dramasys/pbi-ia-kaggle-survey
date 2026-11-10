@@ -106,7 +106,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''Dim_Experience''[ExperienceCodage]'"
+                                "Value": "'''Dim_Emploi''[Secteur]'"
                               }
                             }
                           ]
@@ -134,7 +134,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''Dim_Experience''[ExperienceCodage]'"
+                                      "Value": "'''Dim_Emploi''[Secteur]'"
                                     }
                                   }
                                 ]
@@ -158,7 +158,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Expérience"
+                            "0": "Secteur"
                           }
                         ]
                       }
@@ -452,7 +452,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "a72f1de0ad2308861134",
+        "name": "09ceb705c62a30260079",
         "field": {
           "Column": {
             "Expression": {

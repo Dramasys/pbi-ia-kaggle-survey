@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Salaires annuels estimés en dollars (milieu de tranche), éditions 2020 à 2022 confondues. Seuls les répondants ayant indiqué un salaire sont comptés. Une moyenne n'apparaît qu'à partir de 30 réponses."
+                    "value": "Salaires annuels estimés en dollars (milieu de tranche), éditions 2020 à 2022 confondues. Seuls les répondants ayant indiqué un salaire sont comptés. Une moyenne n'apparaît qu'à partir de 30 réponses. Dans l'axe Secteur, \"Non posée\" correspond à l'édition 2020, où cette question n'existait pas."
                   }
                 ]
               }

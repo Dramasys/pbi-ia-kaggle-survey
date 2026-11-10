@@ -4,10 +4,10 @@
   "position": {
     "x": 488,
     "y": 144,
-    "z": 3002,
+    "z": 5000,
     "height": 544,
     "width": 376,
-    "tabOrder": 4002
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Experience"
+                      "Entity": "Dim_Emploi"
                     }
                   },
-                  "Property": "ExperienceCodage"
+                  "Property": "Secteur"
                 }
               },
-              "queryRef": "Dim_Experience.ExperienceCodage",
-              "nativeQueryRef": "Expérience",
+              "queryRef": "Dim_Emploi.Secteur",
+              "nativeQueryRef": "Secteur",
               "active": true,
-              "displayName": "Expérience"
+              "displayName": "Secteur"
             }
           ],
           "fieldParameters": [
@@ -261,23 +261,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "7570a26570b5d0992ca6",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "Salaire Moyen Fiable"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }
