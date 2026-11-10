@@ -67,7 +67,7 @@ Mêmes colonnes que Fact_Repondants, plus :
 |---|---|---|
 | SalaireKey | Entier | Clé |
 | Tranche, Ordre | Texte, Entier | Tranche harmonisée de l'enquête (25 + « Non communiqué ») et son ordre de tri |
-| Groupe, GroupeOrdre | Texte, Entier | 7 groupes pour les graphiques (« < 10 k$ » à « > 250 k$ ») + « Non communiqué » |
+| Groupe, GroupeOrdre | Texte, Entier | 7 groupes pour les graphiques (« <10k » à « >250k ») + « Non communiqué » |
 | BorneBasseUSD, BorneHauteUSD | Entier | Bornes de la tranche en dollars (haute vide pour la tranche ouverte) |
 | MilieuUSD | Entier | Milieu de tranche utilisé pour l'estimation (600 000 pour « 500 000 et plus » ; vide si non communiqué) |
 | Communique | Booléen | Vrai si un salaire a été déclaré |
