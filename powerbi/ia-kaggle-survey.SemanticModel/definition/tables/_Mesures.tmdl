@@ -13,10 +13,10 @@ table _Mesures
 
 	measure 'Nb Repondants Question' =
 			
-			// Base valable seulement si un seul thème est sélectionné ; l'outil est retiré du filtre
+			// Base valable seulement si un seul thème est sélectionné ; l'outil et l'indicateur EstOutil sont retirés du filtre
 			IF (
 			    HASONEVALUE ( Dim_Reponse[Theme] ),
-			    CALCULATE ( [Nb Utilisateurs], REMOVEFILTERS ( Dim_Reponse[Option] ) )
+			    CALCULATE ( [Nb Utilisateurs], REMOVEFILTERS ( Dim_Reponse[Option], Dim_Reponse[EstOutil] ) )
 			)
 		formatString: #,0
 		displayFolder: Volumes
