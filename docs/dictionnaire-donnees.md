@@ -79,6 +79,15 @@ Mêmes colonnes que Fact_Repondants, plus :
 | Theme | Texte | Langages, Environnements (IDE), Frameworks ML, Cloud ou Outils BI |
 | Option | Texte | Outil ou réponse cochée (harmonisée entre les années) |
 | EstOutil | Booléen | Faux pour « None » et « Other » |
+## Paramètre de champs
+
+### AxeAnalyse (3 lignes)
+Table créée par l'assistant de paramètre de champs. Elle permet de choisir la dimension d'analyse des salaires dans la page « Salaires et profils ».
+| Libellé | Champ |
+|---|---|
+| Métier | Dim_Emploi[Metier] |
+| Secteur | Dim_Emploi[Secteur] |
+| Expérience | Dim_Experience[ExperienceCodage] |
 
 ## Valeurs particulières
 * « Non répondu » ou « Non renseigné » : absence de réponse. « Non posée » : question absente en 2020 (secteur).
