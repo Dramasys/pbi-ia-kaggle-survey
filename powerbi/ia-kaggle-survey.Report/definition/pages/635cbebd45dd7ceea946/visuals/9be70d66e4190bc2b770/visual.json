@@ -4,10 +4,10 @@
   "position": {
     "x": 684,
     "y": 80,
-    "z": 6000,
+    "z": 3000,
     "height": 312,
     "width": 572,
-    "tabOrder": 6000
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "lineChart",
@@ -591,7 +591,7 @@
         "howCreated": "User"
       },
       {
-        "name": "1a00fc9de45a23dd2a9a",
+        "name": "903cb679cebc6c855635",
         "field": {
           "Column": {
             "Expression": {
@@ -605,7 +605,7 @@
         "type": "Categorical"
       },
       {
-        "name": "ddb015c7e447d61922a9",
+        "name": "939631e34a8329442088",
         "field": {
           "Measure": {
             "Expression": {

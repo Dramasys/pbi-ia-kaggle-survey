@@ -45,6 +45,7 @@ ref table Dim_Reponse
 ref table Fact_Repondants
 ref table Fact_Usage_Outils
 ref table _Mesures
+ref table AxeAnalyse
 
 ref cultureInfo fr-FR
 

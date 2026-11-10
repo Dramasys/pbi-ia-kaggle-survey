@@ -4,10 +4,10 @@
   "position": {
     "x": 96,
     "y": 408,
-    "z": 7000,
+    "z": 4000,
     "height": 280,
     "width": 1160,
-    "tabOrder": 7000
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -571,7 +571,7 @@
         "howCreated": "User"
       },
       {
-        "name": "13baab4666b2c020b570",
+        "name": "d3ede7e111324c751b55",
         "field": {
           "Column": {
             "Expression": {
@@ -585,7 +585,7 @@
         "type": "Categorical"
       },
       {
-        "name": "a7ec3b0f127032380c05",
+        "name": "6005b5e150e0c4ec09de",
         "field": {
           "Column": {
             "Expression": {
@@ -599,7 +599,7 @@
         "type": "Categorical"
       },
       {
-        "name": "a07b54330b3d2b6a50c5",
+        "name": "76200cab51d7415503b5",
         "field": {
           "Measure": {
             "Expression": {
@@ -613,7 +613,7 @@
         "type": "Advanced"
       },
       {
-        "name": "7337d237a99806207671",
+        "name": "ed9211d61103806a3202",
         "field": {
           "Measure": {
             "Expression": {

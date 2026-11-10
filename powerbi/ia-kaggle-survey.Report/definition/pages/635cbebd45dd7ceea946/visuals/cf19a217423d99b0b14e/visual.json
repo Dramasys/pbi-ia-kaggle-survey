@@ -4,10 +4,10 @@
   "position": {
     "x": 96,
     "y": 80,
-    "z": 5000,
+    "z": 2000,
     "height": 312,
     "width": 572,
-    "tabOrder": 5000
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -509,7 +509,7 @@
         "howCreated": "User"
       },
       {
-        "name": "d51769d02a8dd0d59937",
+        "name": "d38da8dd22a0d021dd1c",
         "field": {
           "Measure": {
             "Expression": {

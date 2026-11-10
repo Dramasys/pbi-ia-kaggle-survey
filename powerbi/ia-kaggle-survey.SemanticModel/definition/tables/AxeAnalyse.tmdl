@@ -1,0 +1,49 @@
+table AxeAnalyse
+	lineageTag: 61e7aacc-9f9e-434f-8efa-d6859a36d177
+
+	column AxeAnalyse
+		lineageTag: f7e7ea21-e9a7-4a38-807d-7175e180c8ef
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'AxeAnalyse Commande'
+
+		relatedColumnDetails
+			groupByColumn: 'AxeAnalyse Champs'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AxeAnalyse Champs'
+		isHidden
+		lineageTag: 6f469e93-6f98-403c-80a8-3503e307122c
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'AxeAnalyse Commande'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'AxeAnalyse Commande'
+		isHidden
+		formatString: 0
+		lineageTag: 2e129ad4-5509-4eb3-9a3c-f4881fe4d572
+		summarizeBy: none
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = User
+
+	partition AxeAnalyse = calculated
+		mode: import
+		source =
+				{
+				    ( "Métier", NAMEOF ( 'Dim_Emploi'[Metier] ), 0 ),
+				    ( "Secteur", NAMEOF ( 'Dim_Emploi'[Secteur] ), 1 ),
+				    ( "Expérience", NAMEOF ( 'Dim_Experience'[ExperienceCodage] ), 2 )
+				}
+
+	annotation PBI_Id = 075d7d24cb3b4ef5ae34bb0f99631d44
+
