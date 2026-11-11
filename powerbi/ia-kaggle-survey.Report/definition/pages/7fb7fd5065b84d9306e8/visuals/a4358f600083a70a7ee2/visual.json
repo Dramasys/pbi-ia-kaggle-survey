@@ -448,23 +448,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "9a414304dee0d403010a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "AxeAnalyse"
-              }
-            },
-            "Property": "AxeAnalyse"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

@@ -295,6 +295,19 @@
         {
           "properties": {}
         }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "section": {
+              "expr": {
+                "Literal": {
+                  "Value": "'437596e623c0b21c1009'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -509,6 +522,20 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "de1200d10c545ae33bea",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "% Utilisation"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

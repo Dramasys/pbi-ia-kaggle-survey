@@ -4,10 +4,10 @@
   "position": {
     "x": 684,
     "y": 80,
-    "z": 6001,
+    "z": 6000,
     "height": 96,
     "width": 278,
-    "tabOrder": 6001
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -262,23 +262,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "db96204e935b3bc6be8d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "Salaire Moyen Fiable"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

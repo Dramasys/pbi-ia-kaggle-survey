@@ -486,48 +486,6 @@
           ]
         },
         "howCreated": "User"
-      },
-      {
-        "name": "9acde5908ca0bb532719",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "Nb Repondants"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "884c3d6120397326940a",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "Salaire Moyen Fiable"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d4e1e152bcc975c883ec",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "% Experimentes"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

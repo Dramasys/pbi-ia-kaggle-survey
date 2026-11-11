@@ -4,10 +4,10 @@
   "position": {
     "x": 978,
     "y": 80.0704845814978,
-    "z": 6000,
+    "z": 5000,
     "height": 96,
     "width": 278,
-    "tabOrder": 6000
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -228,23 +228,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "0bed16d50ae2ab1e6639",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "% Experimentes"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

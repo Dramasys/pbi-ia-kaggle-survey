@@ -4,10 +4,10 @@
   "position": {
     "x": 684,
     "y": 448,
-    "z": 6005,
+    "z": 10000,
     "height": 240,
     "width": 572,
-    "tabOrder": 6005
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -309,20 +309,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "61d39e9837debb7162d0",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "Nb Repondants Metier"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

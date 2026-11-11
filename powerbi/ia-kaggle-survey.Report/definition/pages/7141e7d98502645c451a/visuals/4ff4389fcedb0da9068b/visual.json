@@ -4,10 +4,10 @@
   "position": {
     "x": 96,
     "y": 192,
-    "z": 6002,
+    "z": 7000,
     "height": 240,
     "width": 572,
-    "tabOrder": 6002
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -405,20 +405,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "979a3a120eb164a3c50b",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "Ecart vs Monde pts"
-          }
-        },
-        "type": "Advanced"
       },
       {
         "name": "bea6a54dc720846128ab",

@@ -4968,6 +4968,16 @@ cultureInfo fr-FR
 			            },
 			            "Weight": 0.468
 			          }
+			        },
+			        {
+			          "Répondants à la question": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -5007,6 +5017,16 @@ cultureInfo fr-FR
 			        },
 			        {
 			          "%": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Utilisation": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -5287,6 +5307,16 @@ cultureInfo fr-FR
 			        },
 			        {
 			          "Évol. pts": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Évolution vs édition précédente": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -5939,9 +5969,107 @@ cultureInfo fr-FR
 			          }
 			        }
 			      ]
+			    },
+			    "entity__mesure.nb_repondants_metier": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Mesures",
+			          "ConceptualProperty": "Nb Repondants Metier"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "nb repondants metier": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__mesure.titre_infobulle": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Mesures",
+			          "ConceptualProperty": "Titre Infobulle"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "titre infobulle": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
+			    "dim_pay_géographie_has_pay": {
+			      "Binding": {
+			        "ConceptualEntity": "Dim_Pays"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_pay.géographie": {
+			          "Target": {
+			            "Entity": "dim_pay.géographie"
+			          }
+			        },
+			        "dim_pay.géographie.pay": {
+			          "Target": {
+			            "Entity": "dim_pay.géographie.pay"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_pay.géographie"
+			            },
+			            "Object": {
+			              "Role": "dim_pay.géographie.pay"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "géographies_have_pays"
+			        }
+			      ]
+			    },
+			    "dim_pay_géographie_has_region": {
+			      "Binding": {
+			        "ConceptualEntity": "Dim_Pays"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_pay.géographie": {
+			          "Target": {
+			            "Entity": "dim_pay.géographie"
+			          }
+			        },
+			        "dim_pay.géographie.region": {
+			          "Target": {
+			            "Entity": "dim_pay.géographie.region"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_pay.géographie"
+			            },
+			            "Object": {
+			              "Role": "dim_pay.géographie.region"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "géographies_have_regions"
+			        }
+			      ]
+			    },
 			    "dim_pay_géographie_has_continent": {
 			      "Binding": {
 			        "ConceptualEntity": "Dim_Pays"
@@ -6208,6 +6336,105 @@ cultureInfo fr-FR
 			          }
 			        }
 			      }
+			    },
+			    "dim_reponse_has_entity__mesure_titre_infobulle": {
+			      "Binding": {
+			        "ConceptualEntity": "Dim_Reponse"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_reponse": {
+			          "Target": {
+			            "Entity": "dim_reponse"
+			          }
+			        },
+			        "entity__mesure.titre_infobulle": {
+			          "Target": {
+			            "Entity": "entity__mesure.titre_infobulle"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_reponse"
+			            },
+			            "Object": {
+			              "Role": "entity__mesure.titre_infobulle"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_reponses_have_titre_infobulle"
+			        }
+			      ]
+			    },
+			    "dim_annee_has_entity__mesure_titre_infobulle": {
+			      "Binding": {
+			        "ConceptualEntity": "Dim_Annee"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_annee": {
+			          "Target": {
+			            "Entity": "dim_annee"
+			          }
+			        },
+			        "entity__mesure.titre_infobulle": {
+			          "Target": {
+			            "Entity": "entity__mesure.titre_infobulle"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_annee"
+			            },
+			            "Object": {
+			              "Role": "entity__mesure.titre_infobulle"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_annees_have_titre_infobulle"
+			        }
+			      ]
+			    },
+			    "entity__mesure_has_nb_repondants_metier": {
+			      "Binding": {
+			        "ConceptualEntity": "_Mesures"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "entity__mesure": {
+			          "Target": {
+			            "Entity": "entity__mesure"
+			          }
+			        },
+			        "entity__mesure.nb_repondants_metier": {
+			          "Target": {
+			            "Entity": "entity__mesure.nb_repondants_metier"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "entity__mesure"
+			            },
+			            "Object": {
+			              "Role": "entity__mesure.nb_repondants_metier"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Phrasing_mesures_have_nb_repondants_metier"
+			        }
+			      ]
 			    },
 			    "axe_analyse_has_axe_analyse": {
 			      "Binding": {
@@ -7884,72 +8111,6 @@ cultureInfo fr-FR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_pays_are_in_pays_ENs"
-			        }
-			      ]
-			    },
-			    "dim_pay_géographie_has_region": {
-			      "Binding": {
-			        "ConceptualEntity": "Dim_Pays"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_pay.géographie": {
-			          "Target": {
-			            "Entity": "dim_pay.géographie"
-			          }
-			        },
-			        "dim_pay.géographie.region": {
-			          "Target": {
-			            "Entity": "dim_pay.géographie.region"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_pay.géographie"
-			            },
-			            "Object": {
-			              "Role": "dim_pay.géographie.region"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "géographies_have_regions"
-			        }
-			      ]
-			    },
-			    "dim_pay_géographie_has_pay": {
-			      "Binding": {
-			        "ConceptualEntity": "Dim_Pays"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "dim_pay.géographie": {
-			          "Target": {
-			            "Entity": "dim_pay.géographie"
-			          }
-			        },
-			        "dim_pay.géographie.pay": {
-			          "Target": {
-			            "Entity": "dim_pay.géographie.pay"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "dim_pay.géographie"
-			            },
-			            "Object": {
-			              "Role": "dim_pay.géographie.pay"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "géographies_have_pays"
 			        }
 			      ]
 			    },

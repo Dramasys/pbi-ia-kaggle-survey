@@ -191,6 +191,13 @@ table _Mesures
 		displayFolder: Fiche pays
 		lineageTag: 93620b03-9b9a-4dd8-ad28-b3fb4152df62
 
+	measure 'Titre Infobulle' =
+			
+			// Titre dynamique de l'info-bulle : outil et édition survolés
+			SELECTEDVALUE ( Dim_Reponse[Option], "Outil" ) & " · " & SELECTEDVALUE ( Dim_Annee[Edition], "toutes éditions" )
+		displayFolder: Info-bulle
+		lineageTag: 9b77e4ff-52c3-403c-a177-c590407925f8
+
 	column Cle
 		isHidden
 		formatString: 0
