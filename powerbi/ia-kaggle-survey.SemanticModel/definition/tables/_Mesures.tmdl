@@ -104,7 +104,7 @@ table _Mesures
 			VAR Precedent = [% Utilisation A-1]
 			RETURN
 			    IF ( ISBLANK ( [% Utilisation] ) || ISBLANK ( Precedent ), BLANK (), ( [% Utilisation] - Precedent ) * 100 )
-		formatString: " +0.0"" pts"";-0.0"" pts"";0.0"" pts"""
+		formatString: +0.0" pts";-0.0" pts";0.0" pts"
 		displayFolder: Tendances
 		lineageTag: b92c1606-1b66-4fee-b917-5205c656fb11
 

@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "_Mesures.Titre Fiche Pays",
-              "nativeQueryRef": "Titre Fiche Pays"
+              "nativeQueryRef": "Titre de la page : pays sélectionné",
+              "displayName": "Titre de la page : pays sélectionné"
             }
           ]
         }
@@ -142,8 +143,39 @@
             }
           }
         }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Titre de la page : pays sélectionné'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e5d78d57340591306e78",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "Titre Fiche Pays"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

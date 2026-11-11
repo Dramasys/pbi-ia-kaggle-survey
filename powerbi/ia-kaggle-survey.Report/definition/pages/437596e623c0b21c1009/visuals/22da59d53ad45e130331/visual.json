@@ -7,7 +7,7 @@
     "z": 3062,
     "height": 48,
     "width": 268,
-    "tabOrder": 3001
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -254,6 +254,19 @@
             }
           }
         }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Évolution en points par rapport à l’édition précédente'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -261,7 +274,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "449c1082507e004e7a32",
+        "name": "c6c9a33bea120b0a6c1b",
         "field": {
           "Measure": {
             "Expression": {

@@ -206,6 +206,19 @@
             }
           }
         }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Part d’utilisation de l’outil survolé'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -213,7 +226,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "7ac1b5c4cd669ce0c43d",
+        "name": "e29449a0b96040e0c040",
         "field": {
           "Measure": {
             "Expression": {

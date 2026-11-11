@@ -3,7 +3,7 @@
   "name": "1ee086b142622ec11871",
   "position": {
     "x": 978,
-    "y": 80.0704845814978,
+    "y": 80,
     "z": 6000,
     "height": 96,
     "width": 278,
@@ -262,5 +262,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7b82def024d5d5c9d609",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "Salaire Moyen Fiable"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

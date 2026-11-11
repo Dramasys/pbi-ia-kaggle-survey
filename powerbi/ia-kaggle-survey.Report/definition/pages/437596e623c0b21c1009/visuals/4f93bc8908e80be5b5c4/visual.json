@@ -202,6 +202,19 @@
             }
           }
         }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Nombre de répondants à la question du thème'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -209,7 +222,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "186ed154501409e15758",
+        "name": "906ca9a3d1b0923abd7b",
         "field": {
           "Measure": {
             "Expression": {

@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "9f1ddc9f26575b565c28",
   "position": {
-    "x": 8,
+    "x": 16,
     "y": 10,
     "z": 2000,
     "height": 30,
@@ -187,6 +187,19 @@
             }
           }
         }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Titre : outil et édition survolés'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -194,7 +207,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "4eb10204591515a60590",
+        "name": "2d065cb6146199db85d0",
         "field": {
           "Measure": {
             "Expression": {

@@ -3,7 +3,7 @@
   "name": "3547260ac18696cd09c9",
   "position": {
     "x": 684,
-    "y": 80.0704845814978,
+    "y": 80,
     "z": 5000,
     "height": 96,
     "width": 278,
@@ -282,6 +282,20 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "bb4ed3ea29609b3d92c5",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "Outil N1"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

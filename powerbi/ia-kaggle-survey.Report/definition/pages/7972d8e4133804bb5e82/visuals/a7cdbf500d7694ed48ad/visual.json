@@ -3,7 +3,7 @@
   "name": "a7cdbf500d7694ed48ad",
   "position": {
     "x": 390,
-    "y": 80.0704845814978,
+    "y": 80,
     "z": 4000,
     "height": 96,
     "width": 278,
@@ -262,5 +262,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "99e47f25020c02a27408",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "Nb Pays"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

@@ -5718,6 +5718,16 @@ cultureInfo fr-FR
 			            },
 			            "Weight": 0.5
 			          }
+			        },
+			        {
+			          "Titre de la page : pays sélectionné": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
