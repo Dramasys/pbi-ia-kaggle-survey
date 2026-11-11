@@ -12,6 +12,7 @@ Toutes les mesures sont dans la table `_Mesures`. Conventions : `DIVIDE` pour to
 | Salaire Moyen Estime, Salaire Median Estime, Salaire Moyen Fiable | Salaires | Implémentée |
 | % Utilisation A-1, Evolution pts, Rang Outil | Tendances | Implémentée |
 | Part du Pays, % Utilisation Monde, Ecart vs Monde pts, % Experimentes | Parts | Implémentée |
+| Titre Fiche Pays, Nb Repondants Metier | Fiche pays | Implémentée |
 | % Repondants Salaire | Salaires | Implémentée |
 
 ---
@@ -219,7 +220,7 @@ DIVIDE (
 ```
 
 * **Usage :** exclure le groupe « Non communiqué » dans le visuel (sa valeur n'a pas de sens).
-* **Contrôle (par groupe, 2020 / 2021 / 2022) :** « <10k » 41,4 / 45,5 / 37,6 % ; « 10-30k » 17,0 / 16,8 / 17,3 % ; « 30-60k » 14,9 / 13,8 / 15,4 % ; « 60-100k » 12,6 / 11,4 / 12,6 % ; « 100-150k » 8,3 / 7,2 / 8,3 % ; « 150-250k » 4,3 / 3,7 / 6,1 % ; « >250k » 1,4 / 1,7 / 2,8 %.
+* **Contrôle (par groupe, 2020 / 2021 / 2022) :** « < 10 k$ » 41,4 / 45,5 / 37,6 % ; « 10-30 k$ » 17,0 / 16,8 / 17,3 % ; « 30-60 k$ » 14,9 / 13,8 / 15,4 % ; « 60-100 k$ » 12,6 / 11,4 / 12,6 % ; « 100-150 k$ » 8,3 / 7,2 / 8,3 % ; « 150-250 k$ » 4,3 / 3,7 / 6,1 % ; « > 250 k$ » 1,4 / 1,7 / 2,8 %.
 * **Lecture :** la distribution est très asymétrique, avec 38 à 46 % des répondants sous 10 000 $ par an.
 
 ---
@@ -274,6 +275,37 @@ RETURN
 
 * **Piège constaté :** dans la première version, une option non proposée une année recevait le dernier rang (Swift avait le rang 14 en 2022, alors qu'elle n'y existe pas). Le test `NOT ISBLANK ( [Nb Utilisateurs] )` corrige ce comportement.
 * **Contrôle (Langages) :** 2020 et 2021 : rangs de 1 à 11 ; 2022 : rangs de 1 à 13 (Python, SQL, R, C++, Java, C, JavaScript, MATLAB, Bash, C#, PHP, Go, Julia). R : 3, 4, 3 ; C++ : 4, 3, 4 ; Swift : 11, 11, vide ; C#, Go et PHP vides en 2020 et 2021 ; « None » et « Other » vides.
+
+---
+
+## Dossier Fiche pays
+
+### Titre Fiche Pays
+* **Objectif :** titre dynamique de la page de détail, qui affiche le pays sélectionné.
+* **Format :** texte.
+
+```dax
+Titre Fiche Pays =
+// Titre dynamique de la page de détail
+"Fiche pays : " & SELECTEDVALUE ( Dim_Pays[Pays], "tous les pays" )
+```
+
+* **Contrôle :** « Fiche pays : France » après extraction depuis la carte ; « Fiche pays : tous les pays » si la page est ouverte sans filtre.
+
+### Nb Repondants Metier
+* **Objectif :** nombre de répondants par métier, sans « Non renseigné » ni « Autre », pour que le classement des cinq métiers ne contienne que des métiers réels.
+* **Format :** nombre entier, séparateur de milliers.
+
+```dax
+Nb Repondants Metier =
+// Vide pour « Non renseigné » et « Autre » (ligne du visuel) ; sinon nombre de répondants
+VAR Metier = SELECTEDVALUE ( Dim_Emploi[Metier] )
+RETURN
+    IF ( NOT ( Metier IN { "Non renseigné", "Autre" } ), [Nb Repondants] )
+```
+
+* **Usage :** valeur du graphique « Top 5 des métiers » et critère de son filtre N premiers (une valeur vide n'est jamais retenue).
+* **Contrôle :** aucune barre « Non renseigné » ni « Autre » dans le classement.
 
 ---
 
