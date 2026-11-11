@@ -13,6 +13,7 @@ Toutes les mesures sont dans la table `_Mesures`. Conventions : `DIVIDE` pour to
 | % Utilisation A-1, Evolution pts, Rang Outil | Tendances | Implémentée |
 | Part du Pays, % Utilisation Monde, Ecart vs Monde pts, % Experimentes | Parts | Implémentée |
 | Titre Fiche Pays, Nb Repondants Metier | Fiche pays | Implémentée |
+| Titre Infobulle | Info-bulle | Implémentée |
 | % Repondants Salaire | Salaires | Implémentée |
 
 ---
@@ -306,6 +307,22 @@ RETURN
 
 * **Usage :** valeur du graphique « Top 5 des métiers » et critère de son filtre N premiers (une valeur vide n'est jamais retenue).
 * **Contrôle :** aucune barre « Non renseigné » ni « Autre » dans le classement.
+
+---
+
+## Dossier Info-bulle
+
+### Titre Infobulle
+* **Objectif :** titre dynamique de l'info-bulle, qui indique l'outil et l'édition survolés.
+* **Format :** texte.
+
+```dax
+Titre Infobulle =
+// Titre dynamique de l'info-bulle : outil et édition survolés
+SELECTEDVALUE ( Dim_Reponse[Option], "Outil" ) & " · " & SELECTEDVALUE ( Dim_Annee[Edition], "toutes éditions" )
+```
+
+* **Contrôle :** « Python · 2022 » au survol de la barre Python avec l'édition 2022 sélectionnée.
 
 ---
 

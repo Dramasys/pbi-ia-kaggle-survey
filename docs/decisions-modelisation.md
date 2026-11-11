@@ -64,6 +64,7 @@ Ce document récapitule les arbitrages retenus pour la préparation des données
 * Dans la page « Salaires et profils », l'axe Secteur affiche une barre « Non posée » (édition 2020) ; les libellés des groupes de salaire sont abrégés (« 10-30k ») pour tenir dans les colonnes.
 * Dans la page « Guide », le bouton « Accéder au tableau de bord » est violet plus foncé que dans la maquette (contraste du texte blanc), et le contenu est organisé en trois blocs (deux cartes et un bandeau « Source et limites »).
 * La fiche pays s'ouvre par un clic droit sur une bulle de la carte de la page « Vue d'ensemble » ou du nuage de points de la page « Salaires et profils ». La zone d'extraction contient deux champs : `Dim_Pays[PaysEN]` (champ de localisation de la carte) et `Dim_Pays[Pays]` (champ du nuage), car Power BI exige le même champ dans le visuel d'origine et dans la page de destination.
+* L'info-bulle n'affiche pas la mini-courbe de la maquette : elle reçoit le filtre de l'année du segment et ne pourrait montrer qu'un seul point. Elle présente le titre, la part d'utilisation, l'évolution et le nombre de répondants à la question, et elle est associée au Top langages (page « Vue d'ensemble ») et aux barres d'utilisation (page « Outils et tendances »).
 
 ## 7. Tables de référence et regroupements (`data/reference/`)
 Six fichiers, créés à la main et versionnés, pilotent l'harmonisation des trois éditions :
