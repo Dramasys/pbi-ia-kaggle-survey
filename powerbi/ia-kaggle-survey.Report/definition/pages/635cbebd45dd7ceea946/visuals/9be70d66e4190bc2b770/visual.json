@@ -7,7 +7,7 @@
     "z": 3000,
     "height": 312,
     "width": 572,
-    "tabOrder": 3000
+    "tabOrder": 4250
   },
   "visual": {
     "visualType": "lineChart",
@@ -68,6 +68,9 @@
             }
           ]
         }
+      },
+      "options": {
+        "allowBinnedLineSample": true
       }
     },
     "objects": {
@@ -602,6 +605,34 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "898ea08605455b96800a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Annee"
+              }
+            },
+            "Property": "Edition"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e4b0ca57b0ebb3b57c0c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "% Utilisation"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

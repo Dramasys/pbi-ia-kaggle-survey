@@ -569,6 +569,62 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "a1d0a3f035679be0b718",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Annee"
+              }
+            },
+            "Property": "Edition"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "585d42e1b0185829685d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Reponse"
+              }
+            },
+            "Property": "Option"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1af3b4dfd40779046e01",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "% Utilisation"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "05efce12eab7c78c9ca4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "Evolution pts"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

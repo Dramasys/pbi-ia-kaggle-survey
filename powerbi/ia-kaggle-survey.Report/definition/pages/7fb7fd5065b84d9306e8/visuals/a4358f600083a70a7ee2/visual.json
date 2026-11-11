@@ -7,7 +7,7 @@
     "z": 3000,
     "height": 48,
     "width": 572,
-    "tabOrder": 3000
+    "tabOrder": 6250
   },
   "visual": {
     "visualType": "advancedSlicerVisual",
@@ -448,5 +448,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2eae3a0d02ed21ec554a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "AxeAnalyse"
+              }
+            },
+            "Property": "AxeAnalyse"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

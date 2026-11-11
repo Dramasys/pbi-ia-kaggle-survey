@@ -7,7 +7,7 @@
     "z": 10000,
     "height": 240,
     "width": 572,
-    "tabOrder": 10000
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -329,5 +329,37 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "6ea103a6e7e23414cca5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Demographie"
+              }
+            },
+            "Property": "Etudes"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f85dadc20549e4a5c9c8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "Nb Repondants"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

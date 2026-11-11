@@ -7,7 +7,7 @@
     "z": 2000,
     "height": 312,
     "width": 572,
-    "tabOrder": 2000
+    "tabOrder": 4500
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -514,6 +514,20 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "853825a1ccb7a7d7256e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "% Utilisation"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

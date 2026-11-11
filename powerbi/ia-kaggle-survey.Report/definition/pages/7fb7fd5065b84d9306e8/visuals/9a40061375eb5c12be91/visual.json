@@ -7,7 +7,7 @@
     "z": 4000,
     "height": 544,
     "width": 376,
-    "tabOrder": 4000
+    "tabOrder": 6062
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -394,6 +394,20 @@
             }
           ]
         }
+      },
+      {
+        "name": "8e05a95d50b38a4c90e2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "% Repondants Salaire"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

@@ -7,7 +7,7 @@
     "z": 7000,
     "height": 240,
     "width": 572,
-    "tabOrder": 7000
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -513,6 +513,20 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "c27a9f7dcd003c1553b8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "Ecart vs Monde pts"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

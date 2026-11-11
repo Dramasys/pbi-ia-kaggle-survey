@@ -7,7 +7,7 @@
     "z": 5000,
     "height": 544,
     "width": 376,
-    "tabOrder": 5000
+    "tabOrder": 6031
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -261,5 +261,37 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "808ed86250d0c932dddd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Experience"
+              }
+            },
+            "Property": "ExperienceCodage"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "7cb8d6c9e8c361e372bb",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "Salaire Moyen Fiable"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

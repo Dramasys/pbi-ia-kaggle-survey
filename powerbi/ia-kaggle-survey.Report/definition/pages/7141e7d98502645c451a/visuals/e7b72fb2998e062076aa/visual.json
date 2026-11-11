@@ -228,5 +228,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "682cae1179ab92e61cd4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "% Experimentes"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
