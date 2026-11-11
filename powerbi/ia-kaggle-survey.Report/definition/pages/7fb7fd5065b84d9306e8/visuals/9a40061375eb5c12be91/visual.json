@@ -394,20 +394,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "492fc636924e988268b2",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "% Repondants Salaire"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

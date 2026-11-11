@@ -1,0 +1,116 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "f977be600501022584b1",
+  "position": {
+    "x": 96,
+    "y": 80,
+    "z": 1001,
+    "height": 420,
+    "width": 572,
+    "tabOrder": 4001
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "À propos",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Segoe UI Semibold",
+                      "fontSize": "14pt",
+                      "color": "#e6eaf2"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Ce tableau de bord explore les réponses à l’enquête annuelle de Kaggle sur la data et le machine learning (éditions 2020 à 2022). Il reflète la communauté Kaggle, pas l’ensemble du marché.",
+                    "textStyle": {
+                      "fontSize": "12pt",
+                      "color": "#8fa0bf"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Naviguer",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Segoe UI Semibold",
+                      "fontSize": "14pt",
+                      "color": "#e6eaf2"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Menu de gauche : Accueil (indicateurs globaux), Outils (parts d’utilisation et évolutions), Salaires (répartition par profil). Sur la page Outils, choisissez d’abord le thème (langages, cloud…) : les pourcentages se calculent par thème.",
+                    "textStyle": {
+                      "fontSize": "12pt",
+                      "color": "#8fa0bf"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "padding": [
+        {
+          "properties": {
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Guide d’utilisation : à propos du tableau de bord et navigation'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

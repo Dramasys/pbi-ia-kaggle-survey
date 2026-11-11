@@ -398,23 +398,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "ac32a6ce664d06d42221",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Annee"
-              }
-            },
-            "Property": "Edition"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

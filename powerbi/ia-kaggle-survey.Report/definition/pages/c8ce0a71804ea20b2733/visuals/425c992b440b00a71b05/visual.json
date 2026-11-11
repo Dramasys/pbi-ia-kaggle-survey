@@ -1,0 +1,116 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "425c992b440b00a71b05",
+  "position": {
+    "x": 684,
+    "y": 80,
+    "z": 1002,
+    "height": 420,
+    "width": 572,
+    "tabOrder": 4002
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Lire les chiffres",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Segoe UI Semibold",
+                      "fontSize": "14pt",
+                      "color": "#e6eaf2"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Une part est le pourcentage de répondants à la question qui utilisent l’outil. « +2,3 pts » signifie une hausse de 2,3 points de pourcentage par rapport à l’édition précédente. Les salaires sont des estimations en dollars au milieu de tranche ; une moyenne n’est pas affichée sous 30 réponses.",
+                    "textStyle": {
+                      "fontSize": "12pt",
+                      "color": "#8fa0bf"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Aller plus loin",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Segoe UI Semibold",
+                      "fontSize": "14pt",
+                      "color": "#e6eaf2"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Clic droit sur un pays dans la carte de l’Accueil, puis Extraire > Fiche pays.",
+                    "textStyle": {
+                      "fontSize": "12pt",
+                      "color": "#8fa0bf"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "padding": [
+        {
+          "properties": {
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Guide d’utilisation : lecture des chiffres et fiche pays'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

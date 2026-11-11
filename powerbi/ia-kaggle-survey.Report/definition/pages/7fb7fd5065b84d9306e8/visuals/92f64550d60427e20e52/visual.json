@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Emploi"
+                      "Entity": "Dim_Experience"
                     }
                   },
-                  "Property": "Secteur"
+                  "Property": "ExperienceCodage"
                 }
               },
-              "queryRef": "Dim_Emploi.Secteur",
-              "nativeQueryRef": "Secteur",
+              "queryRef": "Dim_Experience.ExperienceCodage",
+              "nativeQueryRef": "Expérience",
               "active": true,
-              "displayName": "Secteur"
+              "displayName": "Expérience"
             }
           ],
           "fieldParameters": [
@@ -261,23 +261,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "b47b33172d1539505ec7",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Mesures"
-              }
-            },
-            "Property": "Salaire Moyen Fiable"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

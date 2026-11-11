@@ -106,7 +106,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''Dim_Emploi''[Secteur]'"
+                                "Value": "'''Dim_Experience''[ExperienceCodage]'"
                               }
                             }
                           ]
@@ -134,7 +134,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''Dim_Emploi''[Secteur]'"
+                                      "Value": "'''Dim_Experience''[ExperienceCodage]'"
                                     }
                                   }
                                 ]
@@ -158,7 +158,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Secteur"
+                            "0": "Expérience"
                           }
                         ]
                       }
@@ -448,23 +448,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "09ceb705c62a30260079",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "AxeAnalyse"
-              }
-            },
-            "Property": "AxeAnalyse"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }
