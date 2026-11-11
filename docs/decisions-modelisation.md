@@ -62,6 +62,7 @@ Ce document récapitule les arbitrages retenus pour la préparation des données
 * Dans la page « Outils et tendances », la liste des outils compte huit lignes au maximum (filtre N premiers), la courbe n'a pas de teinte cyan pour la première série, et les libellés des segments (« Année », « Thème », « Pays ») ne sont pas affichés dans les listes déroulantes.
 * La page « Salaires et profils » regroupe les trois éditions (pas de segment d'année, comme dans la maquette) ; le nuage de points se limite aux 15 pays les plus représentés, et une note de lecture remplace la bande vide sous l'en-tête.
 * Dans la page « Salaires et profils », l'axe Secteur affiche une barre « Non posée » (édition 2020) ; les libellés des groupes de salaire sont abrégés (« 10-30k ») pour tenir dans les colonnes.
+* Dans la page « Guide », le bouton « Commencer » est violet plus foncé que dans la maquette (contraste du texte blanc), et le contenu est organisé en trois blocs (deux cartes et un bandeau « Source et limites »).
 
 ## 7. Tables de référence et regroupements (`data/reference/`)
 Six fichiers, créés à la main et versionnés, pilotent l'harmonisation des trois éditions :
