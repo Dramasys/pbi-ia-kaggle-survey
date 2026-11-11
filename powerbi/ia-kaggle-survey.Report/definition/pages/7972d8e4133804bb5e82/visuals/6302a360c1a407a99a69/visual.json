@@ -329,5 +329,37 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7288bf30906eb2a4c04d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Demographie"
+              }
+            },
+            "Property": "Etudes"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "01fe6c0de4676bd80a07",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "Nb Repondants"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

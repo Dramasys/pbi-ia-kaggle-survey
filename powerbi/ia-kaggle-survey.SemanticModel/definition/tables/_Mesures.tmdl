@@ -181,6 +181,16 @@ table _Mesures
 		displayFolder: Fiche pays
 		lineageTag: 3c778093-d367-4ad3-8130-d437dd47bed9
 
+	measure 'Nb Repondants Metier' =
+			
+			// Vide pour « Non renseigné » et « Autre » (ligne du visuel) ; sinon nombre de répondants
+			VAR Metier = SELECTEDVALUE ( Dim_Emploi[Metier] )
+			RETURN
+			    IF ( NOT ( Metier IN { "Non renseigné", "Autre" } ), [Nb Repondants] )
+		formatString: #,0
+		displayFolder: Fiche pays
+		lineageTag: 93620b03-9b9a-4dd8-ad28-b3fb4152df62
+
 	column Cle
 		isHidden
 		formatString: 0
