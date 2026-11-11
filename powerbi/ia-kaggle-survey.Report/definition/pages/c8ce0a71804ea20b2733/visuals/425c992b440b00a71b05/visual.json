@@ -4,10 +4,10 @@
   "position": {
     "x": 684,
     "y": 80,
-    "z": 1002,
+    "z": 3000,
     "height": 420,
     "width": 572,
-    "tabOrder": 4002
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "textbox",
@@ -104,6 +104,26 @@
               "expr": {
                 "Literal": {
                   "Value": "'Guide d’utilisation : lecture des chiffres et fiche pays'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Guide droite'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

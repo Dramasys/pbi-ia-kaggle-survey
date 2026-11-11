@@ -4,10 +4,10 @@
   "position": {
     "x": 96,
     "y": 640,
-    "z": 1004,
+    "z": 5000,
     "height": 40,
-    "width": 200,
-    "tabOrder": 4004
+    "width": 240,
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "actionButton",
@@ -56,7 +56,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Commencer'"
+                  "Value": "'Accéder au tableau de bord'"
                 }
               }
             },
@@ -173,7 +173,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Commencer'"
+                  "Value": "'Bouton Commencer'"
                 }
               }
             },

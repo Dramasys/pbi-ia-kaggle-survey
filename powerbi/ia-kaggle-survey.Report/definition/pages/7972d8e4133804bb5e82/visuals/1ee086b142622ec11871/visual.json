@@ -262,5 +262,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "26dca90587c92e090591",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Mesures"
+              }
+            },
+            "Property": "Salaire Moyen Fiable"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
