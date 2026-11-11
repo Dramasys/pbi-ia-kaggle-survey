@@ -19,14 +19,14 @@ Schéma en étoile à deux tables de faits (`Fact_Repondants` : 70 006 lignes ; 
 | Maquette Figma (v2) | Terminé |
 | Préparation des données (Power Query) | Terminé |
 | Modèle en étoile | Terminé |
-| Mesures DAX | En cours |
-| Pages du rapport | À faire |
+| Mesures DAX | Terminé |
+| Pages du rapport | Terminé |
 | Sécurité (RLS) | À faire |
 | Performance et accessibilité | À faire |
 | Documentation PDF et livraison | À faire |
 
 ## Ouvrir le projet
-1. Cloner le dépôt et installer Power BI Desktop (projet créé avec la version de novembre 2026).
+1. Cloner le dépôt et installer Power BI Desktop (projet créé avec la version 2.159, octobre 2026).
 2. Télécharger les trois fichiers de données Kaggle dans `data/raw/` en suivant [data/README.md](data/README.md).
 3. Ouvrir `powerbi/ia-kaggle-survey.pbip`.
 4. Dans **Transformer les données > Gérer les paramètres**, remplacer les deux chemins par ceux de votre machine (avec l'antislash final) : `pDossierData` (dossier `data/raw/`) et `pDossierRef` (dossier `data/reference/`).
@@ -39,7 +39,7 @@ docs/            cadrage, décisions de modélisation, dictionnaire, mesures DAX
 figma/           exports PNG des maquettes
 powerbi/         projet PBIP (rapport et modèle sémantique)
 screenshots/     captures (à venir)
-theme/           thème du rapport (à venir)
+theme/           thème du rapport (theme.json)
 ```
 
 ## Charte graphique et maquette Figma

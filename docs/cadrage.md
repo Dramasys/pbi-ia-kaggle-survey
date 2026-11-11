@@ -32,7 +32,7 @@ Version mise à jour après validation de la maquette Figma et construction du m
 | Part d'utilisation | Utilisateurs de l'outil ÷ répondants à la question du thème | Outils et tendances |
 | Évolution en points | Part de l'année moins part de l'édition précédente (en points de pourcentage) | Outils et tendances |
 | Salaire moyen estimé | Moyenne des milieux de tranche, en dollars, sur les répondants ayant déclaré un salaire ; masquée sous 30 réponses | Vue d'ensemble, Salaires et profils |
-| Taux de réponse à la question salaire | Répondants ayant déclaré un salaire ÷ répondants (affiché en note sous l'histogramme) | Salaires et profils |
+| Taux de réponse à la question salaire | Répondants ayant déclaré un salaire ÷ répondants (mesure disponible, non affichée : la note de lecture de la page rappelle la base de calcul) | Salaires et profils |
 
 ## 5. Limites à connaître
 * Les salaires sont des estimations (milieu de tranche), en dollars.

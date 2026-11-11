@@ -1,6 +1,6 @@
 # Décisions de modélisation et de préparation - Projet IA (Kaggle Survey)
 
-Ce document récapitule les arbitrages retenus pour la préparation des données et le modèle. État : préparation des données et modèle en étoile implémentés, mesures en cours.
+Ce document récapitule les arbitrages retenus pour la préparation des données et le modèle. État : préparation des données, modèle en étoile, mesures DAX et six pages du rapport implémentés ; sécurité (RLS), performance, accessibilité et documentation PDF à venir.
 
 ---
 
@@ -23,6 +23,7 @@ Ce document récapitule les arbitrages retenus pour la préparation des données
 ## 3. Clés et performance
 * **Clés :** entiers (`PaysKey`, `DemographieKey`, `EmploiKey`, `ExperienceKey`, `SalaireKey`, `ReponseKey`, `Annee`). Aucune clé textuelle.
 * **Identifiant de répondant :** absent de la source. `RepondantID` = année × 1 000 000 + numéro de ligne (unique sur les trois éditions). Il reste dans les faits comme dimension dégénérée, pour compter les répondants distincts.
+* **Clés du profil :** `DemographieKey`, `EmploiKey` et `ExperienceKey` sont calculées à partir des ordres de tri (par exemple ordre de l'âge × 10 000 + ordre du genre × 100 + ordre des études). Le fait les recalcule sans jointure, ce qui évite de relire toute la chaîne de préparation.
 * **Visibilité :** toutes les clés et `RepondantID` sont masquées dans la vue Rapport.
 
 ## 4. Absence de table de dates
@@ -49,10 +50,10 @@ Ce document récapitule les arbitrages retenus pour la préparation des données
 * Les valeurs de la maquette sont fictives (effectifs, pourcentages, salaires, pays).
 * La distribution réelle des salaires est fortement décalée vers les petites tranches (38 à 46 % des répondants sous 10 000 $), contrairement à la forme en cloche de la maquette.
 * Le segment « Secteur » n'a pas de données en 2020.
-* Les libellés d'études, de métiers et les tranches de salaire de la maquette seront remplacés par ceux de l'enquête.
+* Les libellés d'études, de métiers et les tranches de salaire de la maquette ont été remplacés par ceux de l'enquête.
 * Les salaires sont des estimations en dollars (milieu de tranche), pas en euros.
-* La page 1 affichera « Répondants par édition » en trois colonnes, et non une courbe d'inscriptions cumulées.
-* La matrice de la page 2 aura des cellules vides pour les outils non proposés certaines années (C#, Go et PHP en 2020 et 2021).
+* La page 1 affiche « Répondants par édition » en trois colonnes, et non une courbe d'inscriptions cumulées.
+* La matrice de la page 2 a des cellules vides pour les outils non proposés certaines années (C#, Go et PHP en 2020 et 2021).
 * Le métier « Data Architect » n'existe qu'en 2022, et « Consultant Data » n'est pas un choix de l'enquête.
 * La barre cyan fine qui marque la page active dans la maquette n'est pas reproductible dans Power BI (taille minimale d'un élément : 12 px). La page active est signalée par un bouton en gras, de couleur cyan, sur fond plus clair.
 * Dans les cartes KPI, le libellé est placé au-dessus de la valeur (et non à sa gauche comme dans la maquette).
@@ -83,3 +84,15 @@ Décisions :
 * **Expérience de codage** : « 1-2 ans » (2020) et « 1-3 ans » (2021 et 2022) restent séparés (tranches non équivalentes). Les tranches de plus de 5 ans sont stables et forment le groupe « Plus de 5 ans ».
 * **Salaires** : milieu de tranche = (borne basse + borne haute + 1) ÷ 2. La tranche ouverte « 500 000 et plus » (trois libellés selon l'année) est fixée à 600 000 $ : hypothèse arbitraire, peu influente sur la médiane.
 * **Étudiants 2022** : le métier est vide pour 13 367 répondants en 2022, car la question « étudiant » est posée séparément (`Q5`). Les 11 961 répondants déclarés étudiants et sans métier sont reclassés en « Student ». Restent 1 406 métiers vides (non-réponses réelles).
+
+## 8. Rapport et mise en forme
+* **Fond natif :** couleur de fond du thème et rectangle de 72 px pour la barre latérale, plutôt qu'une image de fond. Les exports PNG de Figma contiennent des graphiques fictifs : ils ne servent que de référence.
+* **Thème** (`theme/theme.json`) : palette, polices, fond des visuels `#172036`, bordure invisible et coins arrondis de 8 par défaut.
+* **Mode réactif désactivé** sur les graphiques et la matrice : Power BI réduisait sinon les polices et les légendes quand le cadre lui semblait trop petit.
+* **Navigation :** quatre boutons de 72 px dans un groupe ; la page active est en gras cyan sur fond plus clair. Les pages « Fiche pays » et « Info-bulle » sont masquées.
+* **Règle de couleur :** violet pour les effectifs de répondants, cyan pour les parts et les valeurs calculées, vert et rouge réservés aux évolutions et aux écarts.
+* **Segments :** boutons pour l'année de la page 1, listes déroulantes sur la page « Outils et tendances ». L'année et le thème sont en sélection unique obligatoire : la part d'utilisation n'a de sens que pour un seul thème, et `Nb Repondants Question` est protégée par `HASONEVALUE`.
+* **Base des pourcentages :** `EstOutil` est retiré du dénominateur de `Nb Repondants Question`. Sans cela, le filtre qui masque « None » et « Other » dans les visuels exclurait aussi, de la base, les répondants qui n'ont coché que ces options, et gonflerait les parts (Python en 2022 : 89,9 % au lieu de 88,3 %).
+* **Paramètre de champs** `AxeAnalyse` : choix de l'axe (métier, secteur, expérience) du graphique de salaires de la page 3.
+* **Fiche pays :** page d'extraction (drillthrough) sans « conserver tous les filtres », elle regroupe donc les trois éditions.
+* **Sécurité (RLS), performance et accessibilité** (ordre de tabulation, contrastes) : à documenter lors des phases suivantes.

@@ -79,6 +79,7 @@ Mêmes colonnes que Fact_Repondants, plus :
 | Theme | Texte | Langages, Environnements (IDE), Frameworks ML, Cloud ou Outils BI |
 | Option | Texte | Outil ou réponse cochée (harmonisée entre les années) |
 | EstOutil | Booléen | Faux pour « None » et « Other » |
+
 ## Paramètre de champs
 
 ### AxeAnalyse (3 lignes)
