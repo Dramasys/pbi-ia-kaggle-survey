@@ -95,4 +95,4 @@ Décisions :
 * **Base des pourcentages :** `EstOutil` est retiré du dénominateur de `Nb Repondants Question`. Sans cela, le filtre qui masque « None » et « Other » dans les visuels exclurait aussi, de la base, les répondants qui n'ont coché que ces options, et gonflerait les parts (Python en 2022 : 89,9 % au lieu de 88,3 %).
 * **Paramètre de champs** `AxeAnalyse` : choix de l'axe (métier, secteur, expérience) du graphique de salaires de la page 3.
 * **Fiche pays :** page d'extraction (drillthrough) sans « conserver tous les filtres », elle regroupe donc les trois éditions.
-* **Sécurité (RLS), performance et accessibilité** (ordre de tabulation, contrastes) : à documenter lors des phases suivantes.
+* **Sécurité (RLS) :** rôle dynamique par région, détaillé dans `securite-rls.md`. Performance et accessibilité (ordre de tabulation, contrastes) : contrastes vérifiés par calcul (tous les textes au moins à 5,3 pour 1) et temps d'actualisation d'environ 2 min.
