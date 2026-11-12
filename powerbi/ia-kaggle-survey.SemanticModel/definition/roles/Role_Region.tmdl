@@ -1,0 +1,14 @@
+role Role_Region
+	modelPermission: read
+
+	tablePermission Dim_Pays =
+			[Region] IN
+			    SELECTCOLUMNS (
+			        FILTER ( Securite_Region, Securite_Region[Email] = USERPRINCIPALNAME () ),
+			        "r", Securite_Region[Region]
+			    )
+
+	tablePermission Securite_Region = FALSE()
+
+	annotation PBI_Id = b050361098e244f59b78388bb03339b1
+

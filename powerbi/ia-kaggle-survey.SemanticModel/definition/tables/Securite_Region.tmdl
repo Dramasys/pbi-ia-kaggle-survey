@@ -1,0 +1,43 @@
+table Securite_Region
+	isHidden
+	lineageTag: 53f6d400-67bd-4b7c-bfc3-1973f200f6df
+
+	column Email
+		dataType: string
+		isHidden
+		lineageTag: 751656b0-1612-452e-8f8e-13d3e523433c
+		summarizeBy: none
+		sourceColumn: Email
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		isHidden
+		lineageTag: a0c7be85-346f-4372-8063-dadaf42f5b5e
+		summarizeBy: none
+		sourceColumn: Region
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Securite_Region = m
+		mode: import
+		queryGroup: 03_Dimensions
+		source =
+				let
+				  Source = Csv.Document(File.Contents(pDossierRef & "securite_region.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				  Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				  Types = Table.TransformColumnTypes(Entetes, {{"Email", type text}, {"Region", type text}})
+				in
+				  Types
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
