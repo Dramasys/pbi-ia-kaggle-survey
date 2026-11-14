@@ -90,6 +90,17 @@
                   "Value": "11D"
                 }
               }
+            },
+            "gridlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2A3A5E'"
+                    }
+                  }
+                }
+              }
             }
           }
         }

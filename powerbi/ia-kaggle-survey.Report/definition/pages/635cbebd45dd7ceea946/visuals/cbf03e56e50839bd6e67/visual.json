@@ -152,6 +152,13 @@
                   "Value": "10D"
                 }
               }
+            },
+            "autoExpand": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }

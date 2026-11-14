@@ -22,7 +22,8 @@
                     "value": "Communauté Data & IA - Guide",
                     "textStyle": {
                       "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "20pt"
+                      "fontSize": "20pt",
+                      "color": "#e6eaf2"
                     }
                   }
                 ]
@@ -52,7 +53,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
