@@ -23,7 +23,7 @@
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "14pt",
+                      "fontSize": "16pt",
                       "color": "#e6eaf2"
                     }
                   }
@@ -34,7 +34,7 @@
                   {
                     "value": "Kaggle Machine Learning & Data Science Survey, éditions 2020 à 2022, projet personnel à but pédagogique et non commercial. Le secteur d’activité n’est posé qu’en 2021 et 2022 (« Non posée » correspond à 2020).",
                     "textStyle": {
-                      "fontSize": "12pt",
+                      "fontSize": "14pt",
                       "color": "#8fa0bf"
                     }
                   }

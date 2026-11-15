@@ -23,7 +23,7 @@
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "14pt",
+                      "fontSize": "16pt",
                       "color": "#e6eaf2"
                     }
                   }
@@ -34,7 +34,7 @@
                   {
                     "value": "Ce tableau de bord explore les réponses à l’enquête annuelle de Kaggle sur la data et le machine learning (éditions 2020 à 2022). Il reflète la communauté Kaggle, pas l’ensemble du marché.",
                     "textStyle": {
-                      "fontSize": "12pt",
+                      "fontSize": "14pt",
                       "color": "#8fa0bf"
                     }
                   }
@@ -54,7 +54,7 @@
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "14pt",
+                      "fontSize": "16pt",
                       "color": "#e6eaf2"
                     }
                   }
@@ -65,7 +65,7 @@
                   {
                     "value": "Menu de gauche : Accueil (indicateurs globaux), Outils (parts d’utilisation et évolutions), Salaires (répartition par profil). Sur la page Outils, choisissez d’abord le thème (langages, cloud…) : les pourcentages se calculent par thème.",
                     "textStyle": {
-                      "fontSize": "12pt",
+                      "fontSize": "14pt",
                       "color": "#8fa0bf"
                     }
                   }

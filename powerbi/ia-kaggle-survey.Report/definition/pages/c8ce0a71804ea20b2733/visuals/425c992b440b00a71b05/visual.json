@@ -23,7 +23,7 @@
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "14pt",
+                      "fontSize": "16pt",
                       "color": "#e6eaf2"
                     }
                   }
@@ -34,7 +34,7 @@
                   {
                     "value": "Une part est le pourcentage de répondants à la question qui utilisent l’outil. « +2,3 pts » signifie une hausse de 2,3 points de pourcentage par rapport à l’édition précédente. Les salaires sont des estimations en dollars au milieu de tranche ; une moyenne n’est pas affichée sous 30 réponses.",
                     "textStyle": {
-                      "fontSize": "12pt",
+                      "fontSize": "14pt",
                       "color": "#8fa0bf"
                     }
                   }
@@ -54,7 +54,7 @@
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Segoe UI Semibold",
-                      "fontSize": "14pt",
+                      "fontSize": "16pt",
                       "color": "#e6eaf2"
                     }
                   }
@@ -65,7 +65,7 @@
                   {
                     "value": "Clic droit sur un pays dans la carte de l’Accueil, puis Extraire > Fiche pays.",
                     "textStyle": {
-                      "fontSize": "12pt",
+                      "fontSize": "14pt",
                       "color": "#8fa0bf"
                     }
                   }
