@@ -21,9 +21,9 @@ Schéma en étoile à deux tables de faits (`Fact_Repondants` : 70 006 lignes ; 
 | Modèle en étoile | Terminé |
 | Mesures DAX | Terminé |
 | Pages du rapport | Terminé |
-| Sécurité (RLS) | À faire |
-| Performance et accessibilité | À faire |
-| Documentation PDF et livraison | À faire |
+| Sécurité (RLS) | Terminé |
+| Performance et accessibilité | Terminé |
+| Documentation PDF et livraison | En cours |
 
 ## Ouvrir le projet
 1. Cloner le dépôt et installer Power BI Desktop (projet créé avec la version 2.159, octobre 2026).
