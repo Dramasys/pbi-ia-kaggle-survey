@@ -1,4 +1,4 @@
-# Phase 1.8 : Sécurité (RLS) - Projet IA (Kaggle Survey)
+# Sécurité (RLS) - Projet IA (Kaggle Survey)
 
 ## Objectif
 Les données de l'enquête sont publiques : la sécurité par ligne est donc un exercice, mais un scénario réaliste. Un analyste régional ne voit que les répondants des pays de sa zone. Le rôle est dynamique : le périmètre dépend de l'identité de la personne connectée, lue dans une table de sécurité.
