@@ -1,4 +1,4 @@
-# Phase 1.9 : Performance et accessibilité - Projet IA (Kaggle Survey)
+# Performance et accessibilité - Projet IA (Kaggle Survey)
 
 ## Performance
 
