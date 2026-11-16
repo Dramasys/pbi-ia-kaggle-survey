@@ -20,21 +20,6 @@
           }
         },
         "type": "Categorical",
-        "howCreated": "Drillthrough"
-      },
-      {
-        "name": "1a9e8079990a30d0009e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Pays"
-              }
-            },
-            "Property": "Pays"
-          }
-        },
-        "type": "Categorical",
         "filter": {
           "Version": 2,
           "From": [
@@ -56,7 +41,7 @@
                             "Source": "d"
                           }
                         },
-                        "Property": "Pays"
+                        "Property": "PaysEN"
                       }
                     }
                   ],
@@ -64,7 +49,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'Inde'"
+                          "Value": "'France'"
                         }
                       }
                     ]
@@ -74,6 +59,21 @@
             }
           ]
         },
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "1a9e8079990a30d0009e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Pays"
+              }
+            },
+            "Property": "Pays"
+          }
+        },
+        "type": "Categorical",
         "howCreated": "Drillthrough"
       }
     ]
