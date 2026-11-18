@@ -4,13 +4,28 @@
   "position": {
     "x": 684,
     "y": 16,
-    "z": 5000,
+    "z": 1500,
     "height": 48,
     "width": 572,
     "tabOrder": 5000
   },
   "visualGroup": {
     "displayName": "Segments",
-    "groupMode": "ScaleMode"
+    "groupMode": "ScaleMode",
+    "objects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   }
 }

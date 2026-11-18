@@ -224,5 +224,23 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "cb1c3a474018573c9de8"
+  "parentGroupName": "cb1c3a474018573c9de8",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2bfdb931d22643020439",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Pays"
+              }
+            },
+            "Property": "Pays"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
 }

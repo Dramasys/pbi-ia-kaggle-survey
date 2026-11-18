@@ -265,20 +265,6 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "808ed86250d0c932dddd",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Experience"
-              }
-            },
-            "Property": "ExperienceCodage"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
         "name": "7cb8d6c9e8c361e372bb",
         "field": {
           "Measure": {
