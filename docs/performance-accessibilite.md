@@ -11,7 +11,7 @@
 | Temps d'actualisation complet (lecture des trois fichiers CSV, unpivot, harmonisation, dimensions et faits) | environ 2 min 10 s |
 
 ### Temps d'affichage des visuels
-Mesures réalisées avec l'Analyseur de performances de Power BI Desktop (version 2.159), après « Actualiser les visuels » sur chaque page, avec les filtres par défaut (édition 2022, thème Langages). Les requêtes d'une même page s'exécutent ensemble, ce qui rapproche leurs durées. Temps total par visuel, en millisecondes.
+Mesures réalisées avec l'Analyseur de performances de Power BI Desktop, après « Actualiser les visuels » sur chaque page, avec les filtres par défaut (édition 2022, thème Langages). Les requêtes d'une même page s'exécutent ensemble, ce qui rapproche leurs durées. Temps total par visuel, en millisecondes.
 
 | Page | Visuels les plus lents (ms) | Autres visuels (ms) |
 |---|---|---|
@@ -21,7 +21,7 @@ Mesures réalisées avec l'Analyseur de performances de Power BI Desktop (versio
 | Fiche pays (France) | Plus de 5 ans d'expérience 232 ; Salaire moyen estimé 230 ; Part des répondants 228 | |
 | Info-bulle (survol) | Répondants 90 ; Évolution 89 ; Utilisation 88 | |
 
-**Lecture :** tous les visuels s'affichent en moins de 350 ms, bien en dessous du repère de 1 seconde. Aucune optimisation supplémentaire n'est nécessaire. Les mesures ont été prises sur le poste de développement : les durées dans le service Power BI peuvent différer.
+**Lecture :** tous les visuels s'affichent en moins de 400 ms, bien en dessous du repère de 1 seconde. Les durées varient de quelques dizaines de millisecondes d'une exécution à l'autre : la carte « Salaire moyen estimé » de la page « Vue d'ensemble » a affiché 341 ms puis 375 ms. Aucune optimisation supplémentaire n'est nécessaire. Les mesures ont été prises sur le poste de développement : les durées dans le service Power BI peuvent différer.
 
 ### Choix qui limitent le coût
 * Modèle en étoile, relations un-à-plusieurs unidirectionnelles, aucune relation bidirectionnelle.
