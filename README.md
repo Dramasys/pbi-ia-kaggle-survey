@@ -1,6 +1,6 @@
 # Baromètre Communauté Data et IA - Projet Power BI
 
-Projet personnel à but pédagogique : un rapport Power BI construit à partir du Kaggle Machine Learning & Data Science Survey (éditions 2020, 2021 et 2022, soit 70 006 répondants). Il suit un parcours complet : cadrage, maquette Figma, préparation des données, modèle en étoile, mesures DAX, rapport, sécurité (RLS) et documentation.
+Projet personnel à but pédagogique : un rapport Power BI construit à partir du Kaggle Machine Learning & Data Science Survey (éditions 2020, 2021 et 2022, soit 70 006 répondants). Il suit un parcours complet : cadrage, maquette Figma, préparation des données, modèle en étoile, mesures DAX, rapport, sécurité (RLS), performance et accessibilité, et documentation.
 
 ## Utilisateurs et questions métier
 Responsables formation, RH tech, décideurs qui suivent les tendances data et IA, data analysts. Les questions auxquelles le rapport répond et les KPI sont décrits dans [docs/cadrage.md](docs/cadrage.md).
@@ -23,7 +23,13 @@ Schéma en étoile à deux tables de faits (`Fact_Repondants` : 70 006 lignes ; 
 | Pages du rapport | Terminé |
 | Sécurité (RLS) | Terminé |
 | Performance et accessibilité | Terminé |
-| Documentation PDF et livraison | En cours |
+| Documentation PDF et livraison | Terminé |
+
+## Documentation
+* [Guide utilisateur](docs/guide-utilisateur.md)
+* [Sécurité (RLS)](docs/securite-rls.md)
+* [Performance et accessibilité](docs/performance-accessibilite.md)
+* [Documentation complète du projet (PDF)](docs/pbi-ia-kaggle-survey-documentation.pdf)
 
 ## Ouvrir le projet
 1. Cloner le dépôt et installer Power BI Desktop (projet créé avec la version 2.159, octobre 2026).
@@ -35,10 +41,11 @@ Schéma en étoile à deux tables de faits (`Fact_Repondants` : 70 006 lignes ; 
 ## Structure du dépôt
 ```
 data/            README, raw/ (non versionné), reference/ (tables de référence)
-docs/            cadrage, décisions de modélisation, dictionnaire, mesures DAX, guide utilisateur
+docs/            cadrage, décisions de modélisation, dictionnaire, mesures DAX, sécurité (RLS),
+                 performance et accessibilité, guide utilisateur, documentation PDF
 figma/           exports PNG des maquettes
 powerbi/         projet PBIP (rapport et modèle sémantique)
-screenshots/     captures (à venir)
+screenshots/     captures du rapport, du modèle et des tests
 theme/           thème du rapport (theme.json)
 ```
 
